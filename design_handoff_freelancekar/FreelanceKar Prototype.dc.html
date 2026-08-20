@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><style>body{margin:0;background:#e9e7e2;font-family:Archivo,"Helvetica Neue",Helvetica,Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh}a{color:#CDF564}a:hover{color:#b9e442}@keyframes fkIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}@keyframes fkSheet{from{transform:translateY(100%)}to{transform:none}}@keyframes fkFade{from{opacity:0}to{opacity:1}}@keyframes fkPulse{0%,100%{opacity:1}50%{opacity:.45}}@keyframes fkDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(48px,72px,0)}}@keyframes fkBloom{0%,100%{opacity:.25;transform:scale(.88)}50%{opacity:1;transform:scale(1.12)}}.fk-scroll::-webkit-scrollbar{width:0}</style></helmet>
+
+<div style="display:flex;align-items:center;justify-content:center;padding:28px;font-family:Archivo,sans-serif">
+<div style="position:relative;width:390px;height:844px;background:#0B0B0C;border-radius:38px;box-shadow:0 24px 60px rgba(0,0,0,.32);overflow:hidden;color:#F2F2F0;display:flex;flex-direction:column">
+
+<sc-if value="{{ bgDots }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+<div style="position:absolute;left:-25%;top:-25%;width:150%;height:150%;background-image:radial-gradient(rgba(242,242,240,.15) 1px,transparent 1.5px);background-size:24px 24px;animation:fkDrift 80s linear infinite"></div>
+<div style="position:absolute;left:-50px;top:110px;width:280px;height:280px;background:radial-gradient(circle,rgba(242,242,240,.09),transparent 70%);border-radius:50%;animation:fkBloom 7s ease-in-out infinite"></div>
+<div style="position:absolute;right:-70px;top:420px;width:320px;height:320px;background:radial-gradient(circle,rgba(242,242,240,.08),transparent 70%);border-radius:50%;animation:fkBloom 9.5s ease-in-out infinite 1.4s"></div>
+<div style="position:absolute;left:40px;top:640px;width:260px;height:260px;background:radial-gradient(circle,rgba(242,242,240,.07),transparent 70%);border-radius:50%;animation:fkBloom 8.2s ease-in-out infinite .7s"></div>
+</div></sc-if>
+
+<sc-if value="{{ bgBloom }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+<div style="position:absolute;left:-25%;top:-25%;width:150%;height:150%;background-image:radial-gradient(rgba(242,242,240,.12) 1px,transparent 1.5px);background-size:24px 24px;animation:fkDrift 80s linear infinite"></div>
+<div style="position:absolute;left:-60px;top:120px;width:300px;height:300px;background:radial-gradient(circle,rgba(205,245,100,.14),transparent 68%);border-radius:50%;animation:fkBloom 8s ease-in-out infinite"></div>
+<div style="position:absolute;right:-80px;top:460px;width:340px;height:340px;background:radial-gradient(circle,rgba(205,245,100,.12),transparent 68%);border-radius:50%;animation:fkBloom 11s ease-in-out infinite 1.8s"></div>
+</div></sc-if>
+
+<div style="position:relative;z-index:1;flex:none;padding:14px 22px 0;display:flex;justify-content:space-between;font:500 11px 'JetBrains Mono',monospace;color:rgba(242,242,240,.5)"><span>9:41</span><span>5G ▮</span></div>
+
+<div class="fk-scroll" style="position:relative;z-index:1;flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:none">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}"><div style="animation:fkIn .28s ease both">
+<div style="padding:16px 20px 0;display:flex;align-items:center;justify-content:space-between;gap:12px">
+<span style="font:700 18px Archivo,sans-serif;letter-spacing:-.025em;color:#CDF564">FreelanceKar</span>
+<div style="display:flex;align-items:center;gap:9px"><button onClick="{{ openNotifs }}" style="position:relative;cursor:pointer;padding:0;width:38px;height:38px;border-radius:50%;background:#141416;border:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;color:rgba(242,242,240,.8)" style-hover="border-color:rgba(205,245,100,.5)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M18.5 16.5H5.5l1.6-2.6V10a4.9 4.9 0 0 1 9.8 0v3.9zM10 19.4a2.2 2.2 0 0 0 4 0"></path></svg><sc-if value="{{ hasUnread }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:-2px;right:-2px;min-width:16px;box-sizing:border-box;background:#CDF564;color:#0B0B0C;font:600 9px 'JetBrains Mono',monospace;border-radius:999px;padding:2px 4px;border:2px solid #0B0B0C">{{ unreadCount }}</span></sc-if></button><button onClick="{{ openCity }}" style="cursor:pointer;color:inherit;display:flex;align-items:center;gap:7px;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:999px;padding:9px 13px" style-hover="border-color:rgba(205,245,100,.5)"><span style="font-size:10px;color:#CDF564">◉</span><span style="font:600 13px Archivo,sans-serif">{{ locLabel }}</span><span style="font-size:10px;color:rgba(242,242,240,.45)">▾</span></button></div>
+</div>
+<div style="padding:18px 20px 0"><button onClick="{{ goExplore }}" style="width:100%;text-align:left;cursor:pointer;display:flex;align-items:center;gap:10px;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:13px 14px;color:inherit" style-hover="border-color:rgba(205,245,100,.5)"><span style="color:rgba(242,242,240,.45);font-size:14px">⌕</span><span style="font:400 14px Archivo,sans-serif;color:rgba(242,242,240,.42)">Search “reel editor”, “GST filing”…</span></button></div>
+<div style="padding:24px 20px 0"><h2 style="margin:0 0 3px;font:600 22px/1.2 Archivo,sans-serif;letter-spacing:-.02em">What do you need done?</h2><p style="margin:0 0 14px;font:400 13px/1.4 Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ proCount }} verified freelancers in {{ city }}</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px">
+<sc-for list="{{ cats }}" as="c" hint-placeholder-count="9"><button onClick="{{ c.open }}" style="cursor:pointer;text-align:left;color:inherit;background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 10px;display:flex;flex-direction:column;gap:9px;min-height:78px" style-hover="border-color:rgba(205,245,100,.5);background:#181A1C"><span style="font-size:17px">{{ c.icon }}</span><span style="font:500 11.5px/1.25 Archivo,sans-serif">{{ c.name }}</span></button></sc-for>
+</div>
+<button onClick="{{ goExplore }}" style="width:100%;margin-top:10px;background:none;border:0;cursor:pointer;font:500 12px Archivo,sans-serif;color:#CDF564;padding:6px">All 24 categories →</button>
+</div>
+<div style="padding:22px 0 0"><div style="padding:0 20px;display:flex;align-items:baseline;justify-content:space-between"><h3 style="margin:0;font:600 15px Archivo,sans-serif">Top rated near you</h3><button onClick="{{ goExplore }}" style="background:none;border:0;cursor:pointer;font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.45);padding:0">See all</button></div>
+<div class="fk-scroll" style="display:flex;gap:12px;padding:14px 20px 0;overflow-x:auto;scrollbar-width:none">
+<sc-for list="{{ topRated }}" as="p" hint-placeholder-count="3"><button onClick="{{ p.open }}" style="flex:none;width:150px;cursor:pointer;text-align:left;color:inherit;background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;padding:0" style-hover="border-color:rgba(205,245,100,.5)"><div style="height:92px;background:repeating-linear-gradient(135deg,#17181b,#17181b 6px,#232529 6px,#232529 12px)"></div><div style="padding:10px 11px 12px;display:flex;flex-direction:column;gap:5px"><span style="font:600 13px Archivo,sans-serif">{{ p.name }}</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ p.headline }}</span><span style="font:500 11px Archivo,sans-serif;color:#F5B851">★ {{ p.rating }} <span style="color:rgba(242,242,240,.4)">({{ p.jobs }})</span></span><span style="font:600 12px Archivo,sans-serif">{{ p.price }}</span></div></button></sc-for>
+</div></div>
+<div style="padding:22px 20px 26px"><div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 14px Archivo,sans-serif">Can’t find it? Post a job</span><span style="font:400 11.5px/1.4 Archivo,sans-serif;color:rgba(242,242,240,.5)">Get quotes in under an hour</span></div><button onClick="{{ goExplore }}" style="flex:none;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 12px Archivo,sans-serif;padding:10px 15px;border-radius:10px">Post</button></div></div>
+</div></sc-if>
+
+<sc-if value="{{ isExplore }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both">
+<div style="padding:18px 20px 0;display:flex;align-items:center;justify-content:space-between"><h1 style="margin:0;font:600 24px Archivo,sans-serif;letter-spacing:-.025em">Explore</h1><button onClick="{{ openCity }}" style="cursor:pointer;color:inherit;display:flex;align-items:center;gap:8px;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:999px;padding:7px 12px"><span style="font-size:11px;color:#CDF564">◉</span><span style="font:500 12px Archivo,sans-serif">{{ locLabel }}</span><span style="font-size:10px;color:rgba(242,242,240,.4)">▾</span></button></div>
+<div style="padding:18px 20px 0"><div style="display:flex;align-items:center;gap:10px;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:11px 13px"><span style="color:rgba(242,242,240,.45);font-size:14px">⌕</span><input value="{{ query }}" onChange="{{ onQuery }}" onKeyDown="{{ onQueryKey }}" placeholder="Search skills, services or people" style="flex:1;background:none;border:0;outline:none;color:#F2F2F0;font:400 14px Archivo,sans-serif;padding:2px 0"><sc-if value="{{ hasQuery }}" hint-placeholder-val="{{ false }}"><button onClick="{{ runSearch }}" style="cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 11px Archivo,sans-serif;padding:7px 11px;border-radius:8px">Go</button></sc-if></div></div>
+<div style="padding:26px 20px 0"><h2 style="margin:0;font:600 25px/1.15 Archivo,sans-serif;letter-spacing:-.03em">Tell us the work.<span style="color:rgba(242,242,240,.4)"> We’ll find the person.</span></h2></div>
+<div style="padding:18px 20px 0"><div style="background:#141416;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:14px"><textarea value="{{ brief }}" onChange="{{ onBrief }}" placeholder="Need 8 Instagram reels a month for my café in Dharampeth…" style="width:100%;box-sizing:border-box;min-height:62px;resize:none;background:none;border:0;outline:none;color:#F2F2F0;font:400 14px/1.5 Archivo,sans-serif"></textarea><div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px"><div style="display:flex;gap:11px;color:rgba(242,242,240,.45);font-size:14px"><span>◉</span><span>▤</span><span>₹</span></div><button onClick="{{ runSearch }}" style="cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 12px Archivo,sans-serif;padding:10px 16px;border-radius:10px">Find people</button></div></div></div>
+<div style="padding:16px 20px 0;display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ chips }}" as="ch" hint-placeholder-count="5"><button onClick="{{ ch.open }}" style="cursor:pointer;color:rgba(242,242,240,.75);background:#141416;border:1px solid rgba(255,255,255,.09);font:500 12px Archivo,sans-serif;padding:8px 12px;border-radius:999px" style-hover="border-color:rgba(205,245,100,.5);color:#F2F2F0">{{ ch.name }}</button></sc-for>
+</div>
+<div style="padding:26px 20px 0"><h3 style="margin:0 0 11px;font:600 14px Archivo,sans-serif">Recent searches</h3>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ recents }}" as="r" hint-placeholder-count="2"><button onClick="{{ r.open }}" style="cursor:pointer;color:inherit;text-align:left;background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px" style-hover="border-color:rgba(205,245,100,.5)"><span style="font-size:13px;color:rgba(242,242,240,.4)">↺</span><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:600 13px Archivo,sans-serif">{{ r.label }}</span><span style="font:400 10.5px Archivo,sans-serif;color:rgba(242,242,240,.45)">{{ r.meta }}</span></div><span style="font:500 11px 'JetBrains Mono',monospace;color:rgba(242,242,240,.4)">{{ r.count }}</span></button></sc-for>
+</div></div>
+<div style="padding:24px 20px 26px"><h3 style="margin:0 0 11px;font:600 14px Archivo,sans-serif">How hiring works</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;text-align:center">
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 8px;display:flex;flex-direction:column;gap:4px"><span style="font:600 17px Archivo,sans-serif">1</span><span style="font:400 10.5px/1.3 Archivo,sans-serif;color:rgba(242,242,240,.5)">Describe work</span></div>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 8px;display:flex;flex-direction:column;gap:4px"><span style="font:600 17px Archivo,sans-serif">2</span><span style="font:400 10.5px/1.3 Archivo,sans-serif;color:rgba(242,242,240,.5)">Compare quotes</span></div>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 8px;display:flex;flex-direction:column;gap:4px"><span style="font:600 17px Archivo,sans-serif">3</span><span style="font:400 10.5px/1.3 Archivo,sans-serif;color:rgba(242,242,240,.5)">Pay them directly</span></div>
+</div></div>
+</div></sc-if>
+
+<sc-if value="{{ isResults }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both">
+<div style="padding:16px 20px 0;display:flex;align-items:center;gap:11px"><button onClick="{{ goExplore }}" style="cursor:pointer;background:none;border:0;font-size:16px;color:rgba(242,242,240,.6);padding:0">←</button><div style="flex:1;display:flex;align-items:center;gap:9px;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:11px 13px"><span style="color:rgba(242,242,240,.45);font-size:13px">⌕</span><span style="font:400 12.5px Archivo,sans-serif;color:rgba(242,242,240,.8);overflow:hidden;white-space:nowrap;text-overflow:ellipsis">{{ searchLabel }}</span></div><button onClick="{{ openFilters }}" style="cursor:pointer;position:relative;background:none;border:0;padding:0;font-size:15px;color:{{ filterIconColor }}">⚙<sc-if value="{{ hasFilters }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:-4px;right:-6px;background:#CDF564;color:#0B0B0C;font:600 8.5px 'JetBrains Mono',monospace;border-radius:999px;padding:1px 4px">{{ filterCount }}</span></sc-if></button></div>
+<div class="fk-scroll" style="display:flex;gap:8px;padding:14px 20px 0;overflow-x:auto;scrollbar-width:none">
+<sc-for list="{{ sorts }}" as="s" hint-placeholder-count="4"><button onClick="{{ s.pick }}" style="flex:none;cursor:pointer;background:{{ s.bg }};color:{{ s.fg }};border:1px solid {{ s.bd }};font:600 12px Archivo,sans-serif;padding:8px 13px;border-radius:999px">{{ s.name }}</button></sc-for>
+</div>
+<div style="padding:16px 20px 0;display:flex;align-items:baseline;justify-content:space-between"><span style="font:600 14px Archivo,sans-serif">{{ resultCount }} in {{ city }}</span><span style="font:400 11px 'JetBrains Mono',monospace;color:rgba(242,242,240,.4)">{{ sortNote }}</span></div>
+<div style="padding:14px 20px 26px;display:flex;flex-direction:column;gap:11px">
+<sc-for list="{{ results }}" as="p" hint-placeholder-count="3"><div style="background:#141416;border:1px solid {{ p.border }};border-radius:18px;padding:14px">
+<button onClick="{{ p.open }}" style="width:100%;cursor:pointer;text-align:left;color:inherit;background:none;border:0;padding:0;display:flex;gap:12px"><div style="flex:none;width:48px;height:48px;border-radius:14px;background:repeating-linear-gradient(135deg,#17181b,#17181b 5px,#232529 5px,#232529 10px);border:1px solid rgba(255,255,255,.09)"></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:6px"><span style="font:600 14.5px Archivo,sans-serif">{{ p.name }}</span><span style="font-size:11px;color:#CDF564">{{ p.tick }}</span><span style="margin-left:auto;font:600 11px 'JetBrains Mono',monospace;color:{{ p.matchColor }}">{{ p.match }}</span></div><span style="font:400 11.5px/1.35 Archivo,sans-serif;color:rgba(242,242,240,.55)">{{ p.services }}</span><div style="display:flex;align-items:center;gap:9px;font:500 11px Archivo,sans-serif"><span style="color:#F5B851">★ {{ p.rating }}</span><span style="color:rgba(242,242,240,.4)">{{ p.jobs }} jobs</span><span style="color:rgba(242,242,240,.4)">{{ p.distance }}</span></div></div></button>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.07)"><div style="display:flex;flex-direction:column"><span style="font:600 13.5px Archivo,sans-serif">{{ p.price }}</span><span style="font:400 10.5px Archivo,sans-serif;color:rgba(242,242,240,.45)">{{ p.note }}</span></div><div style="display:flex;gap:8px"><button onClick="{{ p.message }}" style="cursor:pointer;color:inherit;background:none;border:1px solid rgba(255,255,255,.14);font:500 12px Archivo,sans-serif;padding:9px 13px;border-radius:10px">Message</button><button onClick="{{ p.hire }}" style="cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 12px Archivo,sans-serif;padding:9px 14px;border-radius:10px">Hire</button></div></div>
+</div></sc-for>
+</div>
+<sc-if value="{{ searching }}" hint-placeholder-val="{{ false }}"><div style="padding:0 20px 26px;display:flex;flex-direction:column;gap:11px">
+<sc-for list="{{ skeletons }}" as="k" hint-placeholder-count="3"><div style="background:#141416;border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:14px;display:flex;gap:12px;animation:fkPulse 1.1s ease-in-out infinite"><div style="flex:none;width:48px;height:48px;border-radius:14px;background:#1D1E22"></div><div style="flex:1;display:flex;flex-direction:column;gap:9px;padding-top:3px"><div style="height:11px;width:58%;border-radius:4px;background:#1D1E22"></div><div style="height:9px;width:82%;border-radius:4px;background:#191A1E"></div><div style="height:9px;width:44%;border-radius:4px;background:#191A1E"></div></div></div></sc-for>
+</div></sc-if>
+<sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 30px 30px;text-align:center">
+<div style="font-size:24px;color:rgba(242,242,240,.28)">⌕</div>
+<h3 style="margin:14px 0 0;font:600 16px Archivo,sans-serif">Nobody matches this yet</h3>
+<p style="margin:8px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.5);text-wrap:pretty">{{ emptyNote }}</p>
+<div style="display:flex;flex-direction:column;gap:9px;margin-top:20px">
+<button onClick="{{ clearAll }}" style="cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 13px Archivo,sans-serif;padding:13px;border-radius:12px">Clear filters</button>
+<button onClick="{{ goExplore }}" style="cursor:pointer;color:inherit;background:none;border:1px solid rgba(255,255,255,.14);font:500 13px Archivo,sans-serif;padding:13px;border-radius:12px">Post the job instead</button>
+</div></div></sc-if>
+</div></sc-if>
+
+<sc-if value="{{ isNotifs }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both;padding:16px 20px 26px">
+<div style="display:flex;align-items:center;gap:12px"><button onClick="{{ closeNotifs }}" style="cursor:pointer;background:none;border:0;font-size:16px;color:rgba(242,242,240,.6);padding:0">←</button><h1 style="margin:0;font:600 21px Archivo,sans-serif;letter-spacing:-.02em">Notifications</h1><sc-if value="{{ hasUnread }}" hint-placeholder-val="{{ false }}"><button onClick="{{ markAllRead }}" style="margin-left:auto;cursor:pointer;background:none;border:0;padding:0;font:500 11.5px Archivo,sans-serif;color:#CDF564">Mark all read</button></sc-if></div>
+<div style="margin-top:18px;display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ notifList }}" as="n" hint-placeholder-count="3"><button onClick="{{ n.open }}" style="cursor:pointer;text-align:left;color:inherit;background:{{ n.bg }};border:1px solid {{ n.border }};border-radius:15px;padding:13px 14px;display:flex;gap:11px;align-items:flex-start" style-hover="border-color:rgba(205,245,100,.5)"><span style="flex:none;margin-top:5px;width:7px;height:7px;border-radius:50%;background:{{ n.dot }}"></span><div style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font:600 13px Archivo,sans-serif">{{ n.title }}</span><span style="font:400 11.5px/1.45 Archivo,sans-serif;color:rgba(242,242,240,.55);text-wrap:pretty">{{ n.body }}</span><span style="font:500 10px Archivo,sans-serif;color:#CDF564">{{ n.cta }}</span></div><span style="flex:none;font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.35)">{{ n.ts }}</span></button></sc-for>
+</div>
+<sc-if value="{{ noNotifs }}" hint-placeholder-val="{{ false }}"><div style="margin-top:60px;text-align:center;padding:0 26px"><div style="font-size:22px;color:rgba(242,242,240,.28)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M18.5 16.5H5.5l1.6-2.6V10a4.9 4.9 0 0 1 9.8 0v3.9zM10 19.4a2.2 2.2 0 0 0 4 0"></path></svg></div><p style="margin:12px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.45)">Nothing yet. Quotes, escrow updates and messages show up here.</p></div></sc-if>
+</div></sc-if>
+
+<sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both">
+<div style="position:relative"><div style="height:104px;margin-top:12px;background:repeating-linear-gradient(135deg,#17181b,#17181b 6px,#232529 6px,#232529 12px)"></div><button onClick="{{ back }}" style="position:absolute;top:12px;left:16px;cursor:pointer;width:32px;height:32px;border-radius:50%;background:rgba(11,11,12,.72);border:1px solid rgba(255,255,255,.12);color:#F2F2F0;font-size:14px">←</button></div>
+<div style="padding:0 20px;margin-top:-30px;display:flex;align-items:flex-end;justify-content:space-between"><div style="width:72px;height:72px;border-radius:20px;background:repeating-linear-gradient(135deg,#17181b,#17181b 5px,#232529 5px,#232529 10px);border:3px solid #0B0B0C"></div><div style="display:flex;gap:8px;padding-bottom:4px"><button onClick="{{ toggleSave }}" style="cursor:pointer;background:none;border:1px solid rgba(255,255,255,.14);font-size:13px;padding:7px 11px;border-radius:10px;color:{{ saveColor }}">{{ saveIcon }}</button><span style="border:1px solid rgba(255,255,255,.14);font-size:13px;padding:7px 11px;border-radius:10px;color:rgba(242,242,240,.7)">↗</span></div></div>
+<div style="padding:12px 20px 0"><div style="display:flex;align-items:center;gap:7px"><h2 style="margin:0;font:600 21px Archivo,sans-serif;letter-spacing:-.02em">{{ pro.name }}</h2><span style="background:rgba(205,245,100,.14);color:#CDF564;font:600 10px 'JetBrains Mono',monospace;padding:3px 7px;border-radius:6px">KYC ✔</span></div><p style="margin:6px 0 0;font:400 13px/1.45 Archivo,sans-serif;color:rgba(242,242,240,.55)">{{ pro.tagline }}</p></div>
+<div style="padding:16px 20px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center">
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 4px"><div style="font:600 14px Archivo,sans-serif;color:#F5B851">{{ pro.rating }}</div><div style="font:400 9.5px Archivo,sans-serif;color:rgba(242,242,240,.45);margin-top:2px">{{ pro.jobs }} jobs</div></div>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 4px"><div style="font:600 14px Archivo,sans-serif">98%</div><div style="font:400 9.5px Archivo,sans-serif;color:rgba(242,242,240,.45);margin-top:2px">completion</div></div>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 4px"><div style="font:600 14px Archivo,sans-serif">{{ pro.replyIn }}</div><div style="font:400 9.5px Archivo,sans-serif;color:rgba(242,242,240,.45);margin-top:2px">replies in</div></div>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 4px"><div style="font:600 14px Archivo,sans-serif">{{ pro.years }}</div><div style="font:400 9.5px Archivo,sans-serif;color:rgba(242,242,240,.45);margin-top:2px">on platform</div></div>
+</div>
+<div style="padding:24px 20px 0"><div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:11px"><h3 style="margin:0;font:600 15px Archivo,sans-serif">Services offered</h3><span style="font:400 11px 'JetBrains Mono',monospace;color:rgba(242,242,240,.4)">{{ serviceCount }} ACTIVE</span></div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ services }}" as="s" hint-placeholder-count="3"><button onClick="{{ s.pick }}" style="cursor:pointer;text-align:left;color:inherit;background:#141416;border:1px solid {{ s.border }};border-radius:14px;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px"><div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 13.5px Archivo,sans-serif">{{ s.name }}</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ s.terms }}</span></div><span style="font:600 13px Archivo,sans-serif;flex:none">{{ s.price }}</span></button></sc-for>
+</div></div>
+<div style="padding:24px 20px 0"><h3 style="margin:0 0 11px;font:600 15px Archivo,sans-serif">Recent work</h3><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px"><div style="aspect-ratio:3/4;border-radius:11px;background:repeating-linear-gradient(135deg,#17181b,#17181b 6px,#232529 6px,#232529 12px)"></div><div style="aspect-ratio:3/4;border-radius:11px;background:repeating-linear-gradient(135deg,#17181b,#17181b 6px,#232529 6px,#232529 12px)"></div><div style="aspect-ratio:3/4;border-radius:11px;background:repeating-linear-gradient(135deg,#17181b,#17181b 6px,#232529 6px,#232529 12px);display:flex;align-items:center;justify-content:center;font:500 12px Archivo,sans-serif;color:rgba(242,242,240,.6)">+14</div></div></div>
+<div style="padding:24px 20px 30px"><h3 style="margin:0 0 11px;font:600 15px Archivo,sans-serif">Reviews</h3>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px"><div style="display:flex;align-items:center;gap:9px"><div style="width:28px;height:28px;border-radius:50%;background:repeating-linear-gradient(135deg,#17181b,#17181b 5px,#232529 5px,#232529 10px)"></div><span style="font:600 12.5px Archivo,sans-serif">{{ pro.reviewer }}</span><span style="font:500 11px Archivo,sans-serif;color:#F5B851;margin-left:auto">★ 5.0</span></div><p style="margin:10px 0 0;font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.6);text-wrap:pretty">{{ pro.review }}</p></div></div>
+</div></sc-if>
+
+<sc-if value="{{ isChats }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both;padding:18px 20px 26px">
+<h1 style="margin:0 0 16px;font:600 24px Archivo,sans-serif;letter-spacing:-.025em">Chats</h1>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ threads }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.open }}" style="cursor:pointer;text-align:left;color:inherit;background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:13px 14px;display:flex;align-items:center;gap:12px" style-hover="border-color:rgba(205,245,100,.5)"><div style="flex:none;width:40px;height:40px;border-radius:12px;background:repeating-linear-gradient(135deg,#17181b,#17181b 5px,#232529 5px,#232529 10px)"></div><div style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font:600 13.5px Archivo,sans-serif">{{ t.name }}</span><span style="font:400 11.5px Archivo,sans-serif;color:rgba(242,242,240,.5);overflow:hidden;white-space:nowrap;text-overflow:ellipsis">{{ t.last }}</span></div><span style="font:500 10px 'JetBrains Mono',monospace;color:{{ t.tsColor }};flex:none">{{ t.ts }}</span></button></sc-for>
+</div>
+<sc-if value="{{ noThreads }}" hint-placeholder-val="{{ false }}"><div style="margin-top:40px;text-align:center;padding:0 24px"><div style="font-size:22px;color:rgba(242,242,240,.3)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M4 5.4h16v10.2H9.6L4 19.8z"></path></svg></div><p style="margin:12px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.45)">No enquiries yet. Message a freelancer from Explore and the thread shows up here.</p></div></sc-if>
+</div></sc-if>
+
+<sc-if value="{{ isYou }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both;padding:18px 20px 26px">
+<h1 style="margin:0 0 18px;font:600 24px Archivo,sans-serif;letter-spacing:-.025em">You</h1>
+<div style="display:flex;align-items:center;gap:13px"><div style="width:56px;height:56px;border-radius:16px;background:repeating-linear-gradient(135deg,#17181b,#17181b 5px,#232529 5px,#232529 10px);border:1px solid rgba(255,255,255,.09)"></div><div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 16px Archivo,sans-serif">Café Mitti</span><span style="font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.5)">Client · {{ city }}</span></div></div>
+<div style="margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center">
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 6px"><div style="font:600 16px Archivo,sans-serif">{{ bookingCount }}</div><div style="font:400 10px Archivo,sans-serif;color:rgba(242,242,240,.45);margin-top:3px">bookings</div></div>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 6px"><div style="font:600 16px Archivo,sans-serif">{{ savedCount }}</div><div style="font:400 10px Archivo,sans-serif;color:rgba(242,242,240,.45);margin-top:3px">saved</div></div>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 6px"><div style="font:600 16px Archivo,sans-serif">{{ escrowTotal }}</div><div style="font:400 10px Archivo,sans-serif;color:rgba(242,242,240,.45);margin-top:3px">to pay</div></div>
+</div>
+<div style="margin-top:20px;display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ bookings }}" as="b" hint-placeholder-count="1"><button onClick="{{ b.open }}" style="cursor:pointer;text-align:left;color:inherit;background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:13px 14px;display:block;width:100%" style-hover="border-color:rgba(205,245,100,.5)"><div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 13.5px Archivo,sans-serif">{{ b.name }}</span><span style="font:600 13px Archivo,sans-serif">{{ b.amount }}</span></div><div style="font:400 11.5px Archivo,sans-serif;color:rgba(242,242,240,.5);margin-top:4px">{{ b.service }}</div><div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between"><span style="font:500 10px 'JetBrains Mono',monospace;color:{{ b.statusColor }}">{{ b.statusLabel }}</span><span style="font:500 11px Archivo,sans-serif;color:#CDF564">{{ b.cta }}</span></div></button></sc-for>
+<sc-if value="{{ noBookings }}" hint-placeholder-val="{{ false }}"><div style="background:#141416;border:1px dashed rgba(255,255,255,.14);border-radius:15px;padding:22px;text-align:center"><p style="margin:0;font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.45);text-wrap:pretty">No bookings yet. Hire someone and the order lives here.</p><button onClick="{{ goExplore }}" style="margin-top:14px;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 12.5px Archivo,sans-serif;padding:11px 15px;border-radius:11px">Find a freelancer</button></div></sc-if>
+</div>
+<div style="margin-top:20px;display:flex;flex-direction:column;gap:0;background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;overflow:hidden">
+<button onClick="{{ startFreelancer }}" style="cursor:pointer;text-align:left;color:inherit;background:none;border:0;border-bottom:1px solid rgba(255,255,255,.07);padding:14px;font:500 13px Archivo,sans-serif;display:flex;align-items:center;justify-content:space-between" style-hover="background:#18181B"><span>Switch to freelancer mode</span><span style="color:#CDF564;font-size:12px">→</span></button>
+<div style="padding:14px;border-bottom:1px solid rgba(255,255,255,.07);font:500 13px Archivo,sans-serif;color:rgba(242,242,240,.75)">Payment methods</div>
+<button onClick="{{ openHelp }}" style="cursor:pointer;text-align:left;color:inherit;background:none;border:0;padding:14px;font:500 13px Archivo,sans-serif;display:flex;align-items:center;justify-content:space-between" style-hover="background:#18181B"><span>Help &amp; disputes</span><span style="color:#CDF564;font-size:12px">→</span></button>
+</div>
+</div></sc-if>
+
+<sc-if value="{{ isThread }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .22s ease both;padding:0 0 8px">
+<div style="padding:14px 18px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.08)"><button onClick="{{ closeThread }}" style="cursor:pointer;background:none;border:0;font-size:16px;color:rgba(242,242,240,.6);padding:0">←</button><div style="width:34px;height:34px;border-radius:11px;background:repeating-linear-gradient(135deg,#17181b,#17181b 5px,#232529 5px,#232529 10px)"></div><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo,sans-serif">{{ threadName }}</span><span style="font:400 10.5px Archivo,sans-serif;color:{{ threadStatusColor }}">{{ threadStatus }}</span></div></div>
+<div style="padding:16px 18px 0;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ msgs }}" as="m" hint-placeholder-count="3"><div style="display:flex;justify-content:{{ m.align }}"><div style="max-width:78%;background:{{ m.bg }};color:{{ m.fg }};border:1px solid {{ m.border }};border-radius:{{ m.radius }};padding:10px 13px"><span style="font:400 13px/1.45 Archivo,sans-serif;white-space:pre-wrap">{{ m.text }}</span><div style="font:500 9.5px 'JetBrains Mono',monospace;opacity:.5;margin-top:5px;text-align:right">{{ m.ts }}</div></div></div></sc-for>
+<sc-if value="{{ hasQuote }}" hint-placeholder-val="{{ false }}"><div style="background:#141416;border:1px solid {{ quoteCardBorder }};border-radius:17px;padding:15px">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">QUOTE</span><span style="font:500 10px 'JetBrains Mono',monospace;color:{{ quoteStatusColor }}">{{ quoteStatusLabel }}</span></div>
+<div style="font:600 24px Archivo,sans-serif;letter-spacing:-.02em;margin-top:8px">{{ qAmount }}</div>
+<div style="font:400 11.5px Archivo,sans-serif;color:rgba(242,242,240,.5);margin-top:3px">{{ qService }} · delivery in {{ qDays }}</div>
+<p style="margin:11px 0 0;font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.62)">{{ qMsg }}</p>
+<sc-if value="{{ quoteActionable }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin-top:14px;padding-top:13px;border-top:1px solid rgba(255,255,255,.07)"><button onClick="{{ declineQuote }}" style="flex:1;cursor:pointer;color:rgba(242,242,240,.7);background:none;border:1px solid rgba(255,255,255,.14);font:500 12.5px Archivo,sans-serif;padding:11px;border-radius:11px">Decline</button><button onClick="{{ acceptQuote }}" style="flex:1.4;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 12.5px Archivo,sans-serif;padding:11px;border-radius:11px">Accept quote</button></div></sc-if>
+<sc-if value="{{ quoteAccepted }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openOrderFromThread }}" style="width:100%;margin-top:13px;cursor:pointer;background:none;border:1px solid rgba(255,255,255,.14);color:#CDF564;font:600 12px Archivo,sans-serif;padding:11px;border-radius:11px">View order</button></sc-if>
+</div></sc-if>
+<sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:flex-start"><div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px 15px 15px 5px;padding:11px 14px;font:400 13px Archivo,sans-serif;color:rgba(242,242,240,.45)">typing…</div></div></sc-if>
+</div>
+</div></sc-if>
+
+<sc-if value="{{ isOrder }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both">
+<div style="padding:16px 20px 0;display:flex;align-items:center;gap:12px"><button onClick="{{ closeOrder }}" style="cursor:pointer;background:none;border:0;font-size:16px;color:rgba(242,242,240,.6);padding:0">←</button><span style="font:600 16px Archivo,sans-serif">Order {{ orderRef }}</span></div>
+<div style="padding:20px 20px 0"><div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px">
+<div style="display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:13px;background:repeating-linear-gradient(135deg,#17181b,#17181b 5px,#232529 5px,#232529 10px)"></div><div style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font:600 14px Archivo,sans-serif">{{ orderName }}</span><span style="font:400 11.5px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ orderService }}</span></div></div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:13px;border-top:1px solid rgba(255,255,255,.07)"><div style="display:flex;flex-direction:column"><span style="font:600 18px Archivo,sans-serif">{{ orderAmount }}</span><span style="font:400 11px Archivo,sans-serif;color:{{ orderEscrowColor }}">{{ orderEscrowNote }}</span></div><span style="font:500 10px 'JetBrains Mono',monospace;color:{{ orderStatusColor }}">{{ orderStatus }}</span></div>
+</div></div>
+<div style="padding:22px 20px 0"><h3 style="margin:0 0 13px;font:600 15px Archivo,sans-serif">Progress</h3>
+<div style="display:flex;flex-direction:column;gap:0">
+<sc-for list="{{ steps }}" as="st" hint-placeholder-count="4"><div style="display:flex;gap:13px"><div style="flex:none;display:flex;flex-direction:column;align-items:center;width:18px"><span style="width:11px;height:11px;border-radius:50%;background:{{ st.dot }};border:2px solid {{ st.ring }};box-sizing:border-box"></span><span style="flex:1;width:1px;background:{{ st.line }};min-height:{{ st.lineH }}"></span></div><div style="flex:1;padding-bottom:16px;display:flex;flex-direction:column;gap:2px"><span style="font:600 13px Archivo,sans-serif;color:{{ st.titleColor }}">{{ st.title }}</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.45)">{{ st.note }}</span></div></div></sc-for>
+</div></div>
+<sc-if value="{{ orderHasReview }}" hint-placeholder-val="{{ false }}"><div style="padding:4px 20px 0"><div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:14px"><div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 13px Archivo,sans-serif">Your review</span><span style="font:500 12px Archivo,sans-serif;color:#F5B851">{{ orderReviewStars }}</span></div><p style="margin:9px 0 0;font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.6)">{{ orderReviewText }}</p></div></div></sc-if>
+<sc-if value="{{ orderHasIssue }}" hint-placeholder-val="{{ false }}"><div style="padding:4px 20px 0"><div style="background:rgba(245,134,91,.08);border:1px solid rgba(245,134,91,.35);border-radius:15px;padding:14px"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="font:600 13px Archivo,sans-serif;color:#F5865B">Issue · {{ issueRef }}</span><span style="font:500 10px 'JetBrains Mono',monospace;color:{{ issueStatusColor }}">{{ issueStatusLabel }}</span></div><div style="font:400 11.5px Archivo,sans-serif;color:rgba(242,242,240,.55);margin-top:5px">{{ issueReasonLabel }}</div><p style="margin:9px 0 0;font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.6);text-wrap:pretty">{{ issueReply }}</p></div></div></sc-if>
+<div style="padding:18px 20px 26px;display:flex;flex-direction:column;gap:9px">
+<sc-if value="{{ canApprove }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openReview }}" style="width:100%;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 14px Archivo,sans-serif;padding:15px;border-radius:13px">Mark complete & rate</button></sc-if>
+<button onClick="{{ orderChat }}" style="width:100%;cursor:pointer;color:inherit;background:none;border:1px solid rgba(255,255,255,.14);font:500 13px Archivo,sans-serif;padding:13px;border-radius:12px">Message {{ orderFirst }}</button>
+<sc-if value="{{ noIssue }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openIssue }}" style="width:100%;cursor:pointer;color:rgba(242,242,240,.55);background:none;border:0;font:500 12px Archivo,sans-serif;padding:6px">Raise an issue</button></sc-if>
+</div>
+</div></sc-if>
+
+<sc-if value="{{ isOnb }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both">
+<div style="padding:16px 20px 0;display:flex;align-items:center;gap:12px"><button onClick="{{ onbBack }}" style="cursor:pointer;background:none;border:0;font-size:16px;color:rgba(242,242,240,.6);padding:0">←</button><div style="flex:1;height:3px;border-radius:2px;background:#1B1C1F;overflow:hidden"><div style="width:{{ onbProgress }};height:100%;background:#CDF564;transition:width .3s ease"></div></div><span style="font:500 11px 'JetBrains Mono',monospace;color:rgba(242,242,240,.5)">{{ onbStepLabel }}</span></div>
+
+<sc-if value="{{ onb1 }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 20px 0">
+<h1 style="margin:0;font:600 26px/1.15 Archivo,sans-serif;letter-spacing:-.025em">Start earning on FreelanceKar</h1>
+<p style="margin:9px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.5)">7-day free trial, then a simple monthly plan. No commission on your jobs, ever.</p>
+<div style="margin-top:24px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">MOBILE NUMBER</span>
+<div style="display:flex;align-items:center;gap:10px;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:13px 14px"><span style="font:500 14px Archivo,sans-serif;color:rgba(242,242,240,.5)">+91</span><input value="{{ phone }}" onChange="{{ onPhone }}" placeholder="98765 43210" inputMode="numeric" style="flex:1;background:none;border:0;outline:none;color:#F2F2F0;font:500 15px Archivo,sans-serif;letter-spacing:.02em"></div></div>
+<sc-if value="{{ otpSent }}" hint-placeholder-val="{{ false }}"><div style="margin-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">OTP SENT · USE 1234</span>
+<input value="{{ otp }}" onChange="{{ onOtp }}" placeholder="1234" inputMode="numeric" style="background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:13px 14px;outline:none;color:#F2F2F0;font:600 18px 'JetBrains Mono',monospace;letter-spacing:.4em;text-align:center"></div></sc-if>
+<sc-if value="{{ onbError }}" hint-placeholder-val="{{ false }}"><p style="margin:12px 0 0;font:500 11.5px Archivo,sans-serif;color:#F5865B">{{ onbErrorMsg }}</p></sc-if>
+<div style="margin-top:26px;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;gap:11px;align-items:flex-start"><span style="color:#CDF564;font-size:13px">✔</span><span style="font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.6)">List as many services as you do — one profile, many skills</span></div>
+<div style="display:flex;gap:11px;align-items:flex-start"><span style="color:#CDF564;font-size:13px">✔</span><span style="font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.6)">Clients near you see you first</span></div>
+<div style="display:flex;gap:11px;align-items:flex-start"><span style="color:#CDF564;font-size:13px">✔</span><span style="font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.6)">Clients pay you directly — you keep 100% of every job</span></div>
+</div>
+</div></sc-if>
+
+<sc-if value="{{ onb2 }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 20px 0">
+<h1 style="margin:0;font:600 26px/1.15 Archivo,sans-serif;letter-spacing:-.025em">About you</h1>
+<p style="margin:9px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.5)">This is what clients see at the top of your profile.</p>
+<div style="margin-top:22px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">NAME OR STUDIO NAME</span><input value="{{ fNameInput }}" onChange="{{ onName }}" placeholder="e.g. Rahul Verma / Studio Aarambh" style="background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:13px 14px;outline:none;color:#F2F2F0;font:500 14px Archivo,sans-serif"></div>
+<div style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">YOUR CITY</span>
+<div style="display:flex;flex-wrap:wrap;gap:7px"><sc-for list="{{ cityOptions }}" as="c" hint-placeholder-count="4"><button onClick="{{ c.pick }}" style="cursor:pointer;background:{{ c.bg }};color:{{ c.fg }};border:1px solid {{ c.bd }};font:600 12px Archivo,sans-serif;padding:9px 13px;border-radius:999px">{{ c.name }}</button></sc-for></div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">HOW FAR YOU’LL TRAVEL</span>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px"><sc-for list="{{ radiusOptions }}" as="r" hint-placeholder-count="4"><button onClick="{{ r.pick }}" style="cursor:pointer;background:{{ r.bg }};color:{{ r.fg }};border:1px solid {{ r.bd }};font:600 12px Archivo,sans-serif;padding:11px 4px;border-radius:11px">{{ r.name }}</button></sc-for></div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">ONE LINE ABOUT YOUR WORK</span><textarea value="{{ fBio }}" onChange="{{ onBio }}" placeholder="Reels and product shoots for cafés and local brands." style="box-sizing:border-box;min-height:62px;resize:none;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:12px 14px;outline:none;color:#F2F2F0;font:400 13.5px/1.5 Archivo,sans-serif"></textarea></div>
+</div>
+<sc-if value="{{ onbError }}" hint-placeholder-val="{{ false }}"><p style="margin:12px 0 0;font:500 11.5px Archivo,sans-serif;color:#F5865B">{{ onbErrorMsg }}</p></sc-if>
+</div></sc-if>
+
+<sc-if value="{{ onb3 }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 20px 0">
+<h1 style="margin:0;font:600 26px/1.15 Archivo,sans-serif;letter-spacing:-.025em">Get verified</h1>
+<p style="margin:9px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.5)">Verified profiles get roughly 3× more enquiries. Your documents are never shown to clients.</p>
+<div style="margin-top:22px;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ kycItems }}" as="k" hint-placeholder-count="3"><button onClick="{{ k.toggle }}" style="cursor:pointer;text-align:left;color:inherit;background:#141416;border:1px solid {{ k.border }};border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px"><span style="font-size:15px;color:{{ k.iconColor }}">{{ k.icon }}</span><div style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font:600 13.5px Archivo,sans-serif">{{ k.name }}</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ k.note }}</span></div><span style="font:500 10px 'JetBrains Mono',monospace;color:{{ k.iconColor }}">{{ k.status }}</span></button></sc-for>
+</div>
+<div style="margin-top:16px;background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 13px Archivo,sans-serif">Bank account for payouts</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ bankNote }}</span></div><button onClick="{{ toggleBank }}" style="cursor:pointer;border:0;background:{{ bankBtnBg }};color:{{ bankBtnFg }};font:600 11.5px Archivo,sans-serif;padding:9px 13px;border-radius:10px">{{ bankBtnLabel }}</button></div>
+<sc-if value="{{ onbError }}" hint-placeholder-val="{{ false }}"><p style="margin:12px 0 0;font:500 11.5px Archivo,sans-serif;color:#F5865B">{{ onbErrorMsg }}</p></sc-if>
+<p style="margin:14px 0 0;font:400 11.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.4)">Tap each item to simulate an upload.</p>
+</div></sc-if>
+
+<sc-if value="{{ onb4 }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 20px 0">
+<h1 style="margin:0;font:600 26px/1.15 Archivo,sans-serif;letter-spacing:-.025em">What do you offer?</h1>
+<p style="margin:9px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.5)">Add every service you do. Each one gets listed separately, so you show up in more searches.</p>
+<div style="margin-top:20px;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ svcRows }}" as="r" hint-placeholder-count="1"><div style="background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:15px;padding:13px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.4);letter-spacing:.07em">SERVICE {{ r.num }}</span><button onClick="{{ r.remove }}" style="cursor:pointer;background:none;border:0;color:rgba(242,242,240,.4);font-size:13px;padding:0">✕</button></div>
+<button onClick="{{ r.cycleCat }}" style="width:100%;margin-top:9px;cursor:pointer;text-align:left;color:inherit;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:11px;padding:11px 12px;display:flex;align-items:center;justify-content:space-between"><span style="font:600 13px Archivo,sans-serif">{{ r.catName }}</span><span style="font-size:10px;color:rgba(242,242,240,.4)">▾</span></button>
+<div style="display:flex;gap:7px;margin-top:8px"><sc-for list="{{ r.types }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.pick }}" style="flex:1;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.bd }};font:600 11.5px Archivo,sans-serif;padding:9px 4px;border-radius:9px">{{ t.name }}</button></sc-for></div>
+<div style="display:flex;align-items:center;gap:9px;margin-top:8px;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:11px;padding:11px 12px"><span style="font:500 13px Archivo,sans-serif;color:rgba(242,242,240,.5)">₹</span><input value="{{ r.amount }}" onChange="{{ r.onAmount }}" placeholder="1500" inputMode="numeric" style="flex:1;background:none;border:0;outline:none;color:#F2F2F0;font:600 13.5px Archivo,sans-serif"><span style="font:400 11.5px Archivo,sans-serif;color:rgba(242,242,240,.45)">{{ r.unit }}</span></div>
+</div></sc-for>
+</div>
+<button onClick="{{ addSvc }}" style="width:100%;margin-top:11px;cursor:pointer;background:none;color:#CDF564;border:1px dashed rgba(205,245,100,.4);border-radius:13px;padding:13px;font:600 12.5px Archivo,sans-serif">+ Add another service</button>
+<sc-if value="{{ onbError }}" hint-placeholder-val="{{ false }}"><p style="margin:12px 0 0;font:500 11.5px Archivo,sans-serif;color:#F5865B">{{ onbErrorMsg }}</p></sc-if>
+</div></sc-if>
+
+<sc-if value="{{ showOnbCta }}" hint-placeholder-val="{{ true }}"><div style="padding:22px 20px 26px"><button onClick="{{ onbNext }}" style="width:100%;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 14px Archivo,sans-serif;padding:15px;border-radius:13px">{{ onbCta }}</button></div></sc-if>
+</div></sc-if>
+
+<sc-if value="{{ onb5 }}" hint-placeholder-val="{{ false }}"><div style="padding:30px 20px 0">
+<h1 style="margin:0;font:600 26px/1.15 Archivo,sans-serif;letter-spacing:-.025em">Choose your plan</h1>
+<p style="margin:9px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.5)">Clients pay you directly by UPI or cash — FreelanceKar never touches that money. This plan just keeps your profile listed and searchable.</p>
+<div style="margin-top:22px;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ plans }}" as="pl" hint-placeholder-count="2"><button onClick="{{ pl.pick }}" style="cursor:pointer;text-align:left;color:inherit;background:#141416;border:1px solid {{ pl.border }};border-radius:15px;padding:15px"><div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:600 15px Archivo,sans-serif">{{ pl.name }}</span><span style="font:600 15px Archivo,sans-serif;color:{{ pl.priceColor }}">{{ pl.price }}</span></div><p style="margin:6px 0 0;font:400 12px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.55)">{{ pl.note }}</p></button></sc-for>
+</div>
+<p style="margin:16px 0 0;font:400 11.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.4)">Billed via Razorpay. Cancel anytime — your profile stays live until the period ends.</p>
+</div></sc-if>
+
+<sc-if value="{{ isDash }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both">
+<div style="padding:18px 20px 0;display:flex;align-items:center;justify-content:space-between"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.5)">Good morning,</span><span style="font:600 19px Archivo,sans-serif;letter-spacing:-.02em">{{ fFirst }}</span></div><div style="display:flex;align-items:center;gap:9px"><button onClick="{{ openNotifs }}" style="position:relative;cursor:pointer;padding:0;width:34px;height:34px;border-radius:50%;background:#141416;border:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(242,242,240,.7)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M18.5 16.5H5.5l1.6-2.6V10a4.9 4.9 0 0 1 9.8 0v3.9zM10 19.4a2.2 2.2 0 0 0 4 0"></path></svg><sc-if value="{{ hasUnread }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:-2px;right:-2px;min-width:16px;box-sizing:border-box;background:#CDF564;color:#0B0B0C;font:600 9px 'JetBrains Mono',monospace;border-radius:999px;padding:2px 4px;border:2px solid #0B0B0C">{{ unreadCount }}</span></sc-if></button><button onClick="{{ toggleAvailable }}" style="cursor:pointer;color:inherit;display:flex;align-items:center;gap:8px;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:999px;padding:7px 12px"><span style="width:7px;height:7px;border-radius:50%;background:{{ availDot }};display:inline-block"></span><span style="font:500 12px Archivo,sans-serif">{{ availLabel }}</span></button></div></div>
+<sc-if value="{{ kycRejected }}" hint-placeholder-val="{{ false }}"><div style="padding:18px 20px 0"><div style="background:rgba(245,134,91,.1);border:1px solid rgba(245,134,91,.4);border-radius:16px;padding:14px;display:flex;gap:11px;align-items:flex-start"><span style="flex:none;margin-top:1px;color:#F5865B;font-size:13px">!</span><div style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font:600 13px Archivo,sans-serif;color:#F5865B">Verification incomplete</span><span style="font:400 11.5px/1.45 Archivo,sans-serif;color:rgba(242,242,240,.6);text-wrap:pretty">Your selfie is missing, so your profile shows as unverified. Verified freelancers get ~3× more enquiries.</span><button onClick="{{ fixKyc }}" style="align-self:flex-start;margin-top:7px;cursor:pointer;border:0;background:#F5865B;color:#160D09;font:600 11.5px Archivo,sans-serif;padding:8px 12px;border-radius:9px">Finish verification</button></div></div></div></sc-if>
+<div style="padding:20px 20px 0"><button onClick="{{ openEarnings }}" style="display:block;width:100%;text-align:left;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;border-radius:20px;padding:18px"><div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.06em;opacity:.65">EARNINGS · AUGUST</span><span style="font:600 11px Archivo,sans-serif;opacity:.7">All payments →</span></div><div style="font:600 34px Archivo,sans-serif;letter-spacing:-.03em;margin-top:8px">{{ earnings }}</div><div style="display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(11,11,12,.16)"><div style="display:flex;flex-direction:column"><span style="font:600 14px Archivo,sans-serif">{{ pendingAmt }}</span><span style="font:400 10.5px Archivo,sans-serif;opacity:.65">pending pay</span></div><div style="display:flex;flex-direction:column"><span style="font:600 14px Archivo,sans-serif">{{ withdrawable }}</span><span style="font:400 10.5px Archivo,sans-serif;opacity:.65">received</span></div><div style="display:flex;flex-direction:column"><span style="font:600 14px Archivo,sans-serif">+22%</span><span style="font:400 10.5px Archivo,sans-serif;opacity:.65">vs July</span></div></div></button></div>
+<div style="padding:18px 20px 0"><div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px"><div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 13.5px Archivo,sans-serif">Profile strength</span><span style="font:600 12px 'JetBrains Mono',monospace;color:#CDF564">{{ strengthPct }}</span></div><div style="height:5px;border-radius:3px;background:#1B1C1F;margin:10px 0 9px;overflow:hidden"><div style="width:{{ strengthPct }};height:100%;background:#CDF564;transition:width .3s ease"></div></div><span style="font:400 11.5px/1.45 Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ strengthNote }}</span></div></div>
+<div style="padding:22px 20px 0"><div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:11px"><h3 style="margin:0;font:600 15px Archivo,sans-serif">New requests</h3><span style="background:#CDF564;color:#0B0B0C;font:600 10px 'JetBrains Mono',monospace;padding:3px 7px;border-radius:6px">{{ requestBadge }}</span></div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ requests }}" as="r" hint-placeholder-count="3"><div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:13px 14px"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="font:600 13.5px Archivo,sans-serif">{{ r.title }}</span><span style="font:600 13px Archivo,sans-serif;flex:none">{{ r.budget }}</span></div><div style="font:400 11.5px Archivo,sans-serif;color:rgba(242,242,240,.5);margin-top:4px">{{ r.meta }}</div><div style="display:flex;gap:8px;margin-top:11px"><button onClick="{{ r.pass }}" style="flex:1;cursor:pointer;color:rgba(242,242,240,.7);background:none;border:1px solid rgba(255,255,255,.14);font:500 12px Archivo,sans-serif;padding:9px;border-radius:10px">Pass</button><button onClick="{{ r.quote }}" style="flex:1;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 12px Archivo,sans-serif;padding:9px;border-radius:10px">Send quote</button></div></div></sc-for>
+</div>
+<sc-if value="{{ noRequests }}" hint-placeholder-val="{{ false }}"><div style="background:#141416;border:1px dashed rgba(255,255,255,.14);border-radius:15px;padding:22px;text-align:center;font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.45)">All caught up. New jobs matching your services in {{ fCity }} land here.</div></sc-if>
+</div>
+<div style="padding:22px 20px 26px"><h3 style="margin:0 0 11px;font:600 15px Archivo,sans-serif">Your services</h3>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;overflow:hidden">
+<sc-for list="{{ myServices }}" as="s" hint-placeholder-count="2"><div style="padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:11px"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:600 13px Archivo,sans-serif">{{ s.name }}</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ s.terms }}</span></div><span style="font:600 12.5px Archivo,sans-serif">{{ s.price }}</span></div></sc-for>
+<button onClick="{{ addMoreServices }}" style="width:100%;cursor:pointer;background:none;border:0;padding:13px 14px;color:#CDF564;font:600 12.5px Archivo,sans-serif;text-align:left">+ Add a service</button>
+</div></div>
+</div></sc-if>
+
+<sc-if value="{{ isEarn }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both">
+<div style="padding:16px 20px 0;display:flex;align-items:center;gap:12px"><button onClick="{{ toDash }}" style="cursor:pointer;background:none;border:0;font-size:16px;color:rgba(242,242,240,.6);padding:0">←</button><span style="font:600 16px Archivo,sans-serif">Payments</span></div>
+<div style="padding:18px 20px 0"><div style="background:#CDF564;color:#0B0B0C;border-radius:20px;padding:18px">
+<span style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:.06em;opacity:.65">COLLECTED · AUGUST</span>
+<div style="font:600 34px Archivo,sans-serif;letter-spacing:-.03em;margin-top:8px">{{ withdrawable }}</div>
+<div style="display:flex;gap:18px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(11,11,12,.16)">
+<div style="display:flex;flex-direction:column"><span style="font:600 14px Archivo,sans-serif">{{ pendingAmt }}</span><span style="font:400 10.5px Archivo,sans-serif;opacity:.65">still to collect</span></div>
+<div style="display:flex;flex-direction:column"><span style="font:600 14px Archivo,sans-serif">{{ earnings }}</span><span style="font:400 10.5px Archivo,sans-serif;opacity:.65">billed this month</span></div>
+<div style="display:flex;flex-direction:column"><span style="font:600 14px Archivo,sans-serif">₹0</span><span style="font:400 10.5px Archivo,sans-serif;opacity:.65">platform cut</span></div>
+</div></div></div>
+<div style="padding:22px 20px 0"><div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:11px"><h3 style="margin:0;font:600 15px Archivo,sans-serif">To collect</h3><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.4)">PAID TO YOU DIRECTLY</span></div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ duePayments }}" as="p" hint-placeholder-count="2"><div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:13px 14px"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="font:600 13.5px Archivo,sans-serif">{{ p.client }}</span><span style="font:600 13px Archivo,sans-serif;flex:none">{{ p.amountLabel }}</span></div><div style="font:400 11.5px Archivo,sans-serif;color:rgba(242,242,240,.5);margin-top:4px">{{ p.service }} · {{ p.when }}</div><div style="display:flex;gap:8px;margin-top:11px"><button onClick="{{ p.remind }}" style="flex:1;cursor:pointer;color:rgba(242,242,240,.7);background:none;border:1px solid rgba(255,255,255,.14);font:500 12px Archivo,sans-serif;padding:9px;border-radius:10px">Remind</button><button onClick="{{ p.markReceived }}" style="flex:1.3;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 12px Archivo,sans-serif;padding:9px;border-radius:10px">Mark received</button></div></div></sc-for>
+<sc-if value="{{ noDuePayments }}" hint-placeholder-val="{{ false }}"><div style="background:#141416;border:1px dashed rgba(255,255,255,.14);border-radius:15px;padding:20px;text-align:center;font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.45)">Nothing outstanding. Every client has paid up.</div></sc-if>
+</div></div>
+<div style="padding:22px 20px 0"><h3 style="margin:0 0 11px;font:600 15px Archivo,sans-serif">Received</h3>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;overflow:hidden">
+<sc-for list="{{ paidPayments }}" as="p" hint-placeholder-count="2"><div style="padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:11px"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:600 13px Archivo,sans-serif">{{ p.client }}</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ p.service }} · {{ p.via }}</span></div><span style="font:600 12.5px Archivo,sans-serif">{{ p.amountLabel }}</span></div></sc-for>
+</div></div>
+<div style="padding:22px 20px 26px"><h3 style="margin:0 0 11px;font:600 15px Archivo,sans-serif">Your plan</h3>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:14px">
+<div style="display:flex;align-items:center;justify-content:space-between"><div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 13.5px Archivo,sans-serif">{{ planName }} · {{ planPrice }}</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">Renews {{ nextBilling }} · Razorpay</span></div><button onClick="{{ managePlan }}" style="cursor:pointer;border:1px solid rgba(255,255,255,.14);background:none;color:rgba(242,242,240,.75);font:600 11.5px Archivo,sans-serif;padding:9px 13px;border-radius:10px">Manage</button></div>
+<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 13px Archivo,sans-serif">Where clients pay you</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ bankNote }}</span></div><button onClick="{{ toggleBank }}" style="cursor:pointer;border:0;background:{{ bankBtnBg }};color:{{ bankBtnFg }};font:600 11.5px Archivo,sans-serif;padding:9px 13px;border-radius:10px">{{ bankBtnLabel }}</button></div>
+</div>
+<p style="margin:13px 0 0;font:400 11.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.4)">FreelanceKar never holds your money — clients pay you by UPI or cash and you keep every rupee.</p>
+</div>
+</div></sc-if>
+
+<sc-if value="{{ isGigs }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both;padding:18px 20px 26px">
+<h1 style="margin:0 0 6px;font:600 24px Archivo,sans-serif;letter-spacing:-.025em">Gigs</h1>
+<p style="margin:0 0 16px;font:400 12.5px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ gigSummary }}</p>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ gigs }}" as="g" hint-placeholder-count="2"><div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:14px">
+<div style="display:flex;align-items:center;gap:11px"><div style="flex:none;width:36px;height:36px;border-radius:11px;background:repeating-linear-gradient(135deg,#17181b,#17181b 5px,#232529 5px,#232529 10px)"></div><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:600 13.5px Archivo,sans-serif">{{ g.client }}</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ g.service }}</span></div><span style="font:600 13px Archivo,sans-serif">{{ g.amount }}</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.07)"><span style="font:500 10px 'JetBrains Mono',monospace;color:{{ g.statusColor }}">{{ g.status }}</span><button onClick="{{ g.act }}" style="cursor:pointer;border:{{ g.actBorder }};background:{{ g.actBg }};color:{{ g.actFg }};font:600 11.5px Archivo,sans-serif;padding:9px 13px;border-radius:10px">{{ g.actLabel }}</button></div>
+</div></sc-for>
+</div>
+<sc-if value="{{ noGigs }}" hint-placeholder-val="{{ false }}"><div style="margin-top:40px;text-align:center;padding:0 22px"><div style="font-size:22px;color:rgba(242,242,240,.28)">◫</div><p style="margin:12px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.45);text-wrap:pretty">No gigs running. Quote on requests from the dashboard — accepted quotes turn into gigs here.</p><button onClick="{{ toDash }}" style="margin-top:16px;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 12.5px Archivo,sans-serif;padding:12px 16px;border-radius:11px">See new requests</button></div></sc-if>
+</div></sc-if>
+
+<sc-if value="{{ isFme }}" hint-placeholder-val="{{ false }}"><div style="animation:fkIn .28s ease both;padding:18px 20px 26px">
+<h1 style="margin:0 0 18px;font:600 24px Archivo,sans-serif;letter-spacing:-.025em">Profile</h1>
+<div style="display:flex;align-items:center;gap:13px"><div style="width:56px;height:56px;border-radius:16px;background:repeating-linear-gradient(135deg,#17181b,#17181b 5px,#232529 5px,#232529 10px);border:1px solid rgba(255,255,255,.09)"></div><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:6px"><span style="font:600 16px Archivo,sans-serif">{{ fName }}</span><span style="background:rgba(205,245,100,.14);color:#CDF564;font:600 9.5px 'JetBrains Mono',monospace;padding:3px 6px;border-radius:5px">{{ kycBadge }}</span></div><span style="font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.5)">Freelancer · {{ fCity }}</span></div></div>
+<div style="margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center">
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 6px"><div style="font:600 16px Archivo,sans-serif">{{ serviceTotal }}</div><div style="font:400 10px Archivo,sans-serif;color:rgba(242,242,240,.45);margin-top:3px">services</div></div>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 6px"><div style="font:600 16px Archivo,sans-serif">{{ quotesSent }}</div><div style="font:400 10px Archivo,sans-serif;color:rgba(242,242,240,.45);margin-top:3px">quotes sent</div></div>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px 6px"><div style="font:600 16px Archivo,sans-serif">{{ gigCount }}</div><div style="font:400 10px Archivo,sans-serif;color:rgba(242,242,240,.45);margin-top:3px">active gigs</div></div>
+</div>
+<p style="margin:18px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.6)">{{ fBioShown }}</p>
+<div style="margin-top:20px;display:flex;flex-direction:column;background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:15px;overflow:hidden">
+<button onClick="{{ addMoreServices }}" style="cursor:pointer;text-align:left;color:inherit;background:none;border:0;border-bottom:1px solid rgba(255,255,255,.07);padding:14px;font:500 13px Archivo,sans-serif">Edit services &amp; pricing</button>
+<button onClick="{{ openEarnings }}" style="cursor:pointer;text-align:left;color:inherit;background:none;border:0;border-bottom:1px solid rgba(255,255,255,.07);padding:14px;font:500 13px Archivo,sans-serif;display:flex;align-items:center;justify-content:space-between" style-hover="background:#18181B"><span>Payments &amp; bank details</span><span style="color:#CDF564;font-size:12px">→</span></button>
+<button onClick="{{ backToClient }}" style="cursor:pointer;text-align:left;color:#CDF564;background:none;border:0;padding:14px;font:600 13px Archivo,sans-serif;display:flex;align-items:center;justify-content:space-between"><span>Switch to client mode</span><span style="font-size:12px">→</span></button>
+</div>
+</div></sc-if>
+
+</div>
+
+<sc-if value="{{ showProfileBar }}" hint-placeholder-val="{{ false }}"><div style="position:relative;z-index:1;flex:none;border-top:1px solid rgba(255,255,255,.08);background:#0F0F11;padding:13px 20px 20px;display:flex;align-items:center;gap:10px"><div style="flex:1;display:flex;flex-direction:column"><span style="font:600 15px Archivo,sans-serif">{{ selectedPrice }}</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.45)">{{ selectedTerms }}</span></div><button onClick="{{ messagePro }}" style="cursor:pointer;color:inherit;background:none;border:1px solid rgba(255,255,255,.16);font:500 13px Archivo,sans-serif;padding:12px 14px;border-radius:12px">Chat</button><button onClick="{{ openHire }}" style="cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 13px Archivo,sans-serif;padding:12px 20px;border-radius:12px">Hire</button></div></sc-if>
+
+<sc-if value="{{ showTabs }}" hint-placeholder-val="{{ true }}"><div style="position:relative;z-index:1;flex:none;border-top:1px solid rgba(255,255,255,.08);background:#0F0F11;padding:10px 18px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;text-align:center">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4"><button onClick="{{ t.pick }}" style="cursor:pointer;background:none;border:0;padding:6px 0 2px;display:flex;flex-direction:column;gap:5px;align-items:center;color:{{ t.color }}"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="{{ t.d }}"></path></svg><sc-if value="{{ showTabLabels }}" hint-placeholder-val="{{ true }}"><span style="font:500 10.5px Archivo,sans-serif">{{ t.name }}</span></sc-if></button></sc-for>
+</div></sc-if>
+
+<sc-if value="{{ hireOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;z-index:5;background:rgba(4,4,5,.62);animation:fkFade .2s ease both;display:flex;flex-direction:column;justify-content:flex-end">
+<div style="background:#111113;border-top:1px solid rgba(255,255,255,.1);border-radius:26px 26px 0 0;animation:fkSheet .3s cubic-bezier(.2,.8,.2,1) both;max-height:88%;overflow-y:auto">
+
+<sc-if value="{{ hireStep1 }}" hint-placeholder-val="{{ false }}"><div style="padding:18px 20px 22px">
+<div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0;font:600 18px Archivo,sans-serif;letter-spacing:-.02em">Hire {{ pro.first }}</h3><button onClick="{{ closeHire }}" style="cursor:pointer;background:none;border:0;color:rgba(242,242,240,.5);font-size:16px">✕</button></div>
+<div style="margin-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">SERVICE</span>
+<sc-for list="{{ services }}" as="s" hint-placeholder-count="3"><button onClick="{{ s.pick }}" style="cursor:pointer;text-align:left;color:inherit;background:#18181B;border:1px solid {{ s.border }};border-radius:13px;padding:12px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 13px Archivo,sans-serif">{{ s.name }}</span><span style="font:400 10.5px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ s.terms }}</span></div><span style="font:600 12.5px Archivo,sans-serif;flex:none">{{ s.price }}</span></button></sc-for>
+</div>
+<div style="margin-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">START DATE</span>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px">
+<sc-for list="{{ dates }}" as="d" hint-placeholder-count="3"><button onClick="{{ d.pick }}" style="cursor:pointer;background:{{ d.bg }};color:{{ d.fg }};border:1px solid {{ d.bd }};border-radius:11px;padding:11px 6px;font:600 12px Archivo,sans-serif">{{ d.label }}</button></sc-for>
+</div></div>
+<div style="margin-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">BRIEF</span>
+<textarea value="{{ hireNote }}" onChange="{{ onHireNote }}" placeholder="What exactly do you need? Add links or references." style="width:100%;box-sizing:border-box;min-height:64px;resize:none;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:12px;outline:none;color:#F2F2F0;font:400 13px/1.5 Archivo,sans-serif"></textarea>
+<sc-if value="{{ hireError }}" hint-placeholder-val="{{ false }}"><span style="font:500 11.5px Archivo,sans-serif;color:#F5865B">Add a line about the work so {{ pro.first }} can confirm.</span></sc-if>
+</div>
+<button onClick="{{ toPay }}" style="width:100%;margin-top:18px;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 14px Archivo,sans-serif;padding:14px;border-radius:13px">Continue · {{ selectedPrice }}</button>
+</div></sc-if>
+
+<sc-if value="{{ hireStep2 }}" hint-placeholder-val="{{ false }}"><div style="padding:18px 20px 22px">
+<div style="display:flex;align-items:center;justify-content:space-between"><button onClick="{{ toDetails }}" style="cursor:pointer;background:none;border:0;color:rgba(242,242,240,.6);font-size:15px;padding:0">←</button><h3 style="margin:0;font:600 16px Archivo,sans-serif">Secure payment</h3><button onClick="{{ closeHire }}" style="cursor:pointer;background:none;border:0;color:rgba(242,242,240,.5);font-size:16px">✕</button></div>
+<div style="margin-top:16px;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:15px;padding:14px">
+<div style="display:flex;align-items:center;gap:11px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.07)"><div style="width:38px;height:38px;border-radius:11px;background:repeating-linear-gradient(135deg,#17181b,#17181b 5px,#232529 5px,#232529 10px)"></div><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:600 13px Archivo,sans-serif">{{ pro.name }}</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ selectedService }}</span></div></div>
+<div style="display:flex;justify-content:space-between;padding-top:12px;font:400 12.5px Archivo,sans-serif;color:rgba(242,242,240,.6)"><span>Service</span><span style="color:#F2F2F0">{{ selectedPrice }}</span></div>
+<div style="display:flex;justify-content:space-between;margin-top:11px;padding-top:11px;border-top:1px solid rgba(255,255,255,.07);font:600 14px Archivo,sans-serif"><span>Total to pay {{ pro.first }}</span><span>{{ totalAmount }}</span></div>
+</div>
+<div style="margin-top:14px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">PAY WITH</span>
+<sc-for list="{{ methods }}" as="m" hint-placeholder-count="3"><button onClick="{{ m.pick }}" style="cursor:pointer;text-align:left;color:inherit;background:#18181B;border:1px solid {{ m.border }};border-radius:13px;padding:12px 13px;display:flex;align-items:center;gap:11px"><span style="font-size:14px">{{ m.icon }}</span><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:600 12.5px Archivo,sans-serif">{{ m.name }}</span><span style="font:400 10.5px Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ m.note }}</span></div><span style="font-size:12px;color:{{ m.dotColor }}">{{ m.dot }}</span></button></sc-for>
+</div>
+<p style="margin:14px 0 0;font:400 11.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.45)">You pay {{ pro.first }} directly — no platform fee. This confirms the booking and shares your contact details.</p>
+<button onClick="{{ payNow }}" style="width:100%;margin-top:16px;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 14px Archivo,sans-serif;padding:14px;border-radius:13px">{{ payLabel }}</button>
+</div></sc-if>
+
+<sc-if value="{{ hireStep3 }}" hint-placeholder-val="{{ false }}"><div style="padding:34px 22px 26px;text-align:center">
+<div style="width:52px;height:52px;margin:0 auto;border-radius:50%;background:#CDF564;color:#0B0B0C;display:flex;align-items:center;justify-content:center;font-size:22px">✓</div>
+<h3 style="margin:16px 0 0;font:600 19px Archivo,sans-serif;letter-spacing:-.02em">Booked with {{ pro.first }}</h3>
+<p style="margin:8px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.55)">Pay {{ pro.first }} {{ totalAmount }} directly on delivery. Usually confirms within {{ pro.replyIn }} — you’ll get a notification.</p>
+<div style="margin-top:18px;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:15px;padding:14px;text-align:left;display:flex;flex-direction:column;gap:9px">
+<div style="display:flex;justify-content:space-between;font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.55)"><span>Service</span><span style="color:#F2F2F0;font-weight:500">{{ selectedService }}</span></div>
+<div style="display:flex;justify-content:space-between;font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.55)"><span>Starts</span><span style="color:#F2F2F0;font-weight:500">{{ hireDate }}</span></div>
+<div style="display:flex;justify-content:space-between;font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.55)"><span>Order</span><span style="color:#F2F2F0;font-weight:500">{{ orderId }}</span></div>
+</div>
+<div style="display:flex;gap:9px;margin-top:16px"><button onClick="{{ afterBookChat }}" style="flex:1;cursor:pointer;color:inherit;background:none;border:1px solid rgba(255,255,255,.16);font:500 13px Archivo,sans-serif;padding:13px;border-radius:12px">Open chat</button><button onClick="{{ afterBookHome }}" style="flex:1;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 13px Archivo,sans-serif;padding:13px;border-radius:12px">Done</button></div>
+</div></sc-if>
+
+<sc-if value="{{ hireStep4 }}" hint-placeholder-val="{{ false }}"><div style="padding:32px 22px 26px;text-align:center">
+<div style="width:52px;height:52px;margin:0 auto;border-radius:50%;background:rgba(245,134,91,.14);border:1px solid rgba(245,134,91,.5);color:#F5865B;display:flex;align-items:center;justify-content:center;font-size:22px">!</div>
+<h3 style="margin:16px 0 0;font:600 19px Archivo,sans-serif;letter-spacing:-.02em">Payment didn’t go through</h3>
+<p style="margin:8px 0 0;font:400 13px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.55);text-wrap:pretty">Your bank declined the card. Nothing was charged and {{ pro.first }} hasn’t been booked yet.</p>
+<div style="margin-top:18px;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:15px;padding:13px 14px;text-align:left;display:flex;flex-direction:column;gap:7px">
+<div style="display:flex;justify-content:space-between;font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.55)"><span>Attempted</span><span style="color:#F2F2F0;font-weight:500">{{ totalAmount }}</span></div>
+<div style="display:flex;justify-content:space-between;font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.55)"><span>Reason</span><span style="color:#F2F2F0;font-weight:500">DECLINED_BY_ISSUER</span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:9px;margin-top:16px">
+<button onClick="{{ payWithUpi }}" style="cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 13.5px Archivo,sans-serif;padding:14px;border-radius:12px">Pay with UPI instead</button>
+<button onClick="{{ retryPay }}" style="cursor:pointer;color:inherit;background:none;border:1px solid rgba(255,255,255,.16);font:500 13px Archivo,sans-serif;padding:13px;border-radius:12px">Try the card again</button>
+</div>
+</div></sc-if>
+
+</div></div></sc-if>
+
+<sc-if value="{{ isThread }}" hint-placeholder-val="{{ false }}"><div style="position:relative;z-index:1;flex:none;border-top:1px solid rgba(255,255,255,.08);background:#0F0F11;padding:12px 18px 20px;display:flex;align-items:center;gap:9px"><input value="{{ draft }}" onChange="{{ onDraft }}" onKeyDown="{{ onDraftKey }}" placeholder="Write a message" style="flex:1;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:12px 13px;outline:none;color:#F2F2F0;font:400 13.5px Archivo,sans-serif"><button onClick="{{ sendMsg }}" style="cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 12.5px Archivo,sans-serif;padding:12px 15px;border-radius:12px">Send</button></div></sc-if>
+
+<sc-if value="{{ cityOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;z-index:5;background:rgba(4,4,5,.62);animation:fkFade .2s ease both;display:flex;flex-direction:column;justify-content:flex-end">
+<div style="background:#111113;border-top:1px solid rgba(255,255,255,.1);border-radius:26px 26px 0 0;animation:fkSheet .3s cubic-bezier(.2,.8,.2,1) both;max-height:82%;display:flex;flex-direction:column;overflow:hidden">
+<div style="flex:none;padding:18px 20px 0">
+<div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0;font:600 17px Archivo,sans-serif;letter-spacing:-.02em">Where do you need work done?</h3><button onClick="{{ closeCity }}" style="cursor:pointer;background:none;border:0;color:rgba(242,242,240,.5);font-size:16px">✕</button></div>
+<div style="margin-top:14px;display:flex;align-items:center;gap:10px;background:#18181B;border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:11px 13px"><span style="color:rgba(242,242,240,.45);font-size:13px">⌕</span><input value="{{ citySearch }}" onChange="{{ onCitySearch }}" placeholder="Locality or city — e.g. Dharampeth" style="flex:1;background:none;border:0;outline:none;color:#F2F2F0;font:400 13.5px Archivo,sans-serif"></div>
+<button onClick="{{ useCurrentLocation }}" style="width:100%;margin-top:9px;cursor:pointer;text-align:left;color:#CDF564;background:none;border:1px dashed rgba(205,245,100,.35);border-radius:12px;padding:11px 13px;font:600 12.5px Archivo,sans-serif;display:flex;align-items:center;gap:9px"><span style="font-size:12px">◉</span><span>Use my current location</span></button>
+</div>
+<div class="fk-scroll" style="flex:1;overflow-y:auto;scrollbar-width:none;padding:14px 20px 22px;display:flex;flex-direction:column;gap:7px">
+<sc-for list="{{ cityRows }}" as="r" hint-placeholder-count="6"><button onClick="{{ r.pick }}" style="cursor:pointer;text-align:left;color:inherit;background:#18181B;border:1px solid {{ r.border }};border-radius:13px;padding:12px 13px;display:flex;align-items:center;gap:11px" style-hover="border-color:rgba(205,245,100,.5)"><span style="flex:none;font-size:12px;color:{{ r.iconColor }}">{{ r.icon }}</span><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:600 13px Archivo,sans-serif">{{ r.name }}</span><span style="font:400 10.5px Archivo,sans-serif;color:rgba(242,242,240,.45)">{{ r.sub }}</span></div><span style="flex:none;font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.35)">{{ r.count }}</span></button></sc-for>
+<sc-if value="{{ noCityRows }}" hint-placeholder-val="{{ false }}"><div style="padding:26px 10px;text-align:center"><p style="margin:0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(242,242,240,.45)">No match for “{{ citySearch }}”. FreelanceKar is live in Nagpur, Indore, Jabalpur and Nashik — more cities each month.</p><button onClick="{{ clearCitySearch }}" style="margin-top:14px;cursor:pointer;color:#CDF564;background:none;border:1px solid rgba(205,245,100,.35);border-radius:11px;padding:10px 14px;font:600 12px Archivo,sans-serif">Show all localities</button></div></sc-if>
+</div>
+</div></div></sc-if>
+
+<sc-if value="{{ filtersOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;z-index:5;background:rgba(4,4,5,.62);animation:fkFade .2s ease both;display:flex;flex-direction:column;justify-content:flex-end">
+<div style="background:#111113;border-top:1px solid rgba(255,255,255,.1);border-radius:26px 26px 0 0;animation:fkSheet .3s cubic-bezier(.2,.8,.2,1) both;max-height:88%;overflow-y:auto;padding:18px 20px 22px">
+<div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0;font:600 17px Archivo,sans-serif;letter-spacing:-.02em">Filters</h3><button onClick="{{ closeFilters }}" style="cursor:pointer;background:none;border:0;color:rgba(242,242,240,.5);font-size:16px">✕</button></div>
+<sc-for list="{{ filterGroups }}" as="g" hint-placeholder-count="4"><div style="margin-top:18px;display:flex;flex-direction:column;gap:9px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">{{ g.label }}</span>
+<div style="display:flex;flex-wrap:wrap;gap:7px"><sc-for list="{{ g.opts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="cursor:pointer;background:{{ o.bg }};color:{{ o.fg }};border:1px solid {{ o.bd }};font:600 12px Archivo,sans-serif;padding:9px 13px;border-radius:999px">{{ o.name }}</button></sc-for></div></div></sc-for>
+<div style="margin-top:18px;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 13px Archivo,sans-serif">Available this week</span><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.5)">Only show open calendars</span></div><button onClick="{{ toggleAvailNow }}" style="cursor:pointer;flex:none;width:44px;height:26px;border-radius:999px;border:1px solid {{ availTrackBd }};background:{{ availTrackBg }};position:relative;padding:0"><span style="position:absolute;top:2px;left:{{ availKnobLeft }};width:20px;height:20px;border-radius:50%;background:{{ availKnobBg }};transition:left .2s ease"></span></button></div>
+<div style="display:flex;gap:9px;margin-top:20px"><button onClick="{{ resetFilters }}" style="flex:1;cursor:pointer;color:rgba(242,242,240,.7);background:none;border:1px solid rgba(255,255,255,.14);font:500 13px Archivo,sans-serif;padding:14px;border-radius:12px">Reset</button><button onClick="{{ applyFilters }}" style="flex:1.5;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 13.5px Archivo,sans-serif;padding:14px;border-radius:12px">{{ applyLabel }}</button></div>
+</div></div></sc-if>
+
+<sc-if value="{{ reviewOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;z-index:5;background:rgba(4,4,5,.62);animation:fkFade .2s ease both;display:flex;flex-direction:column;justify-content:flex-end">
+<div style="background:#111113;border-top:1px solid rgba(255,255,255,.1);border-radius:26px 26px 0 0;animation:fkSheet .3s cubic-bezier(.2,.8,.2,1) both;padding:20px 20px 22px">
+<div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0;font:600 17px Archivo,sans-serif;letter-spacing:-.02em">Close out the job</h3><button onClick="{{ closeReview }}" style="cursor:pointer;background:none;border:0;color:rgba(242,242,240,.5);font-size:16px">✕</button></div>
+<p style="margin:9px 0 0;font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.55)">Confirm you’ve paid {{ orderFirst }} {{ orderAmount }} directly. How was the work?</p>
+<div style="display:flex;gap:8px;margin-top:16px"><sc-for list="{{ stars }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.pick }}" style="cursor:pointer;background:none;border:0;padding:0;font-size:28px;color:{{ s.color }};line-height:1">★</button></sc-for></div>
+<textarea value="{{ reviewText }}" onChange="{{ onReviewText }}" placeholder="What went well? This shows on their profile." style="width:100%;box-sizing:border-box;min-height:70px;resize:none;margin-top:14px;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:12px;outline:none;color:#F2F2F0;font:400 13px/1.5 Archivo,sans-serif"></textarea>
+<sc-if value="{{ reviewError }}" hint-placeholder-val="{{ false }}"><span style="display:block;margin-top:9px;font:500 11.5px Archivo,sans-serif;color:#F5865B">Pick a star rating first.</span></sc-if>
+<button onClick="{{ submitReview }}" style="width:100%;margin-top:16px;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 14px Archivo,sans-serif;padding:14px;border-radius:13px">Mark paid &amp; post review</button>
+</div></div></sc-if>
+
+<sc-if value="{{ issueOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;z-index:5;background:rgba(4,4,5,.62);animation:fkFade .2s ease both;display:flex;flex-direction:column;justify-content:flex-end">
+<div style="background:#111113;border-top:1px solid rgba(255,255,255,.1);border-radius:26px 26px 0 0;animation:fkSheet .3s cubic-bezier(.2,.8,.2,1) both;max-height:88%;overflow-y:auto;padding:20px 20px 22px">
+<div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0;font:600 17px Archivo,sans-serif;letter-spacing:-.02em">Raise an issue</h3><button onClick="{{ closeIssue }}" style="cursor:pointer;background:none;border:0;color:rgba(242,242,240,.5);font-size:16px">✕</button></div>
+<p style="margin:9px 0 0;font:400 12.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.55)">Order {{ orderRef }} with {{ orderName }}. Support in {{ city }} picks this up within 24 hours.</p>
+<div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:7px"><sc-for list="{{ issueReasons }}" as="r" hint-placeholder-count="5"><button onClick="{{ r.pick }}" style="cursor:pointer;background:{{ r.bg }};color:{{ r.fg }};border:1px solid {{ r.bd }};font:600 12px Archivo,sans-serif;padding:9px 13px;border-radius:999px">{{ r.name }}</button></sc-for></div>
+<textarea value="{{ issueText }}" onChange="{{ onIssueText }}" placeholder="What happened? Dates, what was promised, what you got." style="width:100%;box-sizing:border-box;min-height:80px;resize:none;margin-top:14px;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:12px;outline:none;color:#F2F2F0;font:400 13px/1.5 Archivo,sans-serif"></textarea>
+<sc-if value="{{ issueError }}" hint-placeholder-val="{{ false }}"><span style="display:block;margin-top:9px;font:500 11.5px Archivo,sans-serif;color:#F5865B">Add a couple of lines so support can act on it.</span></sc-if>
+<button onClick="{{ submitIssue }}" style="width:100%;margin-top:16px;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 14px Archivo,sans-serif;padding:14px;border-radius:13px">Send to support</button>
+<p style="margin:13px 0 0;font:400 11.5px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.4);text-wrap:pretty">FreelanceKar never holds your money, so nothing is frozen — support mediates and can pause the freelancer’s listing while the case is open.</p>
+</div></div></sc-if>
+
+<sc-if value="{{ quoteOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;z-index:5;background:rgba(4,4,5,.62);animation:fkFade .2s ease both;display:flex;flex-direction:column;justify-content:flex-end">
+<div style="background:#111113;border-top:1px solid rgba(255,255,255,.1);border-radius:26px 26px 0 0;animation:fkSheet .3s cubic-bezier(.2,.8,.2,1) both;max-height:88%;overflow-y:auto;padding:18px 20px 22px">
+<div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0;font:600 17px Archivo,sans-serif;letter-spacing:-.02em">Send a quote</h3><button onClick="{{ closeQuote }}" style="cursor:pointer;background:none;border:0;color:rgba(242,242,240,.5);font-size:16px">✕</button></div>
+<div style="margin-top:14px;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:13px"><div style="font:600 13.5px Archivo,sans-serif">{{ quoteTitle }}</div><div style="font:400 11.5px Archivo,sans-serif;color:rgba(242,242,240,.5);margin-top:4px">{{ quoteMeta }}</div><div style="font:500 11.5px Archivo,sans-serif;color:#CDF564;margin-top:8px">Client budget: {{ quoteBudget }}</div></div>
+<div style="margin-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">YOUR PRICE</span><div style="display:flex;align-items:center;gap:9px;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:13px"><span style="font:500 14px Archivo,sans-serif;color:rgba(242,242,240,.5)">₹</span><input value="{{ quoteAmount }}" onChange="{{ onQuoteAmount }}" placeholder="14000" inputMode="numeric" style="flex:1;background:none;border:0;outline:none;color:#F2F2F0;font:600 15px Archivo,sans-serif"></div><span style="font:400 11px Archivo,sans-serif;color:rgba(242,242,240,.42)">You keep 100% — client pays you directly, no platform cut.</span></div>
+<div style="margin-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">DELIVERY IN</span><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px"><sc-for list="{{ quoteDays }}" as="d" hint-placeholder-count="4"><button onClick="{{ d.pick }}" style="cursor:pointer;background:{{ d.bg }};color:{{ d.fg }};border:1px solid {{ d.bd }};font:600 12px Archivo,sans-serif;padding:11px 4px;border-radius:11px">{{ d.name }}</button></sc-for></div></div>
+<div style="margin-top:16px;display:flex;flex-direction:column;gap:8px"><span style="font:500 10px 'JetBrains Mono',monospace;color:rgba(242,242,240,.45);letter-spacing:.07em">MESSAGE</span><textarea value="{{ quoteMsg }}" onChange="{{ onQuoteMsg }}" placeholder="What’s included, how you work, what you need from them." style="box-sizing:border-box;min-height:66px;resize:none;background:#18181B;border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:12px;outline:none;color:#F2F2F0;font:400 13px/1.5 Archivo,sans-serif"></textarea><sc-if value="{{ quoteError }}" hint-placeholder-val="{{ false }}"><span style="font:500 11.5px Archivo,sans-serif;color:#F5865B">Add a price and a short message before sending.</span></sc-if></div>
+<button onClick="{{ sendQuote }}" style="width:100%;margin-top:18px;cursor:pointer;border:0;background:#CDF564;color:#0B0B0C;font:600 14px Archivo,sans-serif;padding:14px;border-radius:13px">Send quote</button>
+</div></div></sc-if>
+
+<sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;z-index:6;left:20px;right:20px;bottom:96px;background:#1E1F23;border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:12px 14px;font:500 12.5px Archivo,sans-serif;animation:fkIn .22s ease both;box-shadow:0 10px 30px rgba(0,0,0,.4)">{{ toast }}</div></sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:446,&quot;height&quot;:900},&quot;bgStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Flat&quot;,&quot;Pulsing dots&quot;,&quot;Lime bloom&quot;],&quot;default&quot;:&quot;Pulsing dots&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;navLabels&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Look&quot;}}">
+const LIME = '#CDF564';
+const PROS = [
+  {id:'nikita',name:'Nikita Sahu',first:'Nikita',headline:'Reels · 2.2 km',tagline:'Content creator · Nagpur · On-site & remote',services:'Reel editing · Social media',rating:4.9,jobs:88,distance:'2.2 km',km:2.2,price:'₹1,400 / reel',base:1400,note:'Replies in ~10 min',replyIn:'10m',years:'3 yrs',match:96,verified:true,
+   reviewer:'Café Mitti, Nagpur',review:'Shot and edited 12 reels for our launch week. Understood the brief the first time and delivered a day early.',
+   packages:[{name:'Instagram reel editing',terms:'Fixed package · 48 hr delivery',price:'₹1,400',amount:1400},{name:'Social media handling',terms:'Monthly retainer · 12 posts',price:'₹14,000',amount:14000},{name:'Shoot + edit day',terms:'Per day · travel extra',price:'₹6,000',amount:6000}]},
+  {id:'aarambh',name:'Studio Aarambh',first:'Aarambh',headline:'Social media · 4.6 km',tagline:'Studio of 3 · Sitabuldi, Nagpur',services:'Social media · Photography · Ads',rating:4.8,jobs:210,distance:'4.6 km',km:4.6,price:'From ₹12,000',base:12000,note:'Team of 3 · studio in Sitabuldi',replyIn:'25m',years:'5 yrs',match:91,verified:true,
+   reviewer:'Kalash Jewellers',review:'Handled our festive campaign end to end — shoot, edits and the ad spend. Reporting every Monday without being asked.',
+   packages:[{name:'Social media handling',terms:'Monthly retainer · 16 posts',price:'₹12,000',amount:12000},{name:'Product photography',terms:'Per day · 40 SKUs',price:'₹9,000',amount:9000},{name:'Meta ads management',terms:'Monthly · ad spend separate',price:'₹8,000',amount:8000}]},
+  {id:'faizan',name:'Faizan Ali',first:'Faizan',headline:'Video editing · 7 km',tagline:'Editor & voice artist · Nagpur · Remote only',services:'Video editing · Voiceover',rating:4.7,jobs:45,distance:'7 km',km:7,price:'₹900 / reel',base:900,note:'Remote only',replyIn:'1 hr',years:'2 yrs',match:88,verified:false,
+   reviewer:'Vidarbha Tutorials',review:'Edited 30 lecture videos with clean captions. Fast turnaround and never argued about revisions.',
+   packages:[{name:'Reel / short editing',terms:'Fixed package · 24 hr delivery',price:'₹900',amount:900},{name:'Long-form video edit',terms:'Per video · up to 20 min',price:'₹2,500',amount:2500},{name:'Hindi voiceover',terms:'Per 500 words',price:'₹1,200',amount:1200}]},
+  {id:'priya',name:'Priya Deshmukh',first:'Priya',headline:'Reel editor · 3.1 km',tagline:'Content creator · Nagpur · On-site & remote',services:'Reel editing · Social media · Photography',rating:4.9,jobs:142,distance:'3.1 km',km:3.1,price:'₹1,500 / reel',base:1500,note:'Replies in ~15 min',replyIn:'15m',years:'4 yrs',match:94,verified:true,
+   reviewer:'Café Mitti, Nagpur',review:'Made our page look like a real brand. Twelve reels a month, always on schedule.',
+   packages:[{name:'Instagram reel editing',terms:'Fixed package · 48 hr delivery',price:'₹1,500',amount:1500},{name:'Social media handling',terms:'Monthly retainer · 12 posts',price:'₹12,000',amount:12000},{name:'Event & product photography',terms:'Per day · travel extra',price:'₹7,500',amount:7500}]},
+  {id:'rohit',name:'Rohit Kumawat',first:'Rohit',headline:'Drone shoots · 6 km',tagline:'Wedding films & drone · Nagpur',services:'Drone shoots · Wedding films',rating:4.7,jobs:63,distance:'6 km',km:6,price:'₹8,000 / day',base:8000,note:'Free on 18–21 Aug',replyIn:'40m',years:'3 yrs',match:85,verified:true,
+   reviewer:'Sharma Weddings',review:'Drone work lifted the whole film. Turned up early both days with backup batteries.',
+   packages:[{name:'Drone shoot',terms:'Per day · 4K footage',price:'₹8,000',amount:8000},{name:'Wedding film',terms:'2 days · edit included',price:'₹35,000',amount:35000},{name:'Event coverage',terms:'Per day · photo + video',price:'₹12,000',amount:12000}]}
+];
+const CATS = [['▶','Reels & video','Reel editor'],['◎','Social media','Social media handling'],['◫','Photo & wedding','Photographer'],['◈','Graphic design','Logo & branding'],['✎','Content writing','Content writer'],['⌘','Web & apps','Web developer'],['◍','Voiceover','Hindi voiceover'],['◭','Ads & marketing','Meta ads expert'],['₹','GST & accounts','GST filing']];
+const CITIES = ['Nagpur','Indore','Jabalpur','Nashik'];
+const money = n => '₹' + n.toLocaleString('en-IN');
+
+const SVC_CATS = ['Reels & video editing','Social media handling','Photography & shoots','Graphic design','Content writing','Voiceover & dubbing','Ads & marketing','Web development','Accounting & GST','Tutoring','Drone & event coverage','Data entry / VA'];
+const SVC_TYPES = [['Fixed','/ project'],['Per day','/ day'],['Monthly','/ month']];
+const REQS = [
+  {id:'r1',title:'8 reels / month — café',budget:'₹15k',meta:'Dharampeth · 3.1 km · posted 20 min ago'},
+  {id:'r2',title:'Product shoot — 40 SKUs',budget:'On quote',meta:'Sitabuldi · 5.4 km · posted 1 hr ago'},
+  {id:'r3',title:'Wedding highlight edit',budget:'₹22k',meta:'Civil Lines · 2 km · posted 3 hr ago'}
+];
+const LOCALITIES = [['Dharampeth','Nagpur',312],['Sitabuldi','Nagpur',268],['Civil Lines','Nagpur',195],['Manish Nagar','Nagpur',164],['Wardha Road','Nagpur',221],['Vijay Nagar','Indore',298],['Palasia','Indore',241],['Rau','Indore',132],['Napier Town','Jabalpur',148],['Wright Town','Jabalpur',121],['College Road','Nashik',176],['Gangapur Road','Nashik',203]];
+const CITY_COUNTS = {Nagpur:'2,140',Indore:'1,860',Jabalpur:'640',Nashik:'910'};
+const PAYMENTS = [
+  {id:'p1',client:'Kalash Jewellers',service:'Reel editing · 6 reels',amount:9000,status:'awaiting',via:'',when:'Due 19 Aug'},
+  {id:'p2',client:'Café Mitti',service:'Social media · August',amount:12000,status:'awaiting',via:'',when:'Due on approval'},
+  {id:'p3',client:'Vidarbha Tutorials',service:'Long-form edits · 12 videos',amount:15000,status:'received',via:'UPI · 12 Aug',when:''},
+  {id:'p4',client:'Sharma Weddings',service:'Wedding highlight edit',amount:12200,status:'received',via:'Cash · 6 Aug',when:''}
+];
+const ISSUE_REASONS = ['Work not delivered','Not what was agreed','Freelancer unreachable','Asked for more money','Something else'];
+const SEED_NOTIFS = [
+  {id:'n1',title:'12 new freelancers in Nagpur',body:'Reel editors, designers and GST filers verified this week.',ts:'2h',unread:true,target:null},
+  {id:'n2',title:'Welcome to FreelanceKar',body:'Pay freelancers directly — FreelanceKar never touches your money.',ts:'1d',unread:false,target:null}
+];
+
+class Component extends DCLogic {
+  state = {screen:'home', cityIdx:0, query:'', brief:'', searchLabel:'', activeId:null, svcIdx:0,
+    hire:0, hireNote:'', hireDateIdx:0, hireError:false, methodIdx:0, paying:false,
+    saved:[], bookings:[], threads:[], sort:'match', toast:'',
+    threadId:null, draft:'', typing:false, viewOrder:null,
+    notifs:SEED_NOTIFS, locality:'', cityOpen:false, citySearch:'', searching:false, payRetried:false, kycRejected:false,
+    payments:PAYMENTS, issueOpen:false, issueReason:0, issueText:'', issueError:false,
+    filtersOpen:false, filters:{budget:'any',dist:'any',mode:'any',lang:'any',availNow:false},
+    applied:{budget:'any',dist:'any',mode:'any',lang:'any',availNow:false},
+    reviewOpen:false, reviewStars:0, reviewText:'', reviewError:false,
+    onbStep:1, phone:'', otpSent:false, otp:'', onbErrorMsg:'', subscribed:false, planIdx:1,
+    fName:'', fCityIdx:0, fRadiusIdx:1, fBio:'', kyc:{aadhaar:false,pan:false,selfie:false}, bank:false,
+    svcRows:[{cat:0,type:0,amount:''}], onboarded:false,
+    available:true, reqs:REQS, quotesSent:0, quoteFor:null, quoteAmount:'', quoteDayIdx:1, quoteMsg:'', quoteError:false,
+    fGigs:[{id:'g1',client:'Kalash Jewellers',service:'Reel editing · 6 reels',amount:'₹9,000',status:'IN PROGRESS'},
+           {id:'g2',client:'Café Mitti',service:'Social media · August',amount:'₹12,000',status:'DELIVERED'}]};
+
+  go(screen){ this.setState({screen}); this.scrollTop(); }
+  scrollTop(){ setTimeout(()=>{ const el=document.querySelector('.fk-scroll'); if(el) el.scrollTop=0; },0); }
+  flash(msg){ this.setState({toast:msg}); clearTimeout(this._t); this._t=setTimeout(()=>this.setState({toast:''}),2200); }
+  pro(){ return PROS.find(p=>p.id===this.state.activeId) || PROS[0]; }
+  openPro(id){ this.setState({activeId:id, svcIdx:0}); this.go('profile'); }
+  search(label){ this.setState({searchLabel:label, sort:'match', searching:true}); this.go('results');
+    clearTimeout(this._srch); this._srch = setTimeout(()=>this.setState({searching:false}), 750); }
+  notify(title, body, target){ this.setState(s=>({notifs:[{id:'n'+Date.now()+String(Math.random()).slice(2,6),title,body,ts:'now',unread:true,target:target||null},...s.notifs]})); }
+  addThread(pro, last, extra){
+    this.setState(s=>{
+      const existing = s.threads.find(t=>t.id===pro.id);
+      const msgs = (existing && existing.msgs) || [];
+      const t = {id:pro.id, name:pro.name, first:pro.first, proId:pro.id, last, ts:'now',
+        msgs:[...msgs, {from:'me', text:last, ts:'9:41'}], ...(extra||{})};
+      return {threads:[t, ...s.threads.filter(x=>x.id!==pro.id)]};
+    });
+  }
+
+  patchThread(id, patch){ this.setState(s=>({threads:s.threads.map(t=>t.id===id?{...t,...patch}:t)})); }
+  patchBooking(id, patch){ this.setState(s=>({bookings:s.bookings.map(b=>b.id===id?{...b,...patch}:b)})); }
+
+  runBooking(order, first){
+    setTimeout(()=>{ this.patchBooking(order,{status:'in_progress'}); this.flash(first+' confirmed the booking');
+      this.notify(first+' confirmed your booking','Order '+order+' — work has started.',{type:'order',id:order}); }, 3200);
+    setTimeout(()=>{ this.patchBooking(order,{status:'delivered'}); this.flash(first+' marked the work delivered — approve to release');
+      this.notify(first+' delivered the work','Check the files and pay '+first+' directly if you haven’t.',{type:'order',id:order}); }, 9000);
+  }
+
+  openThread(id){ this.setState({threadId:id, draft:''}); this.go('thread'); this.scrollBottom(); }
+  scrollBottom(){ setTimeout(()=>{ const el=document.querySelector('.fk-scroll'); if(el) el.scrollTop=el.scrollHeight; },60); }
+
+  threadVals(){
+    const s = this.state, t = s.threads.find(x=>x.id===s.threadId) || {msgs:[]};
+    const q = t.quote;
+    const fm = this._fmode;
+    return {
+      threadName:t.name||'', threadStatus:t.online?'Online':'Usually replies in 15 min',
+      threadStatusColor:'rgba(242,242,240,.45)',
+      msgs:(t.msgs||[]).map(m=>{
+        const me = m.from==='me';
+        return {text:m.text, ts:m.ts, align:me?'flex-end':'flex-start',
+          bg:me?'rgba(205,245,100,.14)':'#141416', fg:'#F2F2F0',
+          border:me?'rgba(205,245,100,.35)':'rgba(255,255,255,.08)',
+          radius:me?'15px 15px 5px 15px':'15px 15px 15px 5px'};
+      }),
+      hasQuote:!!q,
+      qAmount:q?money(q.amount):'', qDays:q?q.days:'', qService:q?q.service:'', qMsg:q?q.msg:'',
+      quoteStatusLabel:q?({pending:fm?'SENT · AWAITING REPLY':'AWAITING YOUR REPLY',accepted:'ACCEPTED · BOOKED',declined:'DECLINED'})[q.status]:'',
+      quoteStatusColor:q&&q.status==='accepted'?LIME:(q&&q.status==='declined'?'rgba(242,242,240,.4)':'#F5B851'),
+      quoteCardBorder:q&&q.status==='pending'?'rgba(245,184,81,.45)':(q&&q.status==='accepted'?LIME:'rgba(255,255,255,.08)'),
+      quoteActionable:!!q && q.status==='pending' && !fm,
+      quoteAccepted:!!q && q.status==='accepted',
+      typing:s.typing,
+      draft:s.draft, onDraft:e=>this.setState({draft:e.target.value}),
+      onDraftKey:e=>{ if(e.key==='Enter') this.sendMsg(); },
+      sendMsg:()=>this.sendMsg(),
+      closeThread:()=>this.go('chats'),
+      acceptQuote:()=>{
+        const total = q.amount;
+        const order = 'FK-'+(48310+s.bookings.length*7);
+        this.patchThread(t.id,{quote:{...q,status:'accepted'}, orderRef:order,
+          msgs:[...(t.msgs||[]),{from:'me',text:'Accepted your quote — '+money(q.amount)+'. Booking confirmed, no platform fee.',ts:'9:42'}]});
+        this.setState(st=>({bookings:[{id:order,proId:t.id,name:t.name,first:t.first||t.name.split(' ')[0],
+          service:q.service, amount:money(total), amountNum:total, status:'awaiting', review:null},...st.bookings]}));
+        this.flash('Booking confirmed · order '+order);
+        this.runBooking(order, t.first||t.name.split(' ')[0]);
+      },
+      declineQuote:()=>{ this.patchThread(t.id,{quote:{...q,status:'declined'},
+        msgs:[...(t.msgs||[]),{from:'me',text:'Thanks — going with someone else this time.',ts:'9:42'}]});
+        this.flash('Quote declined'); },
+      openOrderFromThread:()=>{ const b = s.bookings.find(x=>x.proId===t.id); if(b) this.openOrder(b.id); }
+    };
+  }
+
+  sendMsg(){
+    const s = this.state, t = s.threads.find(x=>x.id===s.threadId);
+    const text = s.draft.trim();
+    if (!t || !text) return;
+    this.patchThread(t.id,{msgs:[...(t.msgs||[]),{from:'me',text,ts:'9:43'}], last:'You: '+text, ts:'now'});
+    this.setState({draft:'', typing:true});
+    this.scrollBottom();
+    clearTimeout(this._reply);
+    this._reply = setTimeout(()=>{
+      const reply = this._fmode ? 'Sounds good — when can you start?' : 'Yes, I can do that. I’ll send a quote in a few minutes.';
+      this.setState({typing:false});
+      this.patchThread(t.id,{msgs:[...(this.state.threads.find(x=>x.id===t.id).msgs||[]),{from:'them',text:reply,ts:'9:44'}], last:reply, ts:'now'});
+      this.notify((t.first||t.name)+' replied', reply, {type:'thread',id:t.id});
+      this.scrollBottom();
+    }, 1600);
+  }
+
+  openOrder(id){ this.setState({viewOrder:id}); this.go('order'); }
+
+  orderVals(){
+    const s = this.state, b = s.bookings.find(x=>x.id===s.viewOrder) || {status:'awaiting'};
+    const iss = b.issue;
+    const order = ['awaiting','in_progress','delivered','approved'];
+    const at = order.indexOf(b.status);
+    const labels = [
+      ['Booking confirmed','Pay the freelancer directly, no platform fee'],
+      ['Freelancer confirmed','Work has started'],
+      ['Work delivered','Review the files and pay if you haven’t already'],
+      ['Marked complete','Job closed out']
+    ];
+    return {
+      orderRef:b.id||'', orderName:b.name||'', orderFirst:b.first||'', orderService:b.service||'',
+      orderAmount:b.amount||'₹0',
+      orderStatus:({awaiting:'AWAITING CONFIRMATION',in_progress:'IN PROGRESS',delivered:'DELIVERED',approved:'COMPLETED'})[b.status],
+      orderStatusColor:b.status==='approved'?'rgba(242,242,240,.45)':LIME,
+      orderEscrowNote:b.status==='approved'?'Paid to '+(b.first||'')+' directly':'Pay '+(b.first||'')+' directly',
+      orderEscrowColor:b.status==='approved'?'rgba(242,242,240,.45)':LIME,
+      steps:labels.map(([title,note],i)=>({
+        title, note:i<=at?note:'—',
+        dot:i<=at?LIME:'#0B0B0C', ring:i<=at?LIME:'rgba(255,255,255,.18)',
+        line:i<at?LIME:'rgba(255,255,255,.12)', lineH:i===labels.length-1?'0px':'26px',
+        titleColor:i<=at?'#F2F2F0':'rgba(242,242,240,.4)'
+      })),
+      canApprove:b.status==='delivered',
+      orderHasReview:!!b.review,
+      orderReviewStars:b.review?'★'.repeat(b.review.stars):'',
+      orderReviewText:b.review?b.review.text:'',
+      closeOrder:()=>this.go('you'),
+      orderChat:()=>{ if(b.proId) this.openThread(b.proId); },
+      raiseIssue:()=>this.setState({issueOpen:true,issueText:'',issueError:false,issueReason:0}),
+      orderHasIssue:!!iss, noIssue:!iss,
+      issueRef:iss?iss.ref:'', issueReasonLabel:iss?iss.reason:'',
+      issueStatusLabel:iss?(iss.status==='open'?'SUPPORT REVIEWING':'SUPPORT REPLIED'):'',
+      issueStatusColor:iss&&iss.status==='open'?'#F5B851':LIME,
+      issueReply:iss?(iss.status==='open'
+        ? 'Raised with the support team. Keep any files or messages from '+(b.first||'the freelancer')+' — you’ll get a reply within 24 hours.'
+        : 'Support has spoken to '+(b.first||'the freelancer')+' and paused their listing while this is open. Add anything else in chat.'):'',
+      issueOpen:s.issueOpen, issueText:s.issueText, issueError:s.issueError,
+      onIssueText:e=>this.setState({issueText:e.target.value,issueError:false}),
+      issueReasons:ISSUE_REASONS.map((name,i)=>({name,
+        ...(s.issueReason===i?{bg:LIME,fg:'#0B0B0C',bd:LIME}:{bg:'#18181B',fg:'rgba(242,242,240,.75)',bd:'rgba(255,255,255,.09)'}),
+        pick:()=>this.setState({issueReason:i})})),
+      openIssue:()=>this.setState({issueOpen:true,issueText:'',issueError:false,issueReason:0}),
+      closeIssue:()=>this.setState({issueOpen:false}),
+      submitIssue:()=>{
+        if(s.issueText.trim().length<10){ this.setState({issueError:true}); return; }
+        const reason = ISSUE_REASONS[s.issueReason], ref = 'SUP-'+(2140+s.bookings.length*3);
+        const base = {ref, reason, text:s.issueText.trim()};
+        this.patchBooking(b.id,{issue:{...base,status:'open'}});
+        this.setState({issueOpen:false});
+        this.flash('Issue raised · '+ref);
+        this.notify('Issue raised · '+ref, reason+' on order '+b.id+'. Support replies within 24 hours.',{type:'order',id:b.id});
+        setTimeout(()=>{ this.patchBooking(b.id,{issue:{...base,status:'responded'}});
+          this.notify('Support replied · '+ref,'We’ve contacted '+(b.first||'the freelancer')+' and paused their listing while this is open.',{type:'order',id:b.id});
+          this.flash('Support replied to '+ref); }, 4500);
+      },
+      openReview:()=>this.setState({reviewOpen:true,reviewStars:0,reviewText:'',reviewError:false}),
+      closeReview:()=>this.setState({reviewOpen:false}),
+      reviewOpen:s.reviewOpen, reviewText:s.reviewText, reviewError:s.reviewError,
+      onReviewText:e=>this.setState({reviewText:e.target.value}),
+      stars:[1,2,3,4,5].map(n=>({color:n<=s.reviewStars?'#F5B851':'rgba(242,242,240,.22)',
+        pick:()=>this.setState({reviewStars:n,reviewError:false})})),
+      submitReview:()=>{
+        if(!s.reviewStars){ this.setState({reviewError:true}); return; }
+        this.patchBooking(b.id,{status:'approved',review:{stars:s.reviewStars,text:s.reviewText.trim()||'Good work, would hire again.'}});
+        this.setState({reviewOpen:false});
+        this.flash('Job closed · '+b.amount+' marked paid to '+b.first);
+        this.notify('Job closed out', b.amount+' marked paid to '+b.first+'. Your review is live on their profile.',{type:'order',id:b.id});
+      }
+    };
+  }
+
+  isFreelancerMode(){ return ['fdash','fgigs','fme','fearn'].includes(this.state.screen) || (this.state.screen==='chats' && this._fmode); }
+
+  freelancerVals(){
+    const s = this.state, chip = on => on ? {bg:LIME,fg:'#0B0B0C',bd:LIME} : {bg:'#141416',fg:'rgba(242,242,240,.75)',bd:'rgba(255,255,255,.09)'};
+    const fCity = CITIES[s.fCityIdx];
+    const kycCount = Object.values(s.kyc).filter(Boolean).length;
+    const validRows = s.svcRows.filter(r=>String(r.amount).trim().length>0);
+    const name = s.fName.trim() || 'Your name';
+    const strength = Math.min(100, 30 + validRows.length*12 + kycCount*8 + (s.bank?6:0) + (s.fBio.trim()?6:0));
+    const qAmt = parseInt(String(s.quoteAmount).replace(/\D/g,''),10) || 0;
+    const duePays = s.payments.filter(p=>p.status==='awaiting'), paidPays = s.payments.filter(p=>p.status==='received');
+    const sumPay = arr => arr.reduce((a,p)=>a+p.amount,0);
+    const payDue = sumPay(duePays), payGot = sumPay(paidPays), payTotal = payDue+payGot;
+    const dayLabels = ['24 hr','3 days','1 week','2 weeks'];
+    const onbOn = s.screen==='fonb';
+
+    return {
+      onbStep1:s.onbStep===1, onb1:onbOn&&s.onbStep===1, onb2:onbOn&&s.onbStep===2, onb3:onbOn&&s.onbStep===3, onb4:onbOn&&s.onbStep===4, onb5:onbOn&&s.onbStep===5,
+      onbProgress:(s.onbStep*20)+'%', onbStepLabel:s.onbStep+'/5',
+      onbError:!!s.onbErrorMsg, onbErrorMsg:s.onbErrorMsg,
+      showOnbCta:s.onbStep!==5,
+      onbCta:s.onbStep===1?(s.otpSent?'Verify & continue':'Send OTP'):(s.onbStep===4?'Continue to plan':'Continue'),
+      plans:[['Starter','₹299/mo','Up to 2 services listed · standard placement'],['Pro','₹799/mo','Unlimited services · priority placement · verified badge boost']].map(([name,price,note],i)=>({
+        name,price,note,border:i===s.planIdx?LIME:'rgba(255,255,255,.08)',priceColor:i===s.planIdx?LIME:'#F2F2F0',
+        pick:()=>{ this.setState({planIdx:i}); this.subscribeAndPublish(i); }})),
+      phone:s.phone, onPhone:e=>this.setState({phone:e.target.value.replace(/[^\d ]/g,'').slice(0,11),onbErrorMsg:''}),
+      otpSent:s.otpSent, otp:s.otp, onOtp:e=>this.setState({otp:e.target.value.replace(/\D/g,'').slice(0,4),onbErrorMsg:''}),
+      fName:name, fNameInput:s.fName, onName:e=>this.setState({fName:e.target.value,onbErrorMsg:''}),
+      fBio:s.fBio, onBio:e=>this.setState({fBio:e.target.value}),
+      fBioShown:s.fBio.trim() || 'Add a line about your work so clients know what you do.',
+      fCity, fFirst:(s.fName.trim().split(' ')[0]) || 'there',
+      cityOptions:CITIES.map((c,i)=>({name:c,...chip(s.fCityIdx===i),pick:()=>this.setState({fCityIdx:i})})),
+      radiusOptions:['5 km','10 km','25 km','Anywhere'].map((r,i)=>({name:r,...chip(s.fRadiusIdx===i),pick:()=>this.setState({fRadiusIdx:i})})),
+      kycItems:[['aadhaar','Aadhaar','ID check · never shown to clients'],['pan','PAN card','For payouts above ₹20,000'],['selfie','Live selfie','Matches your ID photo']].map(([key,nm,note])=>{
+        const on = s.kyc[key];
+        return {name:nm,note,icon:on?'✔':'＋',status:on?'DONE':'UPLOAD',
+          iconColor:on?LIME:'rgba(242,242,240,.45)',border:on?LIME:'rgba(255,255,255,.08)',
+          toggle:()=>this.setState(st=>({kyc:{...st.kyc,[key]:!st.kyc[key]},onbErrorMsg:''}))};
+      }),
+      bankNote:s.bank?'HDFC ••4471 · verified':'Add UPI ID or account number',
+      bankBtnLabel:s.bank?'Added':'Add',
+      bankBtnBg:s.bank?'rgba(205,245,100,.16)':LIME, bankBtnFg:s.bank?LIME:'#0B0B0C',
+      toggleBank:()=>this.setState(st=>({bank:!st.bank})),
+      svcRows:s.svcRows.map((r,i)=>({
+        num:i+1, catName:SVC_CATS[r.cat], amount:r.amount, unit:SVC_TYPES[r.type][1],
+        types:SVC_TYPES.map(([nm],ti)=>({name:nm,...chip(r.type===ti),pick:()=>this.updRow(i,{type:ti})})),
+        cycleCat:()=>this.updRow(i,{cat:(r.cat+1)%SVC_CATS.length}),
+        onAmount:e=>this.updRow(i,{amount:e.target.value.replace(/\D/g,'').slice(0,7)}),
+        remove:()=>this.setState(st=>({svcRows:st.svcRows.length>1?st.svcRows.filter((_,x)=>x!==i):st.svcRows}))
+      })),
+      addSvc:()=>this.setState(st=>({svcRows:[...st.svcRows,{cat:(st.svcRows.length*3)%SVC_CATS.length,type:0,amount:''}],onbErrorMsg:''})),
+      onbBack:()=>{ if(s.onbStep===1) { this.go('you'); return; } this.setState({onbStep:s.onbStep-1,onbErrorMsg:''}); this.scrollTop(); },
+      onbNext:()=>this.onbNext(),
+      startFreelancer:()=>{ this._fmode=true; this.setState({onbStep:s.onboarded?4:1,onbErrorMsg:''}); this.go(s.onboarded?'fdash':'fonb'); },
+      backToClient:()=>{ this._fmode=false; this.go('you'); },
+      addMoreServices:()=>{ this.setState({onbStep:4,onbErrorMsg:''}); this.go('fonb'); },
+
+      available:s.available, availLabel:s.available?'Available':'Not taking work',
+      availDot:s.available?LIME:'rgba(242,242,240,.35)',
+      toggleAvailable:()=>{ this.setState(st=>({available:!st.available})); this.flash(s.available?'Hidden from new searches':'You’re visible in '+fCity+' again'); },
+      earnings:money(payTotal), pendingAmt:money(payDue), withdrawable:money(payGot),
+      duePayments:duePays.map(p=>({...p, amountLabel:money(p.amount),
+        remind:()=>this.flash('Reminder sent to '+p.client),
+        markReceived:()=>{ this.setState(st=>({payments:st.payments.map(x=>x.id===p.id?{...x,status:'received',via:'UPI · today',when:''}:x)}));
+          this.flash(money(p.amount)+' from '+p.client+' marked received');
+          this.notify('Payment received', money(p.amount)+' from '+p.client+' — recorded in your August total.',null); }})),
+      noDuePayments:duePays.length===0,
+      paidPayments:paidPays.map(p=>({...p, amountLabel:money(p.amount)})),
+      planName:s.planIdx===1?'Pro':'Starter', planPrice:s.planIdx===1?'₹799/mo':'₹299/mo', nextBilling:'1 Sep',
+      managePlan:()=>this.flash('Plan managed in Razorpay · cancel anytime'),
+      openEarnings:()=>this.go('fearn'),
+      strengthPct:strength+'%',
+      strengthNote:kycCount<3?'Finish verification to rank higher in '+fCity:(validRows.length<3?'Add one more service to appear in more searches':'Strong profile — you’ll show up near the top in '+fCity),
+      requests:s.reqs.map(r=>({...r,
+        pass:()=>{ this.setState(st=>({reqs:st.reqs.filter(x=>x.id!==r.id)})); this.flash('Passed on this job'); },
+        quote:()=>this.setState({quoteFor:r.id,quoteAmount:'',quoteDayIdx:1,quoteMsg:'',quoteError:false})})),
+      noRequests:s.reqs.length===0, requestBadge:s.reqs.length+' NEW',
+      kycRejected:s.kycRejected && s.onboarded,
+      fixKyc:()=>{ this.setState({onbStep:3,onbErrorMsg:''}); this.go('fonb'); },
+      noGigs:s.fGigs.length===0, toDash:()=>this.go('fdash'),
+      myServices:validRows.length?validRows.map(r=>({name:SVC_CATS[r.cat],terms:SVC_TYPES[r.type][0]+' · '+fCity,price:money(parseInt(r.amount,10)||0)+' '+SVC_TYPES[r.type][1]})):[{name:'No services yet',terms:'Add one to start getting requests',price:'—'}],
+      serviceTotal:validRows.length, quotesSent:s.quotesSent, gigCount:s.fGigs.length,
+      kycBadge:kycCount===3?'KYC ✔':'KYC '+kycCount+'/3',
+      gigSummary:s.fGigs.length+' active · '+s.quotesSent+' quotes awaiting reply',
+      gigs:s.fGigs.map(g=>{
+        const done = g.status==='DELIVERED';
+        return {...g, statusColor:done?'rgba(242,242,240,.45)':LIME,
+          actLabel:done?'Awaiting approval':'Mark delivered',
+          actBg:done?'none':LIME, actFg:done?'rgba(242,242,240,.6)':'#0B0B0C',
+          actBorder:done?'1px solid rgba(255,255,255,.14)':'0',
+          act:()=>{ if(done){ this.flash('Client confirms delivery directly with you'); return; }
+            this.setState(st=>({fGigs:st.fGigs.map(x=>x.id===g.id?{...x,status:'DELIVERED'}:x)}));
+            this.flash('Marked delivered — '+g.amount+' collected directly from the client'); }};
+      }),
+      quoteOpen:!!s.quoteFor,
+      quoteTitle:(s.reqs.find(r=>r.id===s.quoteFor)||{}).title||'',
+      quoteMeta:(s.reqs.find(r=>r.id===s.quoteFor)||{}).meta||'',
+      quoteBudget:(s.reqs.find(r=>r.id===s.quoteFor)||{}).budget||'',
+      quoteAmount:s.quoteAmount, onQuoteAmount:e=>this.setState({quoteAmount:e.target.value.replace(/\D/g,'').slice(0,7),quoteError:false}),
+      quoteNet:money(qAmt),
+      quoteDays:dayLabels.map((nm,i)=>({name:nm,...chip(s.quoteDayIdx===i),pick:()=>this.setState({quoteDayIdx:i})})),
+      quoteMsg:s.quoteMsg, onQuoteMsg:e=>this.setState({quoteMsg:e.target.value,quoteError:false}),
+      quoteError:s.quoteError,
+      closeQuote:()=>this.setState({quoteFor:null}),
+      sendQuote:()=>{ if(qAmt<100 || s.quoteMsg.trim().length<8){ this.setState({quoteError:true}); return; }
+        const req = s.reqs.find(r=>r.id===s.quoteFor);
+        this.setState(st=>({reqs:st.reqs.filter(r=>r.id!==st.quoteFor),quoteFor:null,quotesSent:st.quotesSent+1,
+          threads:[{id:'q-'+req.id,name:req.title,first:'the client',proId:'q-'+req.id,
+            last:'You quoted '+money(qAmt)+' · '+dayLabels[st.quoteDayIdx],ts:'now',
+            msgs:[{from:'them',text:req.title+'. '+req.meta.split(' · ')[0]+'. Budget '+req.budget+'.',ts:'9:12'}],
+            quote:{amount:qAmt,days:dayLabels[st.quoteDayIdx],service:SVC_CATS[st.svcRows[0].cat],msg:st.quoteMsg.trim(),status:'pending'}},...st.threads]}));
+        this.flash('Quote sent · '+money(qAmt));
+        this.notify('Quote sent · '+money(qAmt), req.title+' — the client can see it now.',{type:'thread',id:'q-'+req.id}); }
+    };
+  }
+
+  updRow(i, patch){ this.setState(st=>({svcRows:st.svcRows.map((r,x)=>x===i?{...r,...patch}:r),onbErrorMsg:''})); }
+
+  onbNext(){
+    const s = this.state;
+    if (s.onbStep===1){
+      const digits = s.phone.replace(/\D/g,'');
+      if (digits.length<10) { this.setState({onbErrorMsg:'Enter a 10-digit mobile number.'}); return; }
+      if (!s.otpSent){ this.setState({otpSent:true,onbErrorMsg:''}); this.flash('OTP sent to +91 '+s.phone); return; }
+      if (s.otp!=='1234'){ this.setState({onbErrorMsg:'That code didn’t match. Use 1234 in this demo.'}); return; }
+      this.setState({onbStep:2,onbErrorMsg:''}); this.scrollTop(); return;
+    }
+    if (s.onbStep===2){
+      if (s.fName.trim().length<2){ this.setState({onbErrorMsg:'Add the name clients should see.'}); return; }
+      this.setState({onbStep:3,onbErrorMsg:''}); this.scrollTop(); return;
+    }
+    if (s.onbStep===3){
+      const kycCount = Object.values(s.kyc).filter(Boolean).length;
+      if (kycCount<2){ this.setState({onbErrorMsg:'Upload at least Aadhaar and a selfie to get verified.'}); return; }
+      this.setState({onbStep:4,onbErrorMsg:''}); this.scrollTop(); return;
+    }
+    const valid = s.svcRows.filter(r=>String(r.amount).trim().length>0);
+    if (!valid.length){ this.setState({onbErrorMsg:'Add a price for at least one service.'}); return; }
+    if (s.subscribed || s.onboarded){ this.finishPublish(); return; }
+    this.setState({onbStep:5,onbErrorMsg:''}); this.scrollTop();
+  }
+
+  finishPublish(){
+    const s = this.state;
+    const valid = s.svcRows.filter(r=>String(r.amount).trim().length>0);
+    this._fmode = true;
+    const rejected = !s.kyc.selfie;
+    this.setState({onboarded:true,onbErrorMsg:'',kycRejected:rejected});
+    this.go('fdash');
+    this.flash(s.onboarded?'Services updated':'Profile live in '+CITIES[s.fCityIdx]+' · '+valid.length+' services');
+    if (rejected) setTimeout(()=>this.notify('Verification incomplete','Your live selfie is missing, so the verified badge is on hold.',null), 1200);
+    else if (!s.onboarded) setTimeout(()=>this.notify('Profile is live','You’re now visible to clients in '+CITIES[s.fCityIdx]+'.',null), 1200);
+  }
+
+  subscribeAndPublish(planIdx){
+    const name = planIdx===1?'Pro':'Starter', price = planIdx===1?'₹799/mo':'₹299/mo';
+    this.setState({subscribed:true,planIdx});
+    this.finishPublish();
+    setTimeout(()=>this.flash('Subscribed to '+name+' · '+price+' via Razorpay'), 600);
+  }
+
+  renderVals(){
+    const s = this.state, pro = this.pro(), city = CITIES[s.cityIdx];
+    const bgStyle = this.props.bgStyle ?? 'Pulsing dots';
+    const pkg = pro.packages[Math.min(s.svcIdx, pro.packages.length-1)];
+    const fee = Math.round(pkg.amount * 0.05);
+    const dateLabels = ['Tomorrow','This week','Pick date'];
+
+    const f = s.applied;
+    const REMOTE = {faizan:true, nikita:true, priya:true};
+    const LANGS = {faizan:['Hindi','English','Marathi'], nikita:['Hindi','English'], priya:['Hindi','English','Marathi'], aarambh:['Hindi','English'], rohit:['Hindi','Marathi']};
+    let results = PROS.filter(p=>{
+      if (f.budget!=='any' && p.base > parseInt(f.budget,10)) return false;
+      if (f.dist!=='any' && p.km > parseInt(f.dist,10)) return false;
+      if (f.mode==='remote' && !REMOTE[p.id]) return false;
+      if (f.mode==='onsite' && REMOTE[p.id] && p.id==='faizan') return false;
+      if (f.lang!=='any' && !(LANGS[p.id]||[]).includes(f.lang)) return false;
+      if (f.availNow && p.km>6) return false;
+      return true;
+    });
+    if (s.sort === 'near') results.sort((a,b)=>a.km-b.km);
+    else if (s.sort === 'price') results = results.filter(p=>p.base<=15000).sort((a,b)=>a.base-b.base);
+    else if (s.sort === 'rating') results = results.filter(p=>p.rating>=4.8);
+    else results.sort((a,b)=>b.match-a.match);
+
+    const chipStyle = on => on ? {bg:LIME,fg:'#0B0B0C',bd:LIME} : {bg:'#141416',fg:'rgba(242,242,240,.75)',bd:'rgba(255,255,255,.09)'};
+    const filterCount = ['budget','dist','mode','lang'].filter(k=>f[k]!=='any').length + (f.availNow?1:0);
+
+    const cq = s.citySearch.trim().toLowerCase();
+    const pickPlace = (cityName, loc) => { this.setState({cityIdx:CITIES.indexOf(cityName), locality:loc||'', cityOpen:false, citySearch:''});
+      this.flash(loc ? 'Showing freelancers near '+loc : 'Showing freelancers in '+cityName); this.scrollTop(); };
+    const cityRows = [
+      ...CITIES.filter(c=>!cq || c.toLowerCase().includes(cq)).map(c=>({
+        name:c, sub:'All localities', count:CITY_COUNTS[c], icon:'◉',
+        on:city===c && !s.locality, pick:()=>pickPlace(c,'')})),
+      ...LOCALITIES.filter(([n,c])=>!cq || n.toLowerCase().includes(cq) || c.toLowerCase().includes(cq)).map(([n,c,ct])=>({
+        name:n, sub:c, count:String(ct), icon:'◌',
+        on:s.locality===n, pick:()=>pickPlace(c,n)}))
+    ].map(r=>({...r, border:r.on?LIME:'rgba(255,255,255,.09)', iconColor:r.on?LIME:'rgba(242,242,240,.4)'}));
+
+    return {
+      city, proCount:'2,140',
+      bgDots:bgStyle==='Pulsing dots', bgBloom:bgStyle==='Lime bloom',
+      showTabLabels:this.props.navLabels !== false,
+      isHome:s.screen==='home', isExplore:s.screen==='explore', isResults:s.screen==='results',
+      isProfile:s.screen==='profile', isChats:s.screen==='chats', isYou:s.screen==='you',
+      isOnb:s.screen==='fonb', isDash:s.screen==='fdash', isGigs:s.screen==='fgigs', isFme:s.screen==='fme', isEarn:s.screen==='fearn',
+      isThread:s.screen==='thread', isOrder:s.screen==='order', isNotifs:s.screen==='notifs',
+      showTabs:!['profile','fonb','thread','order','notifs'].includes(s.screen), showProfileBar:s.screen==='profile',
+      locLabel:s.locality || city,
+      cityOpen:s.cityOpen, citySearch:s.citySearch,
+      openCity:()=>this.setState({cityOpen:true,citySearch:''}),
+      closeCity:()=>this.setState({cityOpen:false}),
+      onCitySearch:e=>this.setState({citySearch:e.target.value}),
+      clearCitySearch:()=>this.setState({citySearch:''}),
+      cityRows, noCityRows:cityRows.length===0,
+      useCurrentLocation:()=>{ this.setState({cityIdx:0,locality:'Dharampeth',cityOpen:false,citySearch:''}); this.flash('Located you in Dharampeth, Nagpur'); },
+      unreadCount:s.notifs.filter(n=>n.unread).length,
+      hasUnread:s.notifs.some(n=>n.unread),
+      noNotifs:s.notifs.length===0,
+      openNotifs:()=>this.go('notifs'),
+      closeNotifs:()=>this.go(this._fmode?'fdash':'home'),
+      markAllRead:()=>{ this.setState(st=>({notifs:st.notifs.map(n=>({...n,unread:false}))})); this.flash('All caught up'); },
+      notifList:s.notifs.map(n=>({
+        title:n.title, body:n.body, ts:n.ts,
+        cta:n.target?(n.target.type==='order'?'View order →':'Open chat →'):'',
+        bg:n.unread?'#17181B':'#131315',
+        border:n.unread?'rgba(205,245,100,.28)':'rgba(255,255,255,.07)',
+        dot:n.unread?LIME:'rgba(242,242,240,.2)',
+        open:()=>{ this.setState(st=>({notifs:st.notifs.map(x=>x.id===n.id?{...x,unread:false}:x)}));
+          if(!n.target) return;
+          if(n.target.type==='order') this.openOrder(n.target.id); else this.openThread(n.target.id); }})),
+      searching:s.searching, skeletons:[1,2,3],
+      noResults:!s.searching && results.length===0,
+      emptyNote:filterCount>0
+        ? 'Your filters are narrow for '+(s.locality||city)+'. Widen the budget or distance and try again.'
+        : 'Nobody in '+(s.locality||city)+' matches “'+(s.searchLabel||'this')+'” right now. Post the job and freelancers come to you.',
+      clearAll:()=>{ this.setState({applied:{budget:'any',dist:'any',mode:'any',lang:'any',availNow:false},filters:{budget:'any',dist:'any',mode:'any',lang:'any',availNow:false},sort:'match'}); this.flash('Filters cleared'); },
+      noBookings:s.bookings.length===0,
+      ...this.freelancerVals(),
+      ...this.threadVals(),
+      ...this.orderVals(),
+      cycleCity:()=>{ this.setState(st=>({cityIdx:(st.cityIdx+1)%CITIES.length})); this.flash('Showing freelancers in '+CITIES[(s.cityIdx+1)%CITIES.length]); },
+      openHelp:()=>{ const b=s.bookings[0]; if(!b){ this.flash('No orders yet — raise an issue from an order once you book'); return; }
+        this.openOrder(b.id); this.setState({issueOpen:true,issueText:'',issueError:false,issueReason:0}); },
+      goExplore:()=>this.go('explore'),
+      back:()=>this.go(s.searchLabel?'results':'home'),
+      tabs:(this.isFreelancerMode()
+        ? [['M4 4.6h6.4V11H4zM13.6 4.6H20V11h-6.4zM4 13h6.4v6.4H4zM13.6 13H20v6.4h-6.4z','Dashboard','fdash'],
+           ['M3.4 8.2h17.2v11H3.4zM9 8.2V6a1.4 1.4 0 0 1 1.4-1.4h3.2A1.4 1.4 0 0 1 15 6v2.2','Gigs','fgigs'],
+           ['M4 5.4h16v10.2H9.6L4 19.8z','Chats','chats'],
+           ['M12 4.2a3.7 3.7 0 1 0 0 7.4 3.7 3.7 0 0 0 0-7.4M4.8 20c1-3.4 3.8-5.2 7.2-5.2s6.2 1.8 7.2 5.2','Profile','fme']]
+        : [['M3.4 10.6 12 4l8.6 6.6V19a1 1 0 0 1-1 1h-4.8v-5.6H9.2V20H4.4a1 1 0 0 1-1-1z','Home','home'],
+           ['M11 4.2a6.8 6.8 0 1 0 0 13.6 6.8 6.8 0 0 0 0-13.6M20.2 20l-4.4-4.4','Explore','explore'],
+           ['M4 5.4h16v10.2H9.6L4 19.8z','Chats','chats'],
+           ['M12 4.2a3.7 3.7 0 1 0 0 7.4 3.7 3.7 0 0 0 0-7.4M4.8 20c1-3.4 3.8-5.2 7.2-5.2s6.2 1.8 7.2 5.2','You','you']]
+      ).map(([d,name,key])=>({
+        d,name,color:s.screen===key?LIME:'rgba(242,242,240,.45)',pick:()=>this.go(key)})),
+      cats:CATS.map(([icon,name,q])=>({icon,name,open:()=>this.search(q)})),
+      topRated:PROS.slice(0,3).map(p=>({name:p.name,headline:p.headline,rating:p.rating,jobs:p.jobs,price:p.price,open:()=>this.openPro(p.id)})),
+      chips:['Wedding shoot','GST filing','Logo design','Hindi voiceover','Reel editing'].map(n=>({name:n,open:()=>this.search(n)})),
+      recents:[{label:'Reel editor under ₹1,500',meta:city+' · within 10 km',count:'28'},{label:'Product photographer',meta:city+' · available this week',count:'64'}].map(r=>({...r,open:()=>this.search(r.label)})),
+      query:s.query, hasQuery:s.query.trim().length>0,
+      onQuery:e=>this.setState({query:e.target.value}),
+      onQueryKey:e=>{ if(e.key==='Enter' && s.query.trim()) this.search(s.query.trim()); },
+      brief:s.brief, onBrief:e=>this.setState({brief:e.target.value}),
+      runSearch:()=>this.search((s.query.trim()||s.brief.trim()||'Reel editor').slice(0,60)),
+      searchLabel:s.searchLabel||'Reel editor',
+      resultCount:s.searching?'Searching…':(results.length===1?'1 person':results.length+' people'),
+      sortNote:s.sort==='match'?'MATCH SCORED':'FILTERED',
+      sorts:[['Best match','match'],['Nearest','near'],['Under ₹15k','price'],['4.8★+','rating']].map(([name,key])=>({name,...chipStyle(s.sort===key),pick:()=>{ this.setState({sort:key}); this.scrollTop(); }})),
+      results:(s.searching?[]:results).map((p,i)=>({
+        name:p.name, tick:p.verified?'✔':'', services:p.services, rating:p.rating, jobs:p.jobs,
+        distance:p.distance, price:p.price, note:p.note, match:p.match+'%',
+        matchColor:i===0?LIME:'rgba(242,242,240,.55)',
+        border:i===0?LIME:'rgba(255,255,255,.08)',
+        open:()=>this.openPro(p.id),
+        message:()=>{ this.addThread(p,'You: hi, are you free this week?'); this.flash('Message sent to '+p.first); },
+        hire:()=>{ this.setState({activeId:p.id,svcIdx:0,hire:1,hireNote:'',hireError:false}); }
+      })),
+      pro:{name:pro.name,first:pro.first,tagline:pro.tagline,rating:pro.rating,jobs:pro.jobs,replyIn:pro.replyIn,years:pro.years,reviewer:pro.reviewer,review:pro.review},
+      serviceCount:pro.packages.length,
+      services:pro.packages.map((p,i)=>({name:p.name,terms:p.terms,price:p.price,border:i===s.svcIdx?LIME:'rgba(255,255,255,.08)',pick:()=>this.setState({svcIdx:i})})),
+      selectedPrice:pkg.price, selectedTerms:pkg.terms, selectedService:pkg.name,
+      saveIcon:s.saved.includes(pro.id)?'♥':'♡',
+      saveColor:s.saved.includes(pro.id)?LIME:'rgba(242,242,240,.7)',
+      toggleSave:()=>{ const on=s.saved.includes(pro.id); this.setState(st=>({saved:on?st.saved.filter(x=>x!==pro.id):[...st.saved,pro.id]})); this.flash(on?'Removed from saved':'Saved '+pro.first); },
+      messagePro:()=>{ this.addThread(pro,'Hi, are you free this week?'); this.openThread(pro.id); },
+      openHire:()=>this.setState({hire:1,hireNote:'',hireError:false}),
+      hireOpen:s.hire>0, hireStep1:s.hire===1, hireStep2:s.hire===2, hireStep3:s.hire===3, hireStep4:s.hire===4,
+      retryPay:()=>this.setState({payRetried:true,hire:2}),
+      payWithUpi:()=>{ this.setState({payRetried:true,methodIdx:0,hire:2}); this.flash('UPI selected — instant, no charges'); },
+      closeHire:()=>this.setState({hire:0,paying:false}),
+      hireNote:s.hireNote, hireError:s.hireError,
+      onHireNote:e=>this.setState({hireNote:e.target.value,hireError:false}),
+      dates:dateLabels.map((label,i)=>({label,...chipStyle(s.hireDateIdx===i),pick:()=>this.setState({hireDateIdx:i})})),
+      toDetails:()=>this.setState({hire:1}),
+      toPay:()=>{ if(s.hireNote.trim().length<8){ this.setState({hireError:true}); return; } this.setState({hire:2}); },
+      totalAmount:money(pkg.amount),
+      methods:[['◉','UPI · GPay / PhonePe','Instant, no charges'],['▭','Card','Visa · Mastercard · RuPay'],['⌾','Net banking','All major banks']].map(([icon,name,note],i)=>({
+        icon,name,note,border:i===s.methodIdx?LIME:'rgba(255,255,255,.09)',dot:i===s.methodIdx?'●':'○',
+        dotColor:i===s.methodIdx?LIME:'rgba(242,242,240,.35)',pick:()=>this.setState({methodIdx:i})})),
+      payLabel:s.paying?'Confirming…':'Confirm booking',
+      payNow:()=>{ if(s.paying) return; this.setState({paying:true});
+        const ref = 'FK-'+(48210+s.bookings.length*7);
+        setTimeout(()=>{
+          if(s.methodIdx===1 && !s.payRetried){ this.setState({hire:4,paying:false});
+            this.flash('Card declined — nothing was charged');
+            this.notify('Payment failed','Your bank declined the card. '+pro.first+' is not booked yet.',null); return; }
+          this.setState(st=>({hire:3,paying:false,
+          bookings:[{id:ref,proId:pro.id,name:pro.name,first:pro.first,service:pkg.name,
+            amount:money(pkg.amount),amountNum:pkg.amount,status:'awaiting',review:null},...st.bookings]}));
+          this.addThread(pro,'Booked '+pkg.name+' — '+money(pkg.amount)+' to pay directly.');
+          this.notify('Booking confirmed','Order '+ref+' with '+pro.name+'. Pay '+money(pkg.amount)+' directly.',{type:'order',id:ref});
+          this.runBooking(ref, pro.first);
+        },1100); },
+      hireDate:dateLabels[s.hireDateIdx],
+      orderId:'FK-'+(48210+s.bookings.length*7),
+      afterBookChat:()=>{ this.setState({hire:0}); this.go('chats'); },
+      afterBookHome:()=>{ this.setState({hire:0}); this.go('home'); },
+      threads:s.threads.map(t=>({id:t.id,name:t.name,last:t.last,ts:t.ts,tsColor:t.ts==='now'?LIME:'rgba(242,242,240,.4)',open:()=>this.openThread(t.id)})),
+      noThreads:s.threads.length===0,
+      bookings:s.bookings.map(b=>({...b,
+        statusLabel:({awaiting:'AWAITING CONFIRMATION',in_progress:'IN PROGRESS',delivered:'DELIVERED · CONFIRM & RATE',approved:'COMPLETED'})[b.status],
+        statusColor:b.status==='approved'?'rgba(242,242,240,.45)':LIME,
+        cta:b.status==='delivered'?'Approve →':'View →',
+        open:()=>this.openOrder(b.id)})),
+      bookingCount:s.bookings.length, savedCount:s.saved.length,
+      escrowTotal:money(s.bookings.filter(b=>b.status!=='approved').reduce((a,b)=>a+(b.amountNum||0),0)),
+      openFilters:()=>this.setState({filtersOpen:true, filters:{...s.applied}}),
+      closeFilters:()=>this.setState({filtersOpen:false}),
+      filtersOpen:s.filtersOpen,
+      filterCount:filterCount, hasFilters:filterCount>0,
+      filterIconColor:filterCount>0?LIME:'rgba(242,242,240,.6)',
+      filterGroups:[
+        {label:'MAX BUDGET', key:'budget', opts:[['Any','any'],['Under ₹2k','2000'],['Under ₹10k','10000'],['Under ₹25k','25000']]},
+        {label:'DISTANCE', key:'dist', opts:[['Any','any'],['Within 3 km','3'],['Within 5 km','5'],['Within 10 km','10']]},
+        {label:'WORK MODE', key:'mode', opts:[['Any','any'],['On-site','onsite'],['Remote ok','remote']]},
+        {label:'LANGUAGE', key:'lang', opts:[['Any','any'],['Hindi','Hindi'],['Marathi','Marathi'],['English','English']]}
+      ].map(g=>({label:g.label, opts:g.opts.map(([name,val])=>({name,
+        ...chipStyle(s.filters[g.key]===val),
+        pick:()=>this.setState(st=>({filters:{...st.filters,[g.key]:val}}))}))})),
+      toggleAvailNow:()=>this.setState(st=>({filters:{...st.filters,availNow:!st.filters.availNow}})),
+      availTrackBg:s.filters.availNow?LIME:'#18181B',
+      availTrackBd:s.filters.availNow?LIME:'rgba(255,255,255,.14)',
+      availKnobBg:s.filters.availNow?'#0B0B0C':'rgba(242,242,240,.5)',
+      availKnobLeft:s.filters.availNow?'20px':'2px',
+      resetFilters:()=>this.setState({filters:{budget:'any',dist:'any',mode:'any',lang:'any',availNow:false}}),
+      applyFilters:()=>{ this.setState(st=>({applied:{...st.filters},filtersOpen:false})); this.scrollTop(); },
+      applyLabel:'Show results',
+      toastOn:!!s.toast, toast:s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

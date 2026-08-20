@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   FreelanceKar design tokens, reused from the app's design system
+   (root project's src/app/globals.css) for brand consistency across the
+   product and the marketing site.
+--------------------------------------------------------------------------- */
+
+:root {
+  --fk-bg: #0b0b0c;
+  --fk-bar: #0f0f11;
+  --fk-card: #141416;
+  --fk-nested: #18181b;
+
+  --fk-lime: #cdf564;
+  --fk-lime-hover: #b9e442;
+  --fk-lime-fill: rgba(205, 245, 100, 0.16);
+  --fk-lime-badge: rgba(205, 245, 100, 0.14);
+  --fk-lime-bd: rgba(205, 245, 100, 0.5);
+  --fk-lime-bd-45: rgba(205, 245, 100, 0.45);
+  --fk-lime-bd-40: rgba(205, 245, 100, 0.4);
+  --fk-lime-bd-28: rgba(205, 245, 100, 0.28);
+  --fk-lime-bd-22: rgba(205, 245, 100, 0.22);
+
+  --fk-amber: #f5b851;
+  --fk-alert: #f5865b;
+  --fk-on-alert: #160d09;
+
+  --fk-text: #f2f2f0;
+  --fk-text-72: rgba(242, 242, 240, 0.72);
+  --fk-text-70: rgba(242, 242, 240, 0.7);
+  --fk-text-65: rgba(242, 242, 240, 0.65);
+  --fk-text-62: rgba(242, 242, 240, 0.62);
+  --fk-text-60: rgba(242, 242, 240, 0.6);
+  --fk-text-58: rgba(242, 242, 240, 0.58);
+  --fk-text-55: rgba(242, 242, 240, 0.55);
+  --fk-text-50: rgba(242, 242, 240, 0.5);
+  --fk-text-45: rgba(242, 242, 240, 0.45);
+  --fk-text-42: rgba(242, 242, 240, 0.42);
+  --fk-text-40: rgba(242, 242, 240, 0.4);
+  --fk-text-35: rgba(242, 242, 240, 0.35);
+  --fk-text-30: rgba(242, 242, 240, 0.3);
+  --fk-on-lime: #0b0b0c;
+  --fk-on-lime-72: rgba(11, 11, 12, 0.72);
+  --fk-on-lime-65: rgba(11, 11, 12, 0.65);
+
+  --fk-line-06: rgba(255, 255, 255, 0.06);
+  --fk-line-07: rgba(255, 255, 255, 0.07);
+  --fk-line-08: rgba(255, 255, 255, 0.08);
+  --fk-line-09: rgba(255, 255, 255, 0.09);
+  --fk-line-10: rgba(255, 255, 255, 0.1);
+  --fk-line-11: rgba(255, 255, 255, 0.11);
+  --fk-line-12: rgba(255, 255, 255, 0.12);
+  --fk-line-14: rgba(255, 255, 255, 0.14);
+
+  --fk-stripe: repeating-linear-gradient(
+    135deg,
+    #17181b,
+    #17181b 6px,
+    #232529 6px,
+    #232529 12px
+  );
+}
+
+@theme inline {
+  --font-sans: var(--font-archivo);
+  --font-mono: var(--font-jetbrains-mono);
+
+  --color-fk-bg: var(--fk-bg);
+  --color-fk-bar: var(--fk-bar);
+  --color-fk-card: var(--fk-card);
+  --color-fk-nested: var(--fk-nested);
+
+  --color-fk-lime: var(--fk-lime);
+  --color-fk-lime-hover: var(--fk-lime-hover);
+  --color-fk-lime-fill: var(--fk-lime-fill);
+  --color-fk-lime-badge: var(--fk-lime-badge);
+  --color-fk-lime-bd: var(--fk-lime-bd);
+  --color-fk-lime-bd-45: var(--fk-lime-bd-45);
+  --color-fk-lime-bd-40: var(--fk-lime-bd-40);
+  --color-fk-lime-bd-28: var(--fk-lime-bd-28);
+  --color-fk-lime-bd-22: var(--fk-lime-bd-22);
+
+  --color-fk-amber: var(--fk-amber);
+  --color-fk-alert: var(--fk-alert);
+  --color-fk-on-alert: var(--fk-on-alert);
+
+  --color-fk-text: var(--fk-text);
+  --color-fk-text-72: var(--fk-text-72);
+  --color-fk-text-70: var(--fk-text-70);
+  --color-fk-text-65: var(--fk-text-65);
+  --color-fk-text-62: var(--fk-text-62);
+  --color-fk-text-60: var(--fk-text-60);
+  --color-fk-text-58: var(--fk-text-58);
+  --color-fk-text-55: var(--fk-text-55);
+  --color-fk-text-50: var(--fk-text-50);
+  --color-fk-text-45: var(--fk-text-45);
+  --color-fk-text-42: var(--fk-text-42);
+  --color-fk-text-40: var(--fk-text-40);
+  --color-fk-text-35: var(--fk-text-35);
+  --color-fk-text-30: var(--fk-text-30);
+  --color-fk-on-lime: var(--fk-on-lime);
+  --color-fk-on-lime-72: var(--fk-on-lime-72);
+  --color-fk-on-lime-65: var(--fk-on-lime-65);
+
+  --color-fk-line-06: var(--fk-line-06);
+  --color-fk-line-07: var(--fk-line-07);
+  --color-fk-line-08: var(--fk-line-08);
+  --color-fk-line-09: var(--fk-line-09);
+  --color-fk-line-10: var(--fk-line-10);
+  --color-fk-line-11: var(--fk-line-11);
+  --color-fk-line-12: var(--fk-line-12);
+  --color-fk-line-14: var(--fk-line-14);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--fk-bg);
+  color: var(--fk-text);
+  font-family: var(--font-archivo), "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+/* Marketing type scale --------------------------------------------------- */
+
+.t-hero {
+  font: 700 58px/1.05 var(--font-archivo), sans-serif;
+  letter-spacing: -0.04em;
+}
+.t-h1 {
+  font: 700 48px/1.1 var(--font-archivo), sans-serif;
+  letter-spacing: -0.035em;
+}
+.t-h2 {
+  font: 600 30px/1.15 var(--font-archivo), sans-serif;
+  letter-spacing: -0.03em;
+}
+.t-h3 {
+  font: 600 24px/1.2 var(--font-archivo), sans-serif;
+  letter-spacing: -0.02em;
+}
+.t-body {
+  font: 400 16px/1.6 var(--font-archivo), sans-serif;
+}
+.t-mono-label {
+  font: 600 11px var(--font-jetbrains-mono), monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.t-mono {
+  font: 500 12px var(--font-jetbrains-mono), monospace;
+}
+.t-pretty {
+  text-wrap: pretty;
+}
+
+.fk-stripe {
+  background: var(--fk-stripe);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--fk-text-42);
+}
+
+@media (max-width: 860px) {
+  .t-hero {
+    font-size: 40px;
+  }
+  .t-h1 {
+    font-size: 34px;
+  }
+  .t-h2 {
+    font-size: 24px;
+  }
+}

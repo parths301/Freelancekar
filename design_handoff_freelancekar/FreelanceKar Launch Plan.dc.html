@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+doc-page:not(:defined){visibility:hidden}
+body{margin:0}
+a{color:#1f3a5f;text-decoration:underline;text-underline-offset:2px}
+a:hover{color:#8a4b12}
+</style>
+<script src="./doc-page.js"></script>
+</helmet>
+<doc-page margin="0.8in">
+<div style="font-family:'IBM Plex Sans',system-ui,sans-serif;color:#1c1c1a;font-size:10.5pt;line-height:1.62">
+
+<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #1f3a5f;padding-bottom:8px;margin-bottom:22px">
+<span style="font-size:8.5pt;letter-spacing:0.14em;text-transform:uppercase;color:#1f3a5f;font-weight:600">Sparx Consultancy &middot; FreelanceKar</span>
+<span style="font-size:8.5pt;letter-spacing:0.08em;color:#6b6b64">14&ndash;20 August 2026</span>
+</div>
+
+<h1 style="font-family:Newsreader,Georgia,serif;font-weight:600;font-size:27pt;line-height:1.15;margin:0 0 10px;letter-spacing:-0.01em">Launch plan: KYC access, backend, security, and a six-day schedule</h1>
+<p style="font-size:12pt;line-height:1.5;color:#4a4a44;margin:0 0 26px;max-width:34em">What you can truthfully ship by 20 August, what has to wait, and the exact paperwork and infrastructure decisions that unblock each piece.</p>
+
+<div style="background:#f6f4ef;border-left:3px solid #8a4b12;padding:14px 18px;margin:0 0 28px;break-inside:avoid">
+<p style="margin:0 0 8px;font-weight:600;font-size:10.5pt">The one thing to decide first</p>
+<p style="margin:0;font-size:10pt;line-height:1.55">20 August is achievable for the <strong>website and the web app (installable PWA)</strong>. It is not achievable for native Play Store and App Store listings &mdash; those are gated by store review and, for a new developer account, by Google's closed-testing rule. Plan a <strong>web launch on 20 August</strong> and native apps as a fast follow (Play ~1 Sep, iOS ~15 Sep). Aadhaar KYC also cannot be live by the 20th; launch with a two-tier trust badge and switch Aadhaar on when your API account clears.</p>
+</div>
+
+<h2 style="font-family:Newsreader,Georgia,serif;font-weight:600;font-size:16pt;margin:0 0 4px;padding-top:6px;border-top:1px solid #ddd9d0">1. Aadhaar KYC API access &mdash; what you actually need</h2>
+<p style="margin:10px 0 14px">There are two routes, and only one is open to you.</p>
+
+<p style="margin:0 0 6px;font-weight:600;font-size:10.5pt">Route A &mdash; direct UIDAI access (not for you)</p>
+<p style="margin:0 0 16px">Aadhaar eKYC that returns demographic data requires KUA or Sub-KUA status; authentication-only requires AUA or Sub-AUA. Realistically this tier is for banks, NBFCs, insurers and their authorised technology partners, and it carries licence fees, a security audit, IP whitelisting and an Aadhaar Data Vault obligation. A freelancer marketplace does not qualify on its own, and even the fast paths quote roughly 30 days. Do not spend a day of this week on it.</p>
+
+<p style="margin:0 0 6px;font-weight:600;font-size:10.5pt">Route B &mdash; DigiLocker-based Aadhaar verification through an aggregator (do this)</p>
+<p style="margin:0 0 12px">The user consents in DigiLocker and you receive a digitally signed, tamper-evident e-Aadhaar &mdash; legally accepted for identity verification, no UIDAI licence needed on your side. Vendors to apply to today (apply to two in parallel; approval speed varies by reviewer): <strong>Sandbox (sandbox.co.in)</strong>, <strong>Surepass</strong>, <strong>Digio</strong>, <strong>IDfy</strong>, <strong>Cashfree Verification Suite</strong>. Expect ₹3&ndash;7 per successful check and 3&ndash;10 working days for business verification.</p>
+
+<p style="margin:0 0 8px;font-weight:600;font-size:10.5pt">Whose name the paperwork must be in</p>
+<p style="margin:0 0 12px">Sparx Consultancy works, and it is the right choice. Every aggregator and every payment gateway onboards a <em>legal entity</em>, not a brand. FreelanceKar is a trade name of Sparx; declare it as the brand / DBA on each application. What must match is the entity, not the product:</p>
+
+<table style="width:100%;border-collapse:collapse;font-size:9.5pt;margin:0 0 8px">
+<thead>
+<tr>
+<th style="text-align:left;padding:7px 10px 7px 0;border-bottom:1.5px solid #1c1c1a;font-weight:600;width:32%">Document</th>
+<th style="text-align:left;padding:7px 10px;border-bottom:1.5px solid #1c1c1a;font-weight:600">Must be in the name of</th>
+<th style="text-align:left;padding:7px 0 7px 10px;border-bottom:1.5px solid #1c1c1a;font-weight:600;width:22%">Have it?</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9">Entity PAN</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Sparx Consultancy (proprietor's PAN if proprietorship)</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Mandatory</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9">GST certificate</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Same entity as the PAN &mdash; a mismatch is the #1 rejection cause</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Mandatory in practice</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9">Incorporation / Udyam / Shop&nbsp;&amp;&nbsp;Establishment</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Sparx Consultancy (CIN if Pvt Ltd, Udyam if proprietorship)</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Mandatory</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9">Current account proof</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Same entity; settlement account for Razorpay</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Mandatory</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9">Authorised-signatory ID + board resolution / letter of authority</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">You, signing for Sparx</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Mandatory</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9">Live website with Privacy Policy, Terms, Refund/Cancellation, Contact</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">freelancekar domain, footer credits Sparx Consultancy</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Blocker &mdash; do today</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9">Use-case note</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">One page: why you verify Aadhaar, what you store, retention period</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Write today</td></tr>
+</tbody>
+</table>
+<p style="margin:0 0 14px;font-size:9pt;color:#6b6b64">If Sparx has no GST yet: registration is typically 3&ndash;7 working days and the aggregator application can be filed the day the certificate lands. GST is also required before commercial India Stack integrations, so it is not avoidable &mdash; start it today, not next week.</p>
+
+<div style="background:#f6f4ef;border-left:3px solid #1f3a5f;padding:14px 18px;margin:0 0 24px;break-inside:avoid">
+<p style="margin:0 0 8px;font-weight:600;font-size:10pt">Storage rules that apply the moment you accept an Aadhaar</p>
+<p style="margin:0;font-size:9.5pt;line-height:1.55">Never store the full Aadhaar number in your app database. Persist only the masked last four digits plus a salted hash for de-duplication, and keep the signed XML/PDF in encrypted object storage with a 180-day retention rule. Log the consent artefact (timestamp, purpose text version, IP). Never render a full Aadhaar number in any UI, ticket, export or log line. Under the DPDP Act you also owe users a working deletion path &mdash; build the endpoint in week one, not after your first complaint.</p>
+</div>
+
+<h2 style="font-family:Newsreader,Georgia,serif;font-weight:600;font-size:16pt;margin:0 0 4px;padding-top:6px;border-top:1px solid #ddd9d0">2. Backend &mdash; the boring stack that ships in six days</h2>
+<p style="margin:10px 0 14px">You are one person with a week. Choose managed services with row-level security so you write features, not plumbing. Everything below is provisionable in an afternoon.</p>
+
+<table style="width:100%;border-collapse:collapse;font-size:9.5pt;margin:0 0 16px">
+<thead>
+<tr>
+<th style="text-align:left;padding:7px 10px 7px 0;border-bottom:1.5px solid #1c1c1a;font-weight:600;width:24%">Layer</th>
+<th style="text-align:left;padding:7px 10px;border-bottom:1.5px solid #1c1c1a;font-weight:600;width:28%">Pick</th>
+<th style="text-align:left;padding:7px 0 7px 10px;border-bottom:1.5px solid #1c1c1a;font-weight:600">Why this one</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9;font-weight:500">App + web</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Next.js on Vercel, installable PWA</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">One codebase for site, freelancer app and client app; ships instantly, no store review</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9;font-weight:500">Database + auth</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Supabase (Postgres, RLS, Storage, Edge Functions)</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Postgres with PostGIS for real distance search, auth and file storage in one bill; RLS enforces access at the data layer</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9;font-weight:500">Phone OTP</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Firebase Phone Auth <em>or</em> Twilio Verify / MSG91 OTP service</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Sidesteps your own TRAI DLT header + template registration, which alone takes 3&ndash;10 days and would sink the date</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9;font-weight:500">Payments</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Razorpay Subscriptions + UPI Autopay, webhooks on an Edge Function</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Subscription-only means no Route, no escrow, no marketplace KYC chain</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9;font-weight:500">KYC</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Aggregator DigiLocker API, called server-side only</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Keys never touch the client; verification result cached as a boolean + timestamp</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9;font-weight:500">Media</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Supabase Storage, private buckets + signed URLs</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Portfolio images public; ID documents private, never publicly addressable</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9;font-weight:500">Edge + ops</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">Cloudflare (DNS, WAF, bot rules), Sentry, PostHog, Resend</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">Rate limiting and abuse control you don't have to code</td></tr>
+<tr><td style="padding:7px 10px 7px 0;border-bottom:1px solid #e6e2d9;font-weight:500">Admin</td><td style="padding:7px 10px;border-bottom:1px solid #e6e2d9">A protected route with a moderation queue</td><td style="padding:7px 0 7px 10px;border-bottom:1px solid #e6e2d9">You will manually approve listings for the first few hundred users &mdash; that is a feature, not debt</td></tr>
+</tbody>
+</table>
+
+<p style="margin:0 0 8px;font-weight:600;font-size:10.5pt">Data model, minimum viable</p>
+<p style="margin:0 0 20px"><code style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9pt">profiles</code> (role, city, geo point, verification tier) &middot; <code style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9pt">services</code> (freelancer, category, price band, radius, status) &middot; <code style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9pt">leads</code> (client &rarr; service, message, state) &middot; <code style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9pt">subscriptions</code> (razorpay ids, plan, status, current_period_end) &middot; <code style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9pt">kyc_checks</code> (provider ref, result, masked id, consent) &middot; <code style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9pt">reviews</code> &middot; <code style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9pt">reports</code> &middot; <code style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9pt">audit_log</code>. Listing visibility is a single SQL predicate: subscription active AND status approved.</p>
+
+<h2 style="font-family:Newsreader,Georgia,serif;font-weight:600;font-size:16pt;margin:0 0 4px;padding-top:6px;border-top:1px solid #ddd9d0">3. Six-day schedule</h2>
+<p style="margin:10px 0 14px">Long-lead paperwork goes first because it runs in the background while you build. Note 15 August is a public holiday &mdash; banks and most verification desks are shut, so anything needing a human reviewer must be submitted <em>today</em>.</p>
+
+<table style="width:100%;border-collapse:collapse;font-size:9.5pt;margin:0 0 18px">
+<thead>
+<tr>
+<th style="text-align:left;padding:7px 10px 7px 0;border-bottom:1.5px solid #1c1c1a;font-weight:600;width:14%">Day</th>
+<th style="text-align:left;padding:7px 10px;border-bottom:1.5px solid #1c1c1a;font-weight:600;width:43%">Build</th>
+<th style="text-align:left;padding:7px 0 7px 10px;border-bottom:1.5px solid #1c1c1a;font-weight:600">Paperwork running in parallel</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding:8px 10px 8px 0;border-bottom:1px solid #e6e2d9;font-weight:600">Thu 14</td><td style="padding:8px 10px;border-bottom:1px solid #e6e2d9">Domain, Cloudflare, Vercel + Supabase projects. Publish marketing site with Privacy, Terms, Refund, Contact, About Sparx.</td><td style="padding:8px 0 8px 10px;border-bottom:1px solid #e6e2d9">File Razorpay activation; file KYC aggregator applications (two vendors); start GST if not held; open Play Console + Apple org accounts (D-U-N-S request).</td></tr>
+<tr><td style="padding:8px 10px 8px 0;border-bottom:1px solid #e6e2d9;font-weight:600">Fri 15</td><td style="padding:8px 10px;border-bottom:1px solid #e6e2d9">Schema, RLS policies on every table, phone-OTP auth, onboarding, profile create/edit with image upload.</td><td style="padding:8px 0 8px 10px;border-bottom:1px solid #e6e2d9">Holiday &mdash; expect no vendor replies. Write the KYC use-case note and data-retention policy.</td></tr>
+<tr><td style="padding:8px 10px 8px 0;border-bottom:1px solid #e6e2d9;font-weight:600">Sat 16</td><td style="padding:8px 10px;border-bottom:1px solid #e6e2d9">Client side end to end: category browse, PostGIS distance search, service detail, lead submission, freelancer inbox.</td><td style="padding:8px 0 8px 10px;border-bottom:1px solid #e6e2d9">Answer vendor queries same-day; chase Razorpay if not activated.</td></tr>
+<tr><td style="padding:8px 10px 8px 0;border-bottom:1px solid #e6e2d9;font-weight:600">Sun 17</td><td style="padding:8px 10px;border-bottom:1px solid #e6e2d9">Razorpay plans (₹299 / ₹799), checkout, signed webhook handler with idempotency, paywall gate on listing visibility, billing screen with cancel.</td><td style="padding:8px 0 8px 10px;border-bottom:1px solid #e6e2d9">Test-mode subscription cycle end to end, including failed-payment and cancellation webhooks.</td></tr>
+<tr><td style="padding:8px 10px 8px 0;border-bottom:1px solid #e6e2d9;font-weight:600">Mon 18</td><td style="padding:8px 10px;border-bottom:1px solid #e6e2d9">Verification tier one: phone verified + PAN/selfie upload &rarr; manual review queue in admin. Reviews, report/block, moderation actions.</td><td style="padding:8px 0 8px 10px;border-bottom:1px solid #e6e2d9">If a KYC vendor clears, drop in the DigiLocker flow behind a feature flag.</td></tr>
+<tr><td style="padding:8px 10px 8px 0;border-bottom:1px solid #e6e2d9;font-weight:600">Tue 19</td><td style="padding:8px 10px;border-bottom:1px solid #e6e2d9">Hardening day: run the security checklist below, Sentry, backups + one restore test, OTP and lead rate limits, mobile-device pass, PWA install + icons.</td><td style="padding:8px 0 8px 10px;border-bottom:1px solid #e6e2d9">Seed 30&ndash;50 real freelancers in one city by hand; write support macros.</td></tr>
+<tr><td style="padding:8px 10px 8px 0;border-bottom:1px solid #e6e2d9;font-weight:600">Wed 20</td><td style="padding:8px 10px;border-bottom:1px solid #e6e2d9">Razorpay to live keys, smoke-test a real ₹299 subscription, launch. Wrap the PWA and submit the Play closed test.</td><td style="padding:8px 0 8px 10px;border-bottom:1px solid #e6e2d9">Announce in one city only. Watch Sentry and the moderation queue all day.</td></tr>
+</tbody>
+</table>
+
+<p style="margin:0 0 8px;font-weight:600;font-size:10.5pt">Cut these to protect the date</p>
+<p style="margin:0 0 20px">In-app chat (hand off to a call or WhatsApp), in-app notifications beyond email/SMS, multi-city, the ₹799 tier's advanced analytics, ratings maths beyond a simple average, and referral mechanics. Each is a week of edge cases and none of them decides whether a freelancer pays you ₹299.</p>
+
+<h2 style="font-family:Newsreader,Georgia,serif;font-weight:600;font-size:16pt;margin:0 0 4px;padding-top:6px;border-top:1px solid #ddd9d0">4. Security checklist &mdash; all of it before 20 August</h2>
+<p style="margin:10px 0 14px">You are holding phone numbers, addresses, ID documents and payment mandates for people who work in strangers' homes. Treat each line as a launch blocker, not a nice-to-have.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 28px;margin:0 0 20px;font-size:9.5pt">
+<div>
+<p style="margin:0 0 6px;font-weight:600;font-size:9.5pt;letter-spacing:0.06em;text-transform:uppercase;color:#1f3a5f">Access &amp; data</p>
+<ul style="margin:0 0 14px;padding-left:16px;line-height:1.55">
+<li style="margin-bottom:5px">RLS enabled and policy-tested on <em>every</em> table &mdash; default deny, then allow</li>
+<li style="margin-bottom:5px">Service-role key server-side only; never in the client bundle or a public env var</li>
+<li style="margin-bottom:5px">ID documents in private buckets, short-lived signed URLs, no directory listing</li>
+<li style="margin-bottom:5px">Aadhaar/PAN encrypted at rest, masked in every UI and export</li>
+<li style="margin-bottom:5px">EXIF stripped from uploads; MIME and size validated server-side</li>
+<li style="margin-bottom:5px">Client phone numbers hidden until a freelancer accepts a lead</li>
+</ul>
+</div>
+<div>
+<p style="margin:0 0 6px;font-weight:600;font-size:9.5pt;letter-spacing:0.06em;text-transform:uppercase;color:#1f3a5f">Abuse &amp; money</p>
+<ul style="margin:0 0 14px;padding-left:16px;line-height:1.55">
+<li style="margin-bottom:5px">OTP rate limit per phone and per IP (5/hour, 20/day) plus Cloudflare Turnstile</li>
+<li style="margin-bottom:5px">Lead-spam limits per client per day</li>
+<li style="margin-bottom:5px">Razorpay webhook signature verified; events processed idempotently by event id</li>
+<li style="margin-bottom:5px">Entitlement read from your DB, never from a client-supplied payment status</li>
+<li style="margin-bottom:5px">Admin routes behind RBAC + separate login; every action written to <code style="font-family:ui-monospace,monospace">audit_log</code></li>
+<li style="margin-bottom:5px">No PII in logs, Sentry breadcrumbs or analytics events</li>
+</ul>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 28px;margin:0 0 22px;font-size:9.5pt">
+<div>
+<p style="margin:0 0 6px;font-weight:600;font-size:9.5pt;letter-spacing:0.06em;text-transform:uppercase;color:#1f3a5f">Platform</p>
+<ul style="margin:0;padding-left:16px;line-height:1.55">
+<li style="margin-bottom:5px">HTTPS + HSTS, secure/httpOnly/sameSite cookies, CSP with no inline-script wildcard</li>
+<li style="margin-bottom:5px">Secrets in Vercel/Supabase env, rotated after launch; never committed</li>
+<li style="margin-bottom:5px">Daily point-in-time backups with one rehearsed restore</li>
+<li style="margin-bottom:5px">Dependency audit and lockfile pinned</li>
+</ul>
+</div>
+<div>
+<p style="margin:0 0 6px;font-weight:600;font-size:9.5pt;letter-spacing:0.06em;text-transform:uppercase;color:#1f3a5f">Compliance</p>
+<ul style="margin:0;padding-left:16px;line-height:1.55">
+<li style="margin-bottom:5px">DPDP consent text versioned; purpose stated at collection</li>
+<li style="margin-bottom:5px">Working account-deletion and data-export path</li>
+<li style="margin-bottom:5px">Grievance officer name and email published (IT Rules)</li>
+<li style="margin-bottom:5px">Play Data Safety and Apple privacy labels match reality</li>
+</ul>
+</div>
+</div>
+
+<h2 style="font-family:Newsreader,Georgia,serif;font-weight:600;font-size:16pt;margin:0 0 4px;padding-top:6px;border-top:1px solid #ddd9d0">5. Everything else on the list</h2>
+
+<p style="margin:10px 0 6px;font-weight:600;font-size:10.5pt">Legal and commercial</p>
+<ul style="margin:0 0 14px;padding-left:18px">
+<li style="margin-bottom:4px">Terms that make Sparx a listing platform, not a service provider or employer &mdash; no liability for work quality, no agency relationship</li>
+<li style="margin-bottom:4px">Subscription terms: monthly auto-renew, cancel anytime, no pro-rata refunds, clear GST treatment on the invoice</li>
+<li style="margin-bottom:4px">Freelancer agreement: accurate profile, own tools and taxes, no soliciting off-platform payments through you</li>
+<li style="margin-bottom:4px">Trademark search and filing for &ldquo;FreelanceKar&rdquo; (Class 35/42) &mdash; cheap now, expensive later</li>
+<li style="margin-bottom:4px">GST invoicing set up for the subscription revenue from day one</li>
+</ul>
+
+<p style="margin:0 0 6px;font-weight:600;font-size:10.5pt">Native apps (after the web launch)</p>
+<ul style="margin:0 0 14px;padding-left:18px">
+<li style="margin-bottom:4px">Wrap the PWA (Capacitor or Bubblewrap/TWA) rather than rebuilding &mdash; days, not weeks</li>
+<li style="margin-bottom:4px">Register the Play Console under <strong>Sparx Consultancy as an organisation</strong>, not a personal account: personal accounts must run a 12-tester, 14-day closed test before production, which alone would push you into September</li>
+<li style="margin-bottom:4px">Apple requires a D-U-N-S number for an organisation account &mdash; request it today; it is the long pole for iOS</li>
+<li style="margin-bottom:4px">Store assets: icon, feature graphic, 4&ndash;6 screenshots per platform, short and full description, support URL</li>
+<li style="margin-bottom:4px">Realistic dates: Play closed test 20 Aug, production ~1 Sep; App Store ~15 Sep</li>
+</ul>
+
+<p style="margin:0 0 6px;font-weight:600;font-size:10.5pt">Go-to-market and operations</p>
+<ul style="margin:0 0 14px;padding-left:18px">
+<li style="margin-bottom:4px">Launch one city, three or four categories, and hand-recruit the first 50 freelancers &mdash; a marketplace with empty categories converts nobody</li>
+<li style="margin-bottom:4px">Free first month for founding freelancers, priced plan visible from day one so the paywall is never a surprise</li>
+<li style="margin-bottom:4px">Support inbox with a stated response time, plus a WhatsApp number you actually answer</li>
+<li style="margin-bottom:4px">Instrument four numbers only: signups, listings live, paid subscriptions, leads delivered</li>
+<li style="margin-bottom:4px">Google Business Profile, city landing pages for SEO, and a simple referral ask in the freelancer dashboard</li>
+</ul>
+
+<div style="border-top:2px solid #1f3a5f;margin-top:24px;padding-top:12px;display:flex;justify-content:space-between;font-size:8.5pt;color:#6b6b64">
+<span>Prepared for Sparx Consultancy &middot; FreelanceKar launch</span>
+<span>Web: 20 Aug &middot; Play: ~1 Sep &middot; iOS: ~15 Sep</span>
+</div>
+
+</div>
+</doc-page>
+
+</x-dc>
+</body>
+</html>

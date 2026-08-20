@@ -1,0 +1,10 @@
+{
+  "name": "FreelanceKar",
+  "short_name": "FreelanceKar",
+  "description": "Hire verified freelancers near you. Pay them directly — zero commission.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0B0C",
+  "theme_color": "#0B0B0C",
+  "icons": []
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><style>body{margin:0;background:#0B0B0C;font-family:Archivo,"Helvetica Neue",Helvetica,Arial,sans-serif}a{color:#CDF564;text-decoration:none}a:hover{color:#b9e442}</style></helmet>
+
+<div style="background:#0B0B0C;color:#F2F2F0;min-height:100vh;padding-bottom:0">
+
+<div style="border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;background:rgba(11,11,12,.92);backdrop-filter:blur(10px);z-index:10">
+<div style="max-width:1180px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;gap:28px">
+<a href="./FreelanceKar Homepage.dc.html" style="font:700 18px Archivo,sans-serif;letter-spacing:-.03em;color:#F2F2F0">freelance<span style="color:#CDF564">kar</span></a>
+<div style="display:flex;gap:22px;margin-left:14px">
+<span style="font:500 13.5px Archivo,sans-serif;color:#F2F2F0">Categories</span>
+<a href="./FreelanceKar How It Works.dc.html" style="font:500 13.5px Archivo,sans-serif;color:rgba(242,242,240,.6)">How it works</a>
+<a href="./FreelanceKar Pricing.dc.html" style="font:500 13.5px Archivo,sans-serif;color:rgba(242,242,240,.6)">Pricing</a>
+</div>
+<div style="margin-left:auto;display:flex;align-items:center;gap:12px">
+<a href="./FreelanceKar Join As Freelancer.dc.html" style="font:500 13.5px Archivo,sans-serif;color:rgba(242,242,240,.6)">Join as a freelancer</a>
+<a href="./FreelanceKar Post A Job.dc.html" style="background:#CDF564;color:#0B0B0C;font:600 13px Archivo,sans-serif;padding:11px 18px;border-radius:11px">Post a job</a>
+</div>
+</div></div>
+
+<div style="max-width:1180px;margin:0 auto;padding:14px 32px 0;font:500 11px 'JetBrains Mono',monospace;color:rgba(242,242,240,.35);letter-spacing:.06em">HOME / {{ cityUpper }} / {{ catUpper }}</div>
+
+<div style="max-width:1180px;margin:0 auto;padding:34px 32px 0;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start">
+<div>
+<span style="display:inline-block;background:rgba(205,245,100,.12);color:#CDF564;font:600 11px 'JetBrains Mono',monospace;padding:6px 10px;border-radius:7px;letter-spacing:.05em">{{ proCount }} VERIFIED IN {{ cityUpper }}</span>
+<h1 style="margin:18px 0 0;font:700 58px/1.03 Archivo,sans-serif;letter-spacing:-.04em;text-wrap:pretty">{{ category }} in {{ city }}</h1>
+<p style="margin:18px 0 0;max-width:520px;font:400 16px/1.6 Archivo,sans-serif;color:rgba(242,242,240,.6);text-wrap:pretty">Hire {{ catLower }} near you — {{ localityRun }} and across {{ city }}. Compare real rates, see verified IDs, and pay only when the work is approved.</p>
+<div style="margin-top:26px;display:flex;gap:10px;max-width:560px">
+<div style="flex:1;display:flex;align-items:center;gap:10px;background:#141416;border:1px solid rgba(255,255,255,.11);border-radius:13px;padding:14px 16px"><span style="color:rgba(242,242,240,.45);font-size:14px">⌕</span><span style="font:400 14.5px Archivo,sans-serif;color:rgba(242,242,240,.42)">Describe the work — “8 reels a month for my café”</span></div>
+<span style="flex:none;background:#CDF564;color:#0B0B0C;font:600 14px Archivo,sans-serif;padding:14px 22px;border-radius:13px">Get quotes</span>
+</div>
+<div style="margin-top:22px;display:flex;gap:30px">
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 20px Archivo,sans-serif">₹900–₹2,500</span><span style="font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.45)">typical per reel</span></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 20px Archivo,sans-serif">Under 1 hr</span><span style="font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.45)">first quote arrives</span></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 20px Archivo,sans-serif">0%</span><span style="font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.45)">commission taken</span></div>
+</div>
+</div>
+<div style="background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:22px;overflow:hidden">
+<div style="height:210px;background:repeating-linear-gradient(135deg,#17181b,#17181b 7px,#232529 7px,#232529 14px);display:flex;align-items:flex-end;padding:16px"><span style="font:500 11px 'JetBrains Mono',monospace;color:rgba(242,242,240,.4)">PHOTO — LOCAL SHOOT IN {{ cityUpper }}</span></div>
+<div style="padding:18px 20px 20px">
+<span style="font:600 15px Archivo,sans-serif">Why clients in {{ city }} use it</span>
+<div style="margin-top:14px;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;gap:11px;align-items:flex-start"><span style="color:#CDF564;font-size:13px">✔</span><span style="font:400 13px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.62)">Aadhaar + PAN checked before anyone can quote</span></div>
+<div style="display:flex;gap:11px;align-items:flex-start"><span style="color:#CDF564;font-size:13px">✔</span><span style="font:400 13px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.62)">UPI payments held in escrow, released on your approval</span></div>
+<div style="display:flex;gap:11px;align-items:flex-start"><span style="color:#CDF564;font-size:13px">✔</span><span style="font:400 13px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.62)">People who can travel to your locality, not another metro</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="max-width:1180px;margin:0 auto;padding:66px 32px 0">
+<div style="display:flex;align-items:baseline;justify-content:space-between"><h2 style="margin:0;font:600 30px Archivo,sans-serif;letter-spacing:-.03em">Top {{ catLower }} in {{ city }}</h2><span style="font:500 12px 'JetBrains Mono',monospace;color:rgba(242,242,240,.4)">RANKED BY RATING &amp; RESPONSE TIME</span></div>
+<div style="margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+<sc-for list="{{ pros }}" as="p" hint-placeholder-count="6"><div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden">
+<div style="height:120px;background:repeating-linear-gradient(135deg,#17181b,#17181b 6px,#232529 6px,#232529 12px)"></div>
+<div style="padding:16px 17px 18px">
+<div style="display:flex;align-items:center;gap:7px"><span style="font:600 15.5px Archivo,sans-serif">{{ p.name }}</span><span style="font-size:11px;color:#CDF564">✔</span></div>
+<div style="margin-top:5px;font:400 12.5px/1.45 Archivo,sans-serif;color:rgba(242,242,240,.5)">{{ p.services }}</div>
+<div style="margin-top:10px;display:flex;align-items:center;gap:10px;font:500 12px Archivo,sans-serif"><span style="color:#F5B851">★ {{ p.rating }}</span><span style="color:rgba(242,242,240,.4)">{{ p.jobs }} jobs</span><span style="color:rgba(242,242,240,.4)">{{ p.area }}</span></div>
+<div style="margin-top:14px;padding-top:13px;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between"><span style="font:600 14px Archivo,sans-serif">{{ p.price }}</span><a href="./FreelanceKar Freelancer Profile.dc.html" style="font:600 12px Archivo,sans-serif;color:#CDF564">View profile →</a></div>
+</div></div></sc-for>
+</div>
+</div>
+
+<div style="max-width:1180px;margin:0 auto;padding:66px 32px 0;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+<div>
+<h2 style="margin:0;font:600 30px Archivo,sans-serif;letter-spacing:-.03em">What it costs in {{ city }}</h2>
+<p style="margin:12px 0 0;font:400 14px/1.6 Archivo,sans-serif;color:rgba(242,242,240,.55);max-width:440px">Real rates quoted on FreelanceKar over the last 90 days. Prices are lower than metro studios and quoted per job, not per hour.</p>
+<div style="margin-top:22px;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden">
+<sc-for list="{{ rates }}" as="r" hint-placeholder-count="5"><div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.07);background:#141416"><div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 13.5px Archivo,sans-serif">{{ r.job }}</span><span style="font:400 11.5px Archivo,sans-serif;color:rgba(242,242,240,.45)">{{ r.unit }}</span></div><span style="font:600 14px Archivo,sans-serif;flex:none">{{ r.range }}</span></div></sc-for>
+</div>
+</div>
+<div>
+<h2 style="margin:0;font:600 30px Archivo,sans-serif;letter-spacing:-.03em">Popular localities</h2>
+<p style="margin:12px 0 0;font:400 14px/1.6 Archivo,sans-serif;color:rgba(242,242,240,.55)">Search by locality — freelancers show you their travel radius up front.</p>
+<div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:9px">
+<sc-for list="{{ localities }}" as="l" hint-placeholder-count="6"><div style="background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:999px;padding:11px 16px;display:flex;align-items:center;gap:9px"><span style="font:500 13px Archivo,sans-serif">{{ l.name }}</span><span style="font:500 11px 'JetBrains Mono',monospace;color:rgba(242,242,240,.4)">{{ l.count }}</span></div></sc-for>
+</div>
+<div style="margin-top:28px;background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:20px">
+<span style="font:600 15px Archivo,sans-serif">How hiring works</span>
+<div style="margin-top:16px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;gap:13px;align-items:flex-start"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(205,245,100,.14);color:#CDF564;font:600 11px 'JetBrains Mono',monospace;display:flex;align-items:center;justify-content:center">1</span><span style="font:400 13px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.62)">Describe the work and your locality — no account needed to start</span></div>
+<div style="display:flex;gap:13px;align-items:flex-start"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(205,245,100,.14);color:#CDF564;font:600 11px 'JetBrains Mono',monospace;display:flex;align-items:center;justify-content:center">2</span><span style="font:400 13px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.62)">Compare quotes with match scores, ratings and distance</span></div>
+<div style="display:flex;gap:13px;align-items:flex-start"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(205,245,100,.14);color:#CDF564;font:600 11px 'JetBrains Mono',monospace;display:flex;align-items:center;justify-content:center">3</span><span style="font:400 13px/1.5 Archivo,sans-serif;color:rgba(242,242,240,.62)">Pay to escrow via UPI, approve the delivery, money is released</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="max-width:1180px;margin:0 auto;padding:66px 32px 0">
+<h2 style="margin:0;font:600 30px Archivo,sans-serif;letter-spacing:-.03em">Questions clients in {{ city }} ask</h2>
+<div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4"><div style="background:#141416;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 19px"><span style="font:600 14.5px Archivo,sans-serif">{{ f.q }}</span><p style="margin:9px 0 0;font:400 13px/1.6 Archivo,sans-serif;color:rgba(242,242,240,.58);text-wrap:pretty">{{ f.a }}</p></div></sc-for>
+</div>
+</div>
+
+<sc-if value="{{ showFreelancerCta }}" hint-placeholder-val="{{ true }}"><div style="max-width:1180px;margin:0 auto;padding:66px 32px 0">
+<div style="background:#CDF564;color:#0B0B0C;border-radius:24px;padding:38px 40px;display:flex;align-items:center;gap:40px">
+<div style="flex:1">
+<h2 style="margin:0;font:700 34px/1.1 Archivo,sans-serif;letter-spacing:-.035em">Do this work in {{ city }}? List every service you offer.</h2>
+<p style="margin:12px 0 0;max-width:560px;font:400 15px/1.6 Archivo,sans-serif;opacity:.72">One profile, many skills — editing, shoots, design, GST filing. You keep 100% of your first three jobs, and payment is already in escrow before you start.</p>
+</div>
+<div style="flex:none;display:flex;flex-direction:column;gap:10px">
+<span style="<a href="./FreelanceKar Join As Freelancer.dc.html" style="background:#0B0B0C;color:#CDF564;font:600 14px Archivo,sans-serif;padding:15px 26px;border-radius:13px;text-align:center">Join as a freelancer</a></span>
+<span style="font:500 12px Archivo,sans-serif;opacity:.65;text-align:center">Free · verify with Aadhaar in 5 min</span>
+</div>
+</div>
+</div></sc-if>
+
+<div style="margin-top:70px;border-top:1px solid rgba(255,255,255,.08)">
+<div style="max-width:1180px;margin:0 auto;padding:34px 32px 40px">
+<span style="font:500 11px 'JetBrains Mono',monospace;color:rgba(242,242,240,.4);letter-spacing:.06em">FIND WORK NEARBY</span>
+<div style="margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px 28px">
+<sc-for list="{{ links }}" as="l" hint-placeholder-count="16"><span style="font:400 13px Archivo,sans-serif;color:rgba(242,242,240,.55)">{{ l.label }}</span></sc-for>
+</div>
+<div style="margin-top:32px;padding-top:22px;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between">
+<a href="./FreelanceKar Homepage.dc.html" style="font:700 15px Archivo,sans-serif;letter-spacing:-.03em;color:#F2F2F0">freelance<span style="color:#CDF564">kar</span></a>
+<span style="font:400 12px Archivo,sans-serif;color:rgba(242,242,240,.35)">© FreelanceKar, a Sparx Consultancy product · Nagpur · Indore · Jabalpur · Nashik</span>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;city&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Nagpur&quot;,&quot;Indore&quot;,&quot;Jabalpur&quot;,&quot;Nashik&quot;],&quot;default&quot;:&quot;Nagpur&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;category&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Video editors&quot;,&quot;Social media managers&quot;,&quot;Photographers&quot;,&quot;Graphic designers&quot;,&quot;Content writers&quot;,&quot;Web developers&quot;,&quot;Voiceover artists&quot;,&quot;GST consultants&quot;],&quot;default&quot;:&quot;Video editors&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;proCount&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;340&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showFreelancerCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals(){
+    const city = this.props.city ?? 'Nagpur';
+    const category = this.props.category ?? 'Video editors';
+    const LOC = {
+      Nagpur:[['Dharampeth',312],['Sitabuldi',268],['Civil Lines',195],['Manish Nagar',164],['Wardha Road',221],['Hingna',88]],
+      Indore:[['Vijay Nagar',298],['Palasia',241],['Rau',132],['Bhawarkuan',157],['Sudama Nagar',96],['Mhow',61]],
+      Jabalpur:[['Napier Town',148],['Wright Town',121],['Vijay Nagar',97],['Gorakhpur',73],['Adhartal',58],['Ranjhi',41]],
+      Nashik:[['College Road',176],['Gangapur Road',203],['Indira Nagar',134],['Panchavati',112],['Satpur',79],['Deolali',55]]
+    };
+    const localities = (LOC[city] || LOC.Nagpur).map(([name,count])=>({name,count:String(count)}));
+    const pros = [
+      {name:'Nikita Sahu',services:'Reel editing · Social media · Shoot days',rating:'4.9',jobs:88,area:localities[0].name,price:'₹1,400 / reel'},
+      {name:'Priya Deshmukh',services:'Reel editing · Photography · Retainers',rating:'4.9',jobs:142,area:localities[2].name,price:'₹1,500 / reel'},
+      {name:'Studio Aarambh',services:'Social media · Product shoots · Meta ads',rating:'4.8',jobs:210,area:localities[1].name,price:'From ₹12,000'},
+      {name:'Faizan Ali',services:'Long-form editing · Captions · Voiceover',rating:'4.7',jobs:45,area:'Remote only',price:'₹900 / reel'},
+      {name:'Rohit Kumawat',services:'Drone shoots · Wedding films · Events',rating:'4.7',jobs:63,area:localities[4].name,price:'₹8,000 / day'},
+      {name:'Meher Studios',services:'Corporate films · Explainers · Subtitling',rating:'4.6',jobs:37,area:localities[3].name,price:'₹4,500 / video'}
+    ];
+    const rates = [
+      {job:'Instagram reel edit',unit:'Per reel · 48 hr delivery',range:'₹900 – ₹2,500'},
+      {job:'Social media handling',unit:'Monthly retainer · 12–16 posts',range:'₹10,000 – ₹18,000'},
+      {job:'Shoot + edit day',unit:'Per day · travel extra',range:'₹6,000 – ₹12,000'},
+      {job:'Wedding highlight film',unit:'Per event · 2 days',range:'₹25,000 – ₹45,000'},
+      {job:'Drone coverage',unit:'Per day · 4K footage',range:'₹7,000 – ₹10,000'}
+    ];
+    const faqs = [
+      {q:'How fast will I get quotes?',a:'Most jobs posted in '+city+' get a first quote within an hour, and three to five quotes the same day.'},
+      {q:'What does it cost me?',a:'Nothing. You pay the freelancer their quoted price directly by UPI or cash — FreelanceKar adds no fee and never handles the money.'},
+      {q:'Can I hire someone in my locality only?',a:'Yes. Filter by distance or search a locality directly — every freelancer lists the radius they travel, so on-site work stays nearby.'},
+      {q:'Are the freelancers verified?',a:'Aadhaar and a live selfie are checked before anyone can quote, and PAN is required for payouts above ₹20,000. Documents are never shown to clients.'}
+    ];
+    const CATS = ['Video editors','Social media managers','Photographers','Graphic designers','Content writers','Web developers','Voiceover artists','GST consultants'];
+    const CITIES = ['Nagpur','Indore','Jabalpur','Nashik'];
+    const links = [];
+    CATS.forEach(c=>CITIES.forEach(ct=>links.push({label:c+' in '+ct})));
+    return {
+      city, category, catLower:category.toLowerCase(),
+      cityUpper:city.toUpperCase(), catUpper:category.toUpperCase(),
+      proCount:this.props.proCount ?? '340',
+      localityRun:localities.slice(0,3).map(l=>l.name).join(', '),
+      localities, pros, rates, faqs,
+      links:links.slice(0,32),
+      showFreelancerCta:this.props.showFreelancerCta ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>
