@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AppDownloadBanner from "@/components/AppDownloadBanner";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${archivo.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-fk-bg text-fk-text">
+        <AppDownloadBanner />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
