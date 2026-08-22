@@ -16,7 +16,7 @@ export async function generateMetadata(
   if (!city) return {};
   return {
     title: `Freelancers in ${city.name}`,
-    description: `Hire verified freelancers in ${city.name} — reel editors, photographers, designers and more. Compare quotes and pay them directly, zero commission.`,
+    description: `Hire verified freelancers in ${city.name} — reel editors, photographers, designers and more. Compare quotes and pay them directly, zero platform cut.`,
   };
 }
 
@@ -71,7 +71,7 @@ export default async function CityPage(props: PageProps<"/city/[slug]">) {
             </div>
             <div className="flex flex-col gap-0.5">
               <span className="text-xl font-semibold">0%</span>
-              <span className="text-xs text-fk-text-45">commission taken</span>
+              <span className="text-xs text-fk-text-45">platform cut</span>
             </div>
           </div>
         </div>
@@ -132,9 +132,10 @@ export default async function CityPage(props: PageProps<"/city/[slug]">) {
         </div>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {FEATURED_PROS.map((pro) => (
-            <div
-              key={pro.name}
-              className="overflow-hidden rounded-2xl border border-fk-line-08 bg-fk-card"
+            <Link
+              key={pro.slug}
+              href={`/freelancer/${pro.slug}`}
+              className="overflow-hidden rounded-2xl border border-fk-line-08 bg-fk-card transition-colors hover:border-fk-lime-bd"
             >
               <div className="fk-stripe h-[120px]" />
               <div className="p-4.5">
@@ -151,7 +152,7 @@ export default async function CityPage(props: PageProps<"/city/[slug]">) {
                   <span className="text-fk-text-40">{city.name}</span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </Section>
@@ -222,7 +223,7 @@ export default async function CityPage(props: PageProps<"/city/[slug]">) {
                   3
                 </span>
                 <span className="text-[13px] leading-relaxed text-fk-text-62">
-                  Pay the freelancer directly by UPI or cash — zero commission
+                  Pay the freelancer directly by UPI or cash — zero platform cut
                 </span>
               </div>
             </div>

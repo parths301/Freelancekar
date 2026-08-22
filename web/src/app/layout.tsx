@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s · FreelanceKar",
   },
   description:
-    "Hire verified freelancers in Nagpur, Indore, Jabalpur and Nashik. Compare quotes and pay them directly by UPI or cash — FreelanceKar takes zero commission.",
+    "Hire verified freelancers in Nagpur, Indore, Jabalpur and Nashik. Compare quotes and pay them directly by UPI or cash — FreelanceKar takes zero platform cut.",
   metadataBase: new URL("https://freelancekar.com"),
 };
 

@@ -7,7 +7,7 @@ import SignupStub from "@/components/SignupStub";
 export const metadata: Metadata = {
   title: "Join as a freelancer",
   description:
-    "List every service you offer, get matched with clients in your own city, and keep 100% of what you earn. No commission, ever — just a simple monthly plan.",
+    "List every service you offer, get matched with clients in your own city, and keep 100% of what you earn. Zero platform cut, ever — just a simple monthly plan.",
 };
 
 export default function JoinAsFreelancerPage() {
@@ -21,7 +21,7 @@ export default function JoinAsFreelancerPage() {
           </h1>
           <p className="t-pretty mt-4 max-w-md text-[16px] leading-relaxed text-fk-text-60">
             List every service you offer, get matched with clients in your own city, and keep
-            100% of what you earn — no commission, ever.
+            100% of what you earn — zero platform cut, ever.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <span className="rounded-[13px] bg-fk-lime px-6.5 py-3.5 text-[14px] font-semibold text-fk-on-lime">
@@ -115,7 +115,7 @@ export default function JoinAsFreelancerPage() {
             <div className="flex items-start gap-3">
               <span className="text-sm text-fk-lime">✔</span>
               <span className="text-[13.5px] leading-relaxed text-fk-text-65">
-                No commission, ever — a flat monthly plan, that&apos;s it
+                Zero platform cut, ever — a flat monthly plan, that&apos;s it
               </span>
             </div>
             <div className="flex items-start gap-3">
@@ -152,7 +152,7 @@ export default function JoinAsFreelancerPage() {
       <Section className="pb-4">
         <CtaBand
           title="7-day free trial, live now."
-          body="Start free in Nagpur, Indore, Jabalpur or Nashik — no commission, ever."
+          body="Start free in Nagpur, Indore, Jabalpur or Nashik — zero platform cut, ever."
           ctaLabel="Get started free"
           ctaHref="/pricing"
         />

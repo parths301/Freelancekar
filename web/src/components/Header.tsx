@@ -37,10 +37,10 @@ export default function Header() {
             Join as a freelancer
           </Link>
           <Link
-            href="/city/nagpur"
+            href="/post-a-job"
             className="rounded-[11px] bg-fk-lime px-4.5 py-2.5 text-[13px] font-semibold text-fk-on-lime transition-colors hover:bg-fk-lime-hover"
           >
-            Find a freelancer
+            Post a job
           </Link>
         </div>
       </div>

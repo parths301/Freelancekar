@@ -5,6 +5,7 @@ const FOOTER_LINKS = [
   { href: "/", label: "Home" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/pricing", label: "Pricing" },
+  { href: "/post-a-job", label: "Post a job" },
   { href: "/join-as-freelancer", label: "Join as a freelancer" },
 ];
 

@@ -5,7 +5,7 @@ import { CheckLine, FaqCard, Section } from "@/components/ui";
 export const metadata: Metadata = {
   title: "How it works",
   description:
-    "How clients hire and pay freelancers directly, and how freelancers get found and paid — with zero commission on any job.",
+    "How clients hire and pay freelancers directly, and how freelancers get found and paid — with zero platform cut on any job.",
 };
 
 const CLIENT_STEPS = [
@@ -41,7 +41,7 @@ const FREELANCER_STEPS = [
     body: "Send a quote with your price, delivery window and a note.",
   },
   {
-    title: "Deliver, get paid — no commission",
+    title: "Deliver, get paid — zero platform cut",
     body: "The client pays you directly. You keep 100% of every job, every time.",
   },
 ];
@@ -49,7 +49,7 @@ const FREELANCER_STEPS = [
 const FAQS = [
   {
     q: "Does FreelanceKar take a cut of my job?",
-    a: "No. Clients pay nothing extra, and freelancers keep 100% of every job — the platform runs on a simple freelancer subscription, not commission.",
+    a: "No. Clients pay nothing extra, and freelancers keep 100% of every job — the platform runs on a simple freelancer subscription, not a cut of your jobs.",
   },
   {
     q: "What if the work is never delivered?",
@@ -71,8 +71,8 @@ export default function HowItWorksPage() {
       <Section className="pt-14 text-center">
         <h1 className="t-h1 t-pretty mx-auto max-w-2xl">How FreelanceKar works</h1>
         <p className="t-pretty mx-auto mt-4 max-w-lg text-[16px] leading-relaxed text-fk-text-60">
-          One clear flow for hiring, and one honest pricing model for freelancers — no commission,
-          ever.
+          One clear flow for hiring, and one honest pricing model for freelancers — zero platform
+          cut, ever.
         </p>
       </Section>
 

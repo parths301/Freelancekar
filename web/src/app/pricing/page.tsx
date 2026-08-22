@@ -6,7 +6,7 @@ import { CtaBand, FaqCard, Section } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Freelancer subscriptions from ₹299/mo. Clients never pay a fee, and freelancers keep 100% of every job — FreelanceKar takes zero commission.",
+    "Freelancer subscriptions from ₹299/mo. Clients never pay a fee, and freelancers keep 100% of every job — FreelanceKar takes zero platform cut.",
 };
 
 const COMPARE_ROWS: [string, string, string][] = [
@@ -14,7 +14,7 @@ const COMPARE_ROWS: [string, string, string][] = [
   ["Leads & quotes", "Unlimited", "Unlimited"],
   ["Priority placement", "—", "✔"],
   ["Verified badge boost", "—", "✔"],
-  ["Commission on jobs", "₹0", "₹0"],
+  ["Platform cut on jobs", "₹0", "₹0"],
 ];
 
 const FAQS = [
@@ -40,7 +40,7 @@ export default function PricingPage() {
   return (
     <>
       <Section className="pt-14 text-center">
-        <h1 className="t-h1 t-pretty mx-auto max-w-xl">Simple pricing. No commission, ever.</h1>
+        <h1 className="t-h1 t-pretty mx-auto max-w-xl">Simple pricing. Zero platform cut, ever.</h1>
         <p className="t-pretty mx-auto mt-4 max-w-lg text-[16px] leading-relaxed text-fk-text-60">
           Clients never pay a fee. Freelancers pick a monthly plan and keep 100% of what they earn
           on every job — FreelanceKar is never in the payment.

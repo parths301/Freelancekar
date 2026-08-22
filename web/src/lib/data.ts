@@ -88,16 +88,113 @@ export const PLANS: {
 
 /** Sample top-rated freelancers shown on the homepage, matching the app's PROS seed data. */
 export const FEATURED_PROS: {
+  slug: string;
   name: string;
   services: string;
   rating: number;
   jobs: number;
   area: string;
 }[] = [
-  { name: "Priya Deshmukh", services: "Reel editing · Photography · Retainers", rating: 4.9, jobs: 142, area: "Civil Lines, Nagpur" },
-  { name: "Studio Aarambh", services: "Social media · Product shoots · Meta ads", rating: 4.8, jobs: 210, area: "Sitabuldi, Nagpur" },
-  { name: "Rohit Kumawat", services: "Drone shoots · Wedding films · Events", rating: 4.7, jobs: 63, area: "Wardha Road, Nagpur" },
+  { slug: "priya-deshmukh", name: "Priya Deshmukh", services: "Reel editing · Photography · Retainers", rating: 4.9, jobs: 142, area: "Civil Lines, Nagpur" },
+  { slug: "studio-aarambh", name: "Studio Aarambh", services: "Social media · Product shoots · Meta ads", rating: 4.8, jobs: 210, area: "Sitabuldi, Nagpur" },
+  { slug: "rohit-kumawat", name: "Rohit Kumawat", services: "Drone shoots · Wedding films · Events", rating: 4.7, jobs: 63, area: "Wardha Road, Nagpur" },
 ];
+
+export type FreelancerProfile = {
+  slug: string;
+  name: string;
+  tagline: string;
+  rating: number;
+  jobs: number;
+  area: string;
+  travelRadius: string;
+  responseTime: string;
+  about: string;
+  services: { name: string; note: string; price: string }[];
+  portfolioCount: number;
+  reviews: { author: string; stars: number; body: string; when: string; service: string }[];
+  fromPrice: string;
+};
+
+/** Full profile pages, keyed by slug — a superset of FEATURED_PROS with the detail a profile page needs. */
+export const FREELANCERS: FreelancerProfile[] = [
+  {
+    slug: "priya-deshmukh",
+    name: "Priya Deshmukh",
+    tagline: "Reel editing · Photography · Retainers",
+    rating: 4.9,
+    jobs: 142,
+    area: "Civil Lines, Nagpur",
+    travelRadius: "travels up to 5 km",
+    responseTime: "Usually responds in <1 hr",
+    about:
+      "Full-time reel editor and photographer based in Civil Lines, Nagpur. I've worked with 140+ local cafés, boutiques and small brands on Instagram content and event photography — quick turnaround, unlimited revisions on the first cut, and I travel across Nagpur for shoots.",
+    services: [
+      { name: "Instagram reel edit", note: "48 hr delivery · 2 revisions included", price: "₹1,500 / reel" },
+      { name: "Photography session", note: "2 hr on-site · 25 edited shots", price: "₹4,500 / session" },
+      { name: "Monthly content retainer", note: "8 reels + 4 shoots per month", price: "₹14,000 / mo" },
+    ],
+    portfolioCount: 6,
+    reviews: [
+      { author: "Anjali M.", stars: 5, body: "Turned around 4 reels in two days, exactly the vibe I asked for. Booking her monthly now.", when: "3 days ago", service: "Reel editing" },
+      { author: "Rakesh T.", stars: 5, body: "Came on time for the café shoot, edited photos looked way better than I expected for the price.", when: "2 weeks ago", service: "Photography" },
+      { author: "Sameer K.", stars: 4, body: "Good quality, one revision took a bit longer than the window but she kept me posted.", when: "1 month ago", service: "Reel editing" },
+    ],
+    fromPrice: "₹1,500",
+  },
+  {
+    slug: "studio-aarambh",
+    name: "Studio Aarambh",
+    tagline: "Social media · Product shoots · Meta ads",
+    rating: 4.8,
+    jobs: 210,
+    area: "Sitabuldi, Nagpur",
+    travelRadius: "travels up to 10 km",
+    responseTime: "Usually responds in <2 hr",
+    about:
+      "A 3-person studio running social media and paid ads for 60+ Nagpur brands — cafés, boutiques and D2C sellers. We handle the full loop: shoot, edit, post, and run the Meta ads behind it, with a monthly report so you can see what's working.",
+    services: [
+      { name: "Social media handling", note: "Monthly retainer · 12–16 posts", price: "₹12,000 / mo" },
+      { name: "Product photography", note: "Per session · 15–20 shots", price: "₹3,500 / session" },
+      { name: "Meta ads management", note: "Setup + monthly optimization", price: "₹6,000 / mo" },
+    ],
+    portfolioCount: 9,
+    reviews: [
+      { author: "Neha P.", stars: 5, body: "Our Instagram actually looks like a brand now instead of random phone photos. Worth every rupee.", when: "5 days ago", service: "Social media handling" },
+      { author: "Vikram S.", stars: 5, body: "Ran our first Meta ad campaign and got more orders in a week than the whole month before.", when: "3 weeks ago", service: "Meta ads management" },
+      { author: "Farida A.", stars: 4, body: "Great product shots, just wish turnaround was a day faster during festival season.", when: "1 month ago", service: "Product photography" },
+    ],
+    fromPrice: "₹3,500",
+  },
+  {
+    slug: "rohit-kumawat",
+    name: "Rohit Kumawat",
+    tagline: "Drone shoots · Wedding films · Events",
+    rating: 4.7,
+    jobs: 63,
+    area: "Wardha Road, Nagpur",
+    travelRadius: "travels anywhere in Nagpur",
+    responseTime: "Usually responds in <3 hr",
+    about:
+      "Wedding and event filmmaker with a licensed drone rig, covering Nagpur and nearby towns. I shoot and edit everything myself so the style stays consistent from the first shot to the final highlight film.",
+    services: [
+      { name: "Wedding highlight film", note: "Per event · 2 days · drone included", price: "₹32,000 / event" },
+      { name: "Drone coverage", note: "Per day · 4K footage", price: "₹8,000 / day" },
+      { name: "Event coverage", note: "Half-day · edited same week", price: "₹9,500 / event" },
+    ],
+    portfolioCount: 6,
+    reviews: [
+      { author: "Priyanka & Aman", stars: 5, body: "The drone shots of the mandap were unbelievable. Delivered the highlight film in 4 days.", when: "1 week ago", service: "Wedding highlight film" },
+      { author: "Nagpur Runners Club", stars: 4, body: "Covered our marathon start and finish, good aerial shots, audio on ground footage was a bit weak.", when: "1 month ago", service: "Event coverage" },
+      { author: "Manoj D.", stars: 5, body: "Booked him for a college fest, super professional and delivered on time.", when: "2 months ago", service: "Event coverage" },
+    ],
+    fromPrice: "₹8,000",
+  },
+];
+
+export function getFreelancer(slug: string): FreelancerProfile | undefined {
+  return FREELANCERS.find((f) => f.slug === slug);
+}
 
 export const CITIES: City[] = [
   {

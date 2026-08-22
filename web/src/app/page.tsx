@@ -6,7 +6,7 @@ import { CtaBand, Eyebrow, NumberedStep, Section, StatPill } from "@/components/
 export const metadata: Metadata = {
   title: "Hire local freelancers, pay them directly",
   description:
-    "Reel editors, photographers, designers and more in Nagpur, Indore, Jabalpur and Nashik. Compare quotes, hire in a tap, pay them directly — FreelanceKar takes zero commission.",
+    "Reel editors, photographers, designers and more in Nagpur, Indore, Jabalpur and Nashik. Compare quotes, hire in a tap, pay them directly — zero platform cut, ever.",
 };
 
 export default function HomePage() {
@@ -18,7 +18,7 @@ export default function HomePage() {
         <p className="t-pretty mt-4 max-w-xl text-[16px] leading-relaxed text-fk-text-60">
           Reel editors, photographers, designers and more — in Nagpur, Indore, Jabalpur and
           Nashik. Compare freelancers, hire in a tap, pay them directly. FreelanceKar takes zero
-          commission on your job.
+          platform cut on your job.
         </p>
 
         <div className="mt-7 flex w-full max-w-xl flex-col gap-2.5 sm:flex-row">
@@ -38,7 +38,7 @@ export default function HomePage() {
 
         <div className="mt-8 flex gap-8 sm:gap-10">
           <StatPill value="Free" label="for clients, always" />
-          <StatPill value="0%" label="commission taken" />
+          <StatPill value="0%" label="platform cut" />
           <StatPill value="<1 hr" label="typical first reply" />
         </div>
       </Section>
@@ -82,9 +82,10 @@ export default function HomePage() {
         </div>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {FEATURED_PROS.map((pro) => (
-            <div
-              key={pro.name}
-              className="overflow-hidden rounded-2xl border border-fk-line-08 bg-fk-card"
+            <Link
+              key={pro.slug}
+              href={`/freelancer/${pro.slug}`}
+              className="overflow-hidden rounded-2xl border border-fk-line-08 bg-fk-card transition-colors hover:border-fk-lime-bd"
             >
               <div className="fk-stripe h-[120px]" />
               <div className="p-4.5">
@@ -101,7 +102,7 @@ export default function HomePage() {
                   <span className="text-fk-text-40">{pro.area}</span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </Section>
@@ -135,7 +136,7 @@ export default function HomePage() {
       <Section>
         <CtaBand
           title="Do this work for a living? List every service you offer."
-          body="One profile, many skills. No commission, ever — pay a simple monthly plan and keep 100% of what you earn."
+          body="One profile, many skills. Zero platform cut, ever — pay a simple monthly plan and keep 100% of what you earn."
           ctaLabel="Join as a freelancer"
           ctaHref="/join-as-freelancer"
           footnote="Starter from ₹299/mo · verify in about 5 minutes"
